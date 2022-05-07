@@ -11,21 +11,16 @@ export const NavBar = () => {
   
   return (
     <div>
-      <div style={{width:'100%',height:'3rem'}} >
+      <div style={{borderColor:'black',borderBottom:'solid',width:'100%',height:'3.5rem'}} >
         <Home
           style={{width:'3rem',height:'3rem',float:'left'}}
           onClick={()=>{console.log('홈버튼클릭')}}
         ></Home>
         <SlideMenu hidden={hiddenMenu}>
-            <MenuItem>
-                <Menu
-                    style={{width:'3rem',height:'3rem',float:'right'}}
-                    onClick={()=>{setHiddenMenu(!hiddenMenu)}}>
-                </Menu>
-            </MenuItem>
-            <MenuItem>두번째 메뉴</MenuItem>
-            <MenuItem>세번째 메뉴</MenuItem>
-        </SlideMenu>
+          <Menu
+            style={{width:'3rem',height:'3rem',float:'right'}}
+            onClick={()=>{setHiddenMenu(!hiddenMenu)}}
+        /></SlideMenu>
         <Menu
           style={{width:'3rem',height:'3rem',float:'right'}}
           onClick={()=>{setHiddenMenu(!hiddenMenu)}}
@@ -36,7 +31,7 @@ export const NavBar = () => {
             if(hiddenSearch){
               setHiddenSearch(false);
             }
-            else if(searchText==''){
+            else if(searchText===''){
               setHiddenSearch(true);
             }
             else{
@@ -46,28 +41,23 @@ export const NavBar = () => {
         ></Search>
         <Input hidden={hiddenSearch} type="text" onChange={(e)=>{setSearchText(e.target.value)}}/>
       </div>
-      <hr></hr>
     </div>
   )
 }
 
 const Input = styled.input`
-    display:${props=>props.hidden ? 'none':'block'};
-    width:10rem;
-    height:3rem;
-    float:right;
+  display:${props=>props.hidden ? 'none':'block'};
+  width:10rem;
+  height:3rem;
+  float:right;
 `
 const SlideMenu = styled.div`
-    display:${props=>props.hidden ? 'none':'block'};
-    width:50%;
-    height:100%;
-    left:50%;
-    position:absolute;
-    background-color: lightgray;
-`
-
-const MenuItem = styled.div`
-    width:100%;
-    height:3.5rem;
+  display:${props=>props.hidden ? 'none':'block'};
+  width:40%;
+  height:100%;
+  left:60%;
+  position:absolute;
+  background-color: gray;
+  transition:1s;
 `
 export default NavBar;
