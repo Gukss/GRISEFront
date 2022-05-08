@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Row, Col, Select, Divider } from "antd";
 
-const Header = () => {
+const Title = () => {
 	const [header, setHeader] = useState('제목')
 	const [nickName, setNickName] = useState('nickname')
 	const [location, setLocation] = useState('location')
@@ -24,4 +24,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Title;
