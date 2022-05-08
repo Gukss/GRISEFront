@@ -24,8 +24,24 @@ const Board = () => {
 };
 
 const Wrap = styled.div`
-  width: 768px;
-  margin: 0 auto;
+  background-color: brown;
+  width: 1200px;
+  height:100%;
+  margin:0 auto;
+  
+
+  @media (max-width:1220px){
+    width: 100%;
+  }
+
+  @media (max-width:768px){
+    width: 100%;
+  }
+
+  @media (max-width:480px){
+    width:100%;
+    background-color:white;
+  }
 `;
 
 export default Board;
