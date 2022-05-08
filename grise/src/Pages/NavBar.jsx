@@ -12,41 +12,71 @@ export const NavBar = () => {
   const [hiddenMenu,setHiddenMenu] = useState(true);
   
   return (
+		//네브바 아이콘 세로로 가운데가 아니다. 정렬하기
     <div>
-      <div style={{borderColor:'black',borderBottom:'solid',width:'100%',height:'3.5rem'}} >
+      <div
+        style={{
+          borderColor: "#e3e3e3",
+          borderBottom: "solid",
+          width: "100%",
+          height: "3.5rem",
+          padding: "0.5rem",
+        }}
+      >
         <Link to="/">
-					<Home
-						style={{width:'3rem',height:'3rem',float:'left'}}
-						onClick={()=>{console.log('홈버튼클릭')}}
-					></Home>
-				</Link>
+          <Home
+            style={{ width: "3rem", height: "3rem", float: "left", marginLeft: "0.5rem"}}
+            onClick={() => {
+              console.log("홈버튼클릭");
+            }}
+          ></Home>
+        </Link>
         <SlideMenu hidden={hiddenMenu}>
           <Menu
-            style={{width:'3rem',height:'3rem',float:'right'}}
-            onClick={()=>{setHiddenMenu(!hiddenMenu)}}
-        /></SlideMenu>
+            style={{ width: "3rem", height: "3rem", float: "right" }}
+            onClick={() => {
+              setHiddenMenu(!hiddenMenu);
+            }}
+          />
+        </SlideMenu>
         <Menu
-          style={{width:'3rem',height:'3rem',float:'right'}}
-          onClick={()=>{setHiddenMenu(!hiddenMenu)}}
+          style={{
+            width: "3rem",
+            height: "3rem",
+            float: "right",
+            marginRight: "0.5rem",
+          }}
+          onClick={() => {
+            setHiddenMenu(!hiddenMenu);
+          }}
         ></Menu>
         <Search
-          style={{width:'3rem',height:'3rem',float:'right'}}
-          onClick={()=>{
-            if(hiddenSearch){
+          style={{
+            width: "3rem",
+            height: "3rem",
+            float: "right",
+            marginRight: "0.5rem",
+          }}
+          onClick={() => {
+            if (hiddenSearch) {
               setHiddenSearch(false);
-            }
-            else if(searchText===''){
+            } else if (searchText === "") {
               setHiddenSearch(true);
-            }
-            else{
-              console.log('서치버튼클릭',{searchText});
+            } else {
+              console.log("서치버튼클릭", { searchText });
             }
           }}
         ></Search>
-        <Input hidden={hiddenSearch} type="text" onChange={(e)=>{setSearchText(e.target.value)}}/>
+        <Input
+          hidden={hiddenSearch}
+          type="text"
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
+        />
       </div>
     </div>
-  )
+  );
 }
 
 const Input = styled.input`

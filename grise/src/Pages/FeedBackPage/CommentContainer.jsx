@@ -10,8 +10,9 @@ const CommentContainer = () => {
 	);
 };
 
-const StyledCommentContainer = styled.div`	
-
+const StyledCommentContainer = styled.div`
+  width: 100%;
+  margin: 0.5rem;
 `;
 
 

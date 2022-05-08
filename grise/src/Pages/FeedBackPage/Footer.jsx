@@ -23,11 +23,12 @@ const Footer = () => {
 
 const StyeldFooter = styled.footer`
   width: 100%;
-  height: 100px;
+  height: 3rem;
   position: fixed;
   bottom: 0;
   background-color: #ffb300;
   max-width: 768px;
+	margin: 0 0.5rem;
 `;
 
 export default Footer;
