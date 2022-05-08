@@ -1,5 +1,7 @@
 import React,{useState} from 'react';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
+
 import { ReactComponent as Home} from '../Image/Home.svg';
 import { ReactComponent as Search} from '../Image/search.svg';
 import { ReactComponent as Menu} from '../Image/Menu.svg';
@@ -12,10 +14,12 @@ export const NavBar = () => {
   return (
     <div>
       <div style={{borderColor:'black',borderBottom:'solid',width:'100%',height:'3.5rem'}} >
-        <Home
-          style={{width:'3rem',height:'3rem',float:'left'}}
-          onClick={()=>{console.log('홈버튼클릭')}}
-        ></Home>
+        <Link to="/">
+					<Home
+						style={{width:'3rem',height:'3rem',float:'left'}}
+						onClick={()=>{console.log('홈버튼클릭')}}
+					></Home>
+				</Link>
         <SlideMenu hidden={hiddenMenu}>
           <Menu
             style={{width:'3rem',height:'3rem',float:'right'}}
