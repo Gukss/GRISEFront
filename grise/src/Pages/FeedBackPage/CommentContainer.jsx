@@ -1,18 +1,19 @@
 import React from 'react'
 import styled from "styled-components";
-import Comment from './Comment'
-const CommentContainer = () => {
+import Footer from "./Footer";
+
+const CommentContainer = (props) => {
 
 	return (
 		<StyledCommentContainer>
-			<Comment />
+			<Footer />
 		</StyledCommentContainer>
 	);
 };
 
 const StyledCommentContainer = styled.div`
-  width: 100%;
-  margin: 0.5rem;
+  width: 97%;
+  margin: 0 auto;
 `;
 
 

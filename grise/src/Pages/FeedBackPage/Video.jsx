@@ -4,7 +4,7 @@ const Video = () => {
 	const [videoSrc, setVideoSrc] = useState('/videos/test.mp4')
   return (
     <StyledVideo>
-      <video controls style={{width: "100%"}}>
+      <video controls style={{width: "100%",}}>
         <source src={videoSrc}></source>
       </video>
     </StyledVideo>
@@ -12,8 +12,8 @@ const Video = () => {
 };
 
 const StyledVideo = styled.div`
-	width: 100%;
-	margin: 0.5rem;
+	width: 97%;
+	margin: 0.5rem auto;
 `;
 
 export default Video;

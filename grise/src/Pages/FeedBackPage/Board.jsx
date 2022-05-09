@@ -18,17 +18,14 @@ const Board = () => {
       <Title />
       <MainText />
       <CommentContainer />
-      <Footer />
     </Wrap>
   );
 };
 
 const Wrap = styled.div`
-  background-color: brown;
   width: 1200px;
   height:100%;
   margin:0 auto;
-  
 
   @media (max-width:1220px){
     width: 100%;
