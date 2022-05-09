@@ -1,6 +1,6 @@
 import Main from "./Pages/MainPage/Main";
 import FeedBackBoard from "./Pages/FeedBackPage/Board";
-import FeedbackRequestPage from "./Pages/FeedbackRequestPage";
+import FeedbackRequestPage from "./Pages/FeedbackRequestPage/FeedbackRequestPage";
 
 const routes = [
   {

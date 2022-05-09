@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import styled from 'styled-components';
-import NavBar from './NavBar'
+import NavBar from '../NavBar'
 
 const FeedbackRequestPage = ()=>{
   const [title, setTitle] = useState('');

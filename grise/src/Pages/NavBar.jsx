@@ -16,16 +16,15 @@ export const NavBar = () => {
     <div>
       <div
         style={{
-          borderColor: "#e3e3e3",
+          borderColor: "#000000",
           borderBottom: "solid",
           width: "100%",
-          height: "3.5rem",
-          padding: "0.5rem",
+          height: "3.5rem"
         }}
       >
         <Link to="/">
           <Home
-            style={{ width: "3rem", height: "3rem", float: "left", marginLeft: "0.5rem"}}
+            style={{ width: "3rem", height: "3rem", float: "left", marginLeft: "0.5rem",marginTop:'0.2rem'}}
             onClick={() => {
               console.log("홈버튼클릭");
             }}
@@ -44,7 +43,7 @@ export const NavBar = () => {
             width: "3rem",
             height: "3rem",
             float: "right",
-            marginRight: "0.5rem",
+            marginTop:'0.2rem'
           }}
           onClick={() => {
             setHiddenMenu(!hiddenMenu);
@@ -55,7 +54,7 @@ export const NavBar = () => {
             width: "3rem",
             height: "3rem",
             float: "right",
-            marginRight: "0.5rem",
+            marginTop:'0.2rem'
           }}
           onClick={() => {
             if (hiddenSearch) {
