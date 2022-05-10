@@ -43,23 +43,25 @@ const Footer = () => {
             value={comment}
             ref={inputEl}
           ></input>
-					<button
-						style={{
-							border: "none",
-							backgroundColor: "transparent",
-						}}>
-						<BsFillArrowUpCircleFill
-							style={{
-								float: "right",
-								height: "2rem",
-								width: "2rem",
-								border: "none",
-								marginLeft: "auto",
-								marginTop: "auto",
-								marginBottom: "auto",
-							}}
-						/>
-					</button>
+          <button
+            style={{
+              border: "none",
+              backgroundColor: "transparent",
+            }}
+          >
+            <BsFillArrowUpCircleFill
+              style={{
+                float: "right",
+                height: "2rem",
+                width: "2rem",
+                border: "none",
+                marginLeft: "auto",
+                marginTop: "auto",
+                marginBottom: "auto",
+                color: "#3A6C7B",
+              }}
+            />
+          </button>
         </form>
       </StyeldFooter>
     </>
