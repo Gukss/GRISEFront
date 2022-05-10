@@ -12,7 +12,7 @@ const CommentContainer = (props) => {
 };
 
 const StyledCommentContainer = styled.div`
-  width: 97%;
+  width: 100%;
   margin: 0 auto;
 `;
 
