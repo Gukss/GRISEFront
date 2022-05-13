@@ -1,13 +1,11 @@
 import React, {useState} from "react";
 import { Row, Col, Select, Divider } from "antd";
 import styled from 'styled-components'
-const Title = () => {
-	const [header, setHeader] = useState("하체가 아파요.");
-	const [nickName, setNickName] = useState('name')
+const Title = ({title, tuteeName, tutorName}) => {
   return (
     <StyledTitle>
-      <StyledHeader>{header}</StyledHeader>
-      <StyledName>{nickName}</StyledName>
+      <StyledHeader>{title}</StyledHeader>
+      <StyledName>{tutorName}{tuteeName}</StyledName>
     </StyledTitle>
   );
 };

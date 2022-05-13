@@ -1,28 +1,53 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import { Row, Col, Select, Divider } from "antd";
 import styled from "styled-components";
 import Comment from "./Comment";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
+import axios from 'axios';
 
 const Footer = () => {
-	const [comment, setComment] = useState('');
+
+	const [content, setContent] = useState('');
+
 	const [commentList, setCommentList] = useState([]);
 	const inputEl = useRef(null);
+
+	useEffect(() => {
+		axios.get("./Json/consultPage/consult.json")
+		.then((response) => {
+			setCommentList(response.data.consult?.commentList);
+			console.log(response.data.consult?.commentList);
+		});
+	}, []);
+
 	const getComment = (e) => {
-    setComment(e.target.value);
+    setContent(e.target.value);
+		console.log(content);
   };
+
 	const onSubmit = (e) => {
 		e.preventDefault();
-		if (comment === '') {
+		if (content === '') {
 			return;
 		}
-		setCommentList((commentList) => [...commentList, comment]);
-		setComment('');
+
+		setCommentList(
+			commentList.concat({comment: {
+				comment_id: 1,
+				content: content,
+				user_name: "유저이름1"
+			}})
+		)
+
+		setContent('');
 		inputEl.current.focus();
 	}
+	
 	return (
     <>
-      <Comment commentList={commentList}></Comment>
+			<div>
+				<Comment commentList={commentList}></Comment>
+			</div>
       <StyeldFooter>
         <form
           style={{
@@ -40,7 +65,7 @@ const Footer = () => {
             onChange={(e) => {
               getComment(e);
             }}
-            value={comment}
+            value={content}
             ref={inputEl}
           ></input>
           <button

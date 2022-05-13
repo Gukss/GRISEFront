@@ -2,7 +2,7 @@
 	"consult":{
 		"consult_id":1,
 		"title":"제목1",
-		"content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It h",
+		"content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It h",
 		"tutee":{
 			"name":"튜티이름1"
 		},
@@ -10,8 +10,8 @@
 			"name":"튜터이름1"
 		},
 		"video":{
-			"name":"video.name"
-			"data":0101010101101010
+			"name":"video.name",
+			"data": "0101010101101010"
 		},
 		"commentList":[
 			{
@@ -23,21 +23,21 @@
 			},
 			{
 				"comment":{
-					"comment_id":1,
+					"comment_id":2,
 					"content":"댓글내용2",
 					"user_name":"유저이름2"
 				}
-			}
+			},
 			{
 				"comment":{
-					"comment_id":1,
+					"comment_id":3,
 					"content":"댓글내용3",
 					"user_name":"유저이름3"
 				}
-			}
+			},
 			{
 				"comment":{
-					"comment_id":1,
+					"comment_id":4,
 					"content":"댓글내용4",
 					"user_name":"유저이름4"
 				}

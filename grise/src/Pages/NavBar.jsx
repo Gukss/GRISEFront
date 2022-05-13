@@ -21,12 +21,12 @@ export const NavBar = () => {
           height: "3.5rem",
           margin: "0 auto",
 					display: "flex",
-    			alignItems: "center",
+					alignItems: "center",
         }}
       >
         <div style={{
 					width: "100%",
-					height: "2rem",
+					height: "50%",
 					padding: "auto 0"
 				}}>
           <Link to="/">

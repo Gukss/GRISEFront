@@ -13,7 +13,14 @@ const CommentContainer = (props) => {
 
 const StyledCommentContainer = styled.div`
   width: 100%;
+  height: 250px;
   margin: 0 auto;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+	display: flex;
+  flex-direction: column-reverse;
 `;
 
 
