@@ -18,28 +18,28 @@
 				"comment":{
 					"comment_id":1,
 					"content":"댓글내용1",
-					"user_name":"유저이름1"
+					"user_name":"튜티이름1"
 				}
 			},
 			{
 				"comment":{
 					"comment_id":2,
 					"content":"댓글내용2",
-					"user_name":"유저이름2"
+					"user_name":"튜터이름1"
 				}
 			},
 			{
 				"comment":{
 					"comment_id":3,
 					"content":"댓글내용3",
-					"user_name":"유저이름3"
+					"user_name":"튜티이름1"
 				}
 			},
 			{
 				"comment":{
 					"comment_id":4,
 					"content":"댓글내용4",
-					"user_name":"유저이름4"
+					"user_name":"튜터이름1"
 				}
 			}
 		]

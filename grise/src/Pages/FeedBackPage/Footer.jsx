@@ -8,15 +8,18 @@ import axios from 'axios';
 const Footer = () => {
 
 	const [content, setContent] = useState('');
-
 	const [commentList, setCommentList] = useState([]);
+	const [tutee_name, setTutee_name] = useState('');
+
 	const inputEl = useRef(null);
 
 	useEffect(() => {
 		axios.get("./Json/consultPage/consult.json")
 		.then((response) => {
 			setCommentList(response.data.consult?.commentList);
-			console.log(response.data.consult?.commentList);
+			setTutee_name(response.data.consult?.tutee.name);
+			// console.log(response.data.consult?.tutee.name);
+			// console.log(response.data.consult?.commentList);
 		});
 	}, []);
 
@@ -30,7 +33,6 @@ const Footer = () => {
 		if (content === '') {
 			return;
 		}
-
 		setCommentList(
 			commentList.concat({comment: {
 				comment_id: 1,
@@ -38,16 +40,15 @@ const Footer = () => {
 				user_name: "유저이름1"
 			}})
 		)
-
 		setContent('');
 		inputEl.current.focus();
 	}
 	
 	return (
     <>
-			<div>
-				<Comment commentList={commentList}></Comment>
-			</div>
+      <div>
+        <Comment commentList={commentList} tutee_name={tutee_name}></Comment>
+      </div>
       <StyeldFooter>
         <form
           style={{
