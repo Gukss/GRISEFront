@@ -1,8 +1,6 @@
 import React,{useState} from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
-
-import { ReactComponent as Home} from '../Image/Home.svg';
 import { ReactComponent as Search} from '../Image/search.svg';
 import { ReactComponent as Menu} from '../Image/Menu.svg';
 
@@ -30,17 +28,7 @@ export const NavBar = () => {
 					padding: "auto 0"
 				}}>
           <Link to="/">
-            <Home
-              style={{
-                width: "2rem",
-                height: "2rem",
-                float: "left",
-                marginLeft: "0.5rem",
-              }}
-              onClick={() => {
-                console.log("홈버튼클릭");
-              }}
-            ></Home>
+            <Home>GRISE</Home>
           </Link>
           <SlideMenu hidden={hiddenMenu}>
             <Menu
@@ -88,6 +76,20 @@ export const NavBar = () => {
     </div>
   );
 }
+
+const Home = styled.div`
+  color: #3A6C7B;
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height:2rem;
+  text-align: center;
+  width: 2rem;
+  height: 2rem;
+  float: left;
+  margin-left: 0.5rem;
+`
 
 const Input = styled.input`
   display:${props=>props.hidden ? 'none':'block'};

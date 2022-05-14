@@ -4,14 +4,13 @@ import NavBar from '../NavBar'
 
 const FeedbackRequestPage = ()=>{
   const [title, setTitle] = useState('');
-  const [feedback,setFeedback] = useState('');
+  const [content,setContent] = useState('');
   const [postfiles, setPostfiles] = useState({
     file: [],
     previewURL: "",
   });
   const [fileName,setFileName] = useState('');
-  const [local,setLocal] = useState('서울특별시');
-  const localList = ['서울특별시','부산광역시', '인천광역시', '대구광역시', '대전광역시', '광주광역시', '울산광역시', '세종특별자치시', '경기도', '강원도','충청북도', '충청남도', '전라북도', '전라남도', '경상북도', '경상남도','제주특별자치도'];
+
   const uploadFile = (e) => {
     e.stopPropagation();
     let reader = new FileReader();
@@ -30,6 +29,17 @@ const FeedbackRequestPage = ()=>{
     }
   };
 
+  const summitConsult = ()=>{
+    const consult = {
+      "request_consult":{
+        "title": title,
+        "content": content,
+        "tutor":"None",
+        "video":postfiles
+      }
+    }
+    console.log(consult);
+  }
   return (
     <Wrap>
       <NavBar/>
@@ -37,11 +47,10 @@ const FeedbackRequestPage = ()=>{
       <Input 
         type='text'
         placeholder="제목을 입력해 주세요"
-        style={{height:'2rem'}}
         onChange={(e)=>{setTitle(e.target.value)}}
       ></Input>
       <Title>본문</Title>
-      <TextArea onChange={(e)=>{setFeedback(e.target.value)}} />
+      <TextArea onChange={(e)=>{setContent(e.target.value)}} />
       <div style={{width:'100%',height:'4.5rem'}}>
         <Title>영상 업로드</Title>
         <div style={{height:'2rem',display:'flex'}}>
@@ -57,20 +66,8 @@ const FeedbackRequestPage = ()=>{
           <FileName >{fileName}</FileName>
         </div>
       </div>
-      <div>
-        <div style={{height:'2.5rem'}}>
-          <SpanTitle>지역 선택</SpanTitle>
-          <SpanSubTitle>지역을 선택해 주세요</SpanSubTitle>
-        </div>
-        <div style={{height:'3rem'}}>
-          <Select onChange={(e)=>{setLocal(e.target.value)}}>
-            {localList.map(e=>(
-              <option value={e}>{e}</option>
-            ))}
-          </Select>
-        </div>
-      </div>
-      <SubmmitButton onClick={()=>{console.log({title},{feedback},{postfiles},{local})}}>피드백 요청</SubmmitButton>
+      
+      <SubmmitButton onClick={summitConsult}>피드백 요청</SubmmitButton>
     </Wrap>
   );
 }
@@ -125,6 +122,18 @@ const VideoInput = styled.label`
     background-color: white;
 `
 
+/*
+<div>
+  <div style={{height:'2.5rem'}}>
+    <SpanTitle>지역 선택</SpanTitle>
+    <SpanSubTitle>지역을 선택해 주세요</SpanSubTitle>
+  </div>
+  <div style={{height:'3rem'}}>
+    <Select onChange={(e)=>{setLocal(e.target.value)}}>
+      {localList.map(e=><option key = {e}>{e}</option>)}
+    </Select>
+  </div>
+</div>
 const SpanTitle = styled.span`
     margin-left: 0.5rem;
     float: left;
@@ -169,7 +178,7 @@ const Select = styled.select`
     color: #3A6C7B;
     background-color: white;
 `
-
+*/
 const TextArea = styled.textarea`
     margin-left: 0.5rem;
     width: 95%;
@@ -178,7 +187,6 @@ const TextArea = styled.textarea`
     font-size: 1rem;
     text-align:left;
     border-radius: 0.5rem;
-    background-color: lightgray;
     border:solid;
     border-color: black;
 `
@@ -197,12 +205,12 @@ const Title = styled.div`
 
 const Input = styled.input`
     width: 95%;
+    height: 2rem;
     margin-left: 0.5rem;
     size: 100%;
     font-size: 1rem;
     text-align:left;
     border-radius: 0.5rem;
-    background-color: lightgray;
     border:solid;
     border-color: black;
 `
