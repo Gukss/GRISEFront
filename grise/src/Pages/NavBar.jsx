@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import { ReactComponent as Search} from '../Image/search.svg';
 import { ReactComponent as Menu} from '../Image/Menu.svg';
+import { ReactComponent as Logo} from '../Image/GRISE_logo.svg';
 
 export const NavBar = () => {
   const [searchText, setSearchText] = useState('');
@@ -10,7 +11,6 @@ export const NavBar = () => {
   const [hiddenMenu,setHiddenMenu] = useState(true);
   
   return (
-    //네브바 아이콘 세로로 가운데가 아니다. 정렬하기
     <div>
       <div
         style={{
@@ -28,7 +28,11 @@ export const NavBar = () => {
 					padding: "auto 0"
 				}}>
           <Link to="/">
-            <Home>GRISE</Home>
+						<Logo style={{width: "4rem",
+  						height: "100%",
+  						float: "left",
+  						marginLeft: "0.5rem"}}/>
+            {/* <Home>GRISE</Home> */}
           </Link>
           <SlideMenu hidden={hiddenMenu}>
             <Menu
@@ -77,19 +81,19 @@ export const NavBar = () => {
   );
 }
 
-const Home = styled.div`
-  color: #3A6C7B;
-  font-family: 'Lora';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 2rem;
-  line-height:2rem;
-  text-align: center;
-  width: 2rem;
-  height: 2rem;
-  float: left;
-  margin-left: 0.5rem;
-`
+// const Home = styled.div`
+//   color: #3A6C7B;
+//   font-family: 'Lora';
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 2rem;
+//   line-height:2rem;
+//   text-align: center;
+//   width: 2rem;
+//   height: 2rem;
+//   float: left;
+//   margin-left: 0.5rem;
+// `
 
 const Input = styled.input`
   display:${props=>props.hidden ? 'none':'block'};

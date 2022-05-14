@@ -38,7 +38,8 @@ const HeaderButton = ({ text, id }) => {
           borderBottom:
             flag === "radio0"
               ? "0.15rem solid #3A6C7B"
-              : "0.15rem solid #e3e3e3",
+              : "0.15rem solid #b1b1b1",
+          color: flag === "radio0" ? "#3A6C7B" : "#b1b1b1",
           padding: "0.5rem 0 0.5rem 0",
           margin: "0 auto",
         }}
@@ -67,9 +68,14 @@ const HeaderButton = ({ text, id }) => {
           fontWeight: "bold",
           textAlign: "center",
           borderBottom:
-            flag === "radio1"
-              ? "0.15rem solid #3A6C7B"
-              : "0.15rem solid #e3e3e3",
+					flag === "radio1"
+						? "0.15rem solid #3A6C7B"
+						: "0.15rem solid #b1b1b1",
+          color: 
+					flag === "radio1" 
+						? "#3A6C7B" 
+						: "#b1b1b1",
+
           padding: "0.5rem 0 0.5rem 0",
           margin: "0 auto",
         }}
