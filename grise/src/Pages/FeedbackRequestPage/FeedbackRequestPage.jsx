@@ -64,9 +64,7 @@ const FeedbackRequestPage = ()=>{
         </div>
         <div style={{height:'3rem'}}>
           <Select onChange={(e)=>{setLocal(e.target.value)}}>
-            {localList.map(e=>(
-              <option value={e}>{e}</option>
-            ))}
+            {localList.map(e=><option key = {e}>{e}</option>)}
           </Select>
         </div>
       </div>

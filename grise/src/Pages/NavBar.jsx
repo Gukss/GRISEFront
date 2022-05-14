@@ -16,11 +16,10 @@ export const NavBar = () => {
     <div>
       <div
         style={{
-          borderColor: "#e3e3e3",
+          borderColor: "#000000",
           borderBottom: "solid",
-          width: "97%",
-          height: "3.5rem",
-					margin: "0 auto",
+          width: "100%",
+          height: "3.5rem"
         }}
       >
         <Link to="/">
