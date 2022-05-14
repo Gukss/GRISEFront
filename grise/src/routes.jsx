@@ -1,4 +1,5 @@
-import Main from "./Pages/MainPage/Main";
+import TuteeMainPage from "./Pages/TuteeMainPage/TuteeMain";
+import TutorMainPage from "./Pages/TutorMainPage/TutorMain";
 import FeedBackBoard from "./Pages/FeedBackPage/Board";
 import FeedbackRequestPage from "./Pages/FeedbackRequestPage/FeedbackRequestPage";
 import TuteeLoginPage from "./Pages/LoginPage/TuteeLoginPage"
@@ -6,7 +7,15 @@ import TutorLoginPage from "./Pages/LoginPage/TutorLoginPage";
 const routes = [
   {
     path: "/",
-    component: Main
+    component: TuteeLoginPage
+  },
+  {
+    path:"/tuteeMain",
+    component: TuteeMainPage
+  },
+  {
+    path:"/tutorMain",
+    component: TutorMainPage
   },
   {
     path: "/tuteeLogin",

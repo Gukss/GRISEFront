@@ -2,8 +2,7 @@ import React from 'react';
 import NavBar from "../NavBar";
 import Header from "./Header";
 
-const Main = () => {
-
+const TuteeMain = () => {
 	return (
     <>
       <NavBar />
@@ -11,4 +10,4 @@ const Main = () => {
     </>
   );
 };
-export default Main;
+export default TuteeMain;
