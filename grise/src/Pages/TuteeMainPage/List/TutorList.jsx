@@ -18,7 +18,9 @@ const TutorList = () => {
     const onTouchEnd=(e)=>{
         const distanceY = touchPosition.y - e.changedTouches[0].pageY; //드래그한 Y길이 시작Y좌표 - 드래그끝났을때 Y좌표 내릴때 양수
         const DivHeight = remToPixel(3); //아이템 하나의 높이
-        if(ContainerRef.current.getBoundingClientRect().bottom>=ItemRef.current[list.length-1].getBoundingClientRect().bottom){
+        const scrollY = ContainerRef.current.getBoundingClientRect().bottom-ItemRef.current[list.length-1].getBoundingClientRect().bottom;
+        //높이가 소수점이면 애매하게 딱 안맞을 수 있어서 수정
+        if(-0.1<scrollY&&scrollY<0.1){
             if(distanceY>DivHeight){//스크롤링위치가 맨마지막에 되어있을때 item하나의 높이보다 더 드래그하면 새로고침
                 console.log('새로고침');
                 const temp = [...list];
