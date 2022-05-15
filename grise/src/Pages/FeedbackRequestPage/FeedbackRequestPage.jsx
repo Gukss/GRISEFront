@@ -50,7 +50,9 @@ const FeedbackRequestPage = ()=>{
         onChange={(e)=>{setTitle(e.target.value)}}
       ></Input>
       <Title>본문</Title>
-      <TextArea onChange={(e)=>{setContent(e.target.value)}} />
+      <TextArea 
+        placeholder="피드백 받고 싶은 내용을 입력해 주세요"
+        onChange={(e)=>{setContent(e.target.value)}}/>
       <div style={{width:'100%',height:'4.5rem'}}>
         <Title>영상 업로드</Title>
         <div style={{height:'2rem',display:'flex'}}>
@@ -110,16 +112,14 @@ const VideoInput = styled.label`
     border-radius: 0.5rem;
     width: 10rem;
     height: 2rem;
-    border:solid;
-    border-color: black;
     font-size: 1rem;
     line-height: 2rem;
     text-align: center;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 900;
-    color: #3A6C7B;
-    background-color: white;
+    color: white;
+    background-color: #3A6C7B;
 `
 
 /*
@@ -186,9 +186,11 @@ const TextArea = styled.textarea`
     height: 8rem;
     font-size: 1rem;
     text-align:left;
-    border-radius: 0.5rem;
-    border:solid;
-    border-color: black;
+    border: none;
+    border-bottom: #3A6C7B solid 0.1rem;
+    :focus {
+      outline: none;
+    }
 `
 
 const Title = styled.div`
@@ -210,9 +212,11 @@ const Input = styled.input`
     size: 100%;
     font-size: 1rem;
     text-align:left;
-    border-radius: 0.5rem;
-    border:solid;
-    border-color: black;
+    border: none;
+    border-bottom: #3A6C7B solid 0.1rem;
+    :focus {
+      outline: none;
+    }
 `
 
 const Wrap = styled.div`
