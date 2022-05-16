@@ -5,6 +5,7 @@ import styled from "styled-components";
 const MainText = (props) => {
 	const MainContent = useRef()
 	const text = String(props?.content);
+	
 	const [isShowMore, setIsShowMore] = useState(false);
   const textLimit = useRef(100);
 	useEffect(() => {
@@ -20,6 +21,7 @@ const MainText = (props) => {
 			return shortReview;
 		}
 		return text;
+		console.log('sdf');
   }, [isShowMore]);
 
 	const changeMainContentSize = () => {
@@ -29,6 +31,7 @@ const MainText = (props) => {
 
   return (
     <StyledMainText ref={MainContent}>
+			{/* 비동기 처리하기 */}
       <div>{commenter}</div>
       <div
         onClick={() => {
