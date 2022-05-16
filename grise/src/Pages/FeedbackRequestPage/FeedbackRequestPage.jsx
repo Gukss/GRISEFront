@@ -87,7 +87,7 @@ const SubmmitButton = styled.div`
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 900;
-    color: white;
+    color: #fff;
     background-color: #3A6C7B;
 `
 
@@ -216,7 +216,7 @@ const Input = styled.input`
 `
 
 const Wrap = styled.div`
-  background-color: brown;
+  /* background-color: brown; */
   width: 1200px;
   height:100%;
   margin:0 auto;
