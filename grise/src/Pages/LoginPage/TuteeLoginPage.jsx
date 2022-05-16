@@ -17,7 +17,6 @@ export const TuteeLoginPage = () => {
 }
 
 const Wrap = styled.div`
-  background-color: brown;
   width: 1200px;
   height:100%;
   margin:0 auto;

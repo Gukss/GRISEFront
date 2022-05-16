@@ -10,6 +10,7 @@ const TutorList = () => {
     const ItemRef = useRef();
     const ContainerRef = useRef();
 	
+<<<<<<< HEAD
     useEffect(() => {
         axios.get("./Json/mainPageTutee/tutorList.json").then((response) => {
             setTutorList(response.data?.tutorList);
@@ -21,6 +22,12 @@ const TutorList = () => {
             setOutputList(temp);
         });
       }, []);
+=======
+		//DOM에서 height가져오기로 고치기
+    const remToPixel = (num)=>{
+        return num * parseFloat(getComputedStyle(document.documentElement).fontSize);
+    }
+>>>>>>> a2efcddba1a92ff1218d6731a22a19ddcab4baf0
 
     const onTouchStart=(e)=>{
         setTouchPosition({ x: e.changedTouches[0].pageX, y: e.changedTouches[0].pageY });

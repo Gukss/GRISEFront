@@ -1,8 +1,8 @@
 {
   "request_consult": {
-    "consult_id": 1,
     "title": "제목테스트1",
     "content": "피드백본문1",
+		"is_post": "True",
     "tutor": {
       "id": 1
     },
