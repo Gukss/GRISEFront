@@ -62,6 +62,7 @@ const TutorList = () => {
             <ScrollDiv ref = {ContainerRef} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
                 {getItem()}
             </ScrollDiv>
+            <SubmmitButton>일반 피드백 요청하기</SubmmitButton>
         </>
     )
 }
@@ -74,6 +75,25 @@ const ScrollDiv = styled.div`
     flex-direction: column;
     flex-wrap: nowrap;
     overflow-y:auto;
+`
+
+const SubmmitButton = styled.div`
+    position: fixed;
+    bottom: 3rem;
+    left: 50%;
+    margin-left: -6rem;
+    border-radius: 0.5rem;
+    width: 12rem;
+    height: 3rem;
+    float: left;
+    font-size: 1rem;
+    line-height: 3rem;
+    text-align: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    color: #fff;
+    background-color: #3A6C7B;
 `
 
 export default TutorList;
