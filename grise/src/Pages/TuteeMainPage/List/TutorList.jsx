@@ -8,6 +8,7 @@ const TutorList = () => {
     const ItemRef = useRef();
     const ContainerRef = useRef();
 	
+		//DOM에서 height가져오기로 고치기
     const remToPixel = (num)=>{
         return num * parseFloat(getComputedStyle(document.documentElement).fontSize);
     }

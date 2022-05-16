@@ -104,6 +104,7 @@ const StyeldFooter = styled.footer`
   margin: 0 auto;
   border-top: #3a6c7b solid 1px;
   display: flex;
+	background-color: #fff;
 `;
 
 export default Footer;
