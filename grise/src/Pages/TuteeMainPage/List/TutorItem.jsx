@@ -1,16 +1,15 @@
-import React,{forwardRef,useRef,useEffect} from 'react'
+import React,{forwardRef,useRef} from 'react'
 import styled from 'styled-components';
 import { ReactComponent as Star} from '../../../Image/star.svg';
-import { ReactComponent as InfoImage} from '../../../Image/info.svg';
 const TutorItem = forwardRef((props,ref) => {
     const detailDivRef = useRef();
     const isShowDetail = useRef(false);
-    const ShowDetailBtn = useRef();
+    const ShowDetailBtnRef = useRef();
     const showDetailInfo = (e) =>{
         detailDivRef.current.style.display = (isShowDetail.current)? 'none':'block';
         isShowDetail.current = !isShowDetail.current;
         if(props.isEnd){detailDivRef.current.scrollIntoView({ behavior: 'smooth' });}
-        ShowDetailBtn.current.innerHTML = (isShowDetail.current)? '접기':'정보 보기';
+        ShowDetailBtnRef.current.innerHTML = (isShowDetail.current)? '접기':'정보 보기';
     }
     return (
         <div ref={ref} style={{borderBottom:"#3A6C7B solid 0.2rem"}}>
@@ -20,10 +19,10 @@ const TutorItem = forwardRef((props,ref) => {
                     <div>
                         <StarImage><Star style={{width:'1.5rem',height:'1.5rem'}}></Star></StarImage>
                         <Score>{props.data?.tutor.score}</Score>
-                        <span ref={ShowDetailBtn} onClick={showDetailInfo} style={{color:'#000000', fontSize:'1rem'}}>정보 보기</span>
+                        <ShowDetailBtn ref={ShowDetailBtnRef} onClick={showDetailInfo}>정보 보기</ShowDetailBtn>
                     </div>
                 </div>
-                <InfoBtn onClick={showDetailInfo}><InfoImage></InfoImage></InfoBtn>
+                <TutorFeedbackBtn onClick={()=>{console.log('피드백받기')}}>피드백받기</TutorFeedbackBtn>
             </Container>
             <DetailInfo ref = {detailDivRef}>
                 {props.data?.tutor.resume.content}
@@ -32,10 +31,28 @@ const TutorItem = forwardRef((props,ref) => {
     )
 });
 
-const InfoBtn = styled.span`
+const TutorFeedbackBtn = styled.span`
     float: right;
-    margin-top: 0.8rem;
+    width:6rem;
+    height:1.5rem;
+    margin-top: 1.25rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    color: #fff;
+    background-color: #3A6C7B;
+    font-size:1rem;
 `
+
+const ShowDetailBtn = styled.span`
+    color : #808080;
+    font-size : 1rem;
+    margin-left : 1rem;
+    vertical-align:30%;
+`
+
 
 const StarImage = styled.span`
     margin-left: 1.5rem;
@@ -71,6 +88,6 @@ const Container = styled.div`
 const DetailInfo = styled.div`
     display: none;
     margin-left: 1.5rem;
-    text-indent : -4.5rem;
+    text-indent : -5.5rem;
 `
 export default TutorItem;

@@ -35,10 +35,6 @@ const TutorList = () => {
             if(distanceY>DivHeight){//스크롤링위치가 맨마지막에 되어있을때 item하나의 높이보다 더 드래그하면 새로고침
                 console.log('새로고침');
                 const temp = [...outputList];
-                // for(let i = 0 ; i < 10; i++){
-                //     temp.push(requestFeedbackList[i]);
-                // }
-                // setOutputList(temp);
                 for(let i = outputList.length; i < outputList.length+10; i++){
                     if(i>=tutorList.length){break;}
                     temp.push(tutorList[i]);
@@ -86,17 +82,17 @@ const SubmmitButton = styled.div`
     left: 50%;
     margin-left: -6rem;
     border-radius: 0.5rem;
-    width: 12rem;
-    height: 3rem;
-    float: left;
-    font-size: 1rem;
-    line-height: 3rem;
     text-align: center;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 900;
     color: #fff;
     background-color: #3A6C7B;
+    width: 12rem;
+    height: 3rem;
+    float: left;
+    font-size: 1rem;
+    line-height: 3rem;
 `
 
 export default TutorList;
