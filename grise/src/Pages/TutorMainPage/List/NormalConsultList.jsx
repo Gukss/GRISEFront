@@ -1,22 +1,23 @@
 import React,{useState,useRef,useEffect} from 'react'
 import axios from 'axios';
 import styled from 'styled-components';
-import TutorItem from './TutorItem';
+import NormalConsultItem from './NormalConsultItem';
 
-const TutorList = () => {
-    const [tutorList,setTutorList] = useState([]);
+const NormalConsultList = () => {
+    const [NormalConsultList,setNormalConsultList] = useState([]);
     const [outputList,setOutputList]=useState([]);
     const [touchPosition,setTouchPosition]= useState({x:0,y:0});
     const ItemRef = useRef();
     const ContainerRef = useRef();
 	
     useEffect(() => {
-        axios.get("./Json/mainPageTutee/tutorList.json").then((response) => {
-            setTutorList(response.data?.tutorList);
+        axios.get("./Json/mainPageTutor/consultList.json").then((response) => {
+            setNormalConsultList(response.data?.consultList);
+            console.log(response.data?.consultList);
             let temp = [];
             for(let i=0;i<10;i++){
-                if(i >= response.data?.tutorList.length){break;}
-                temp.push(response.data?.tutorList[i]);
+                if(i >= response.data?.consultList.length){break;}
+                temp.push(response.data?.consultList[i]);
             };
             setOutputList(temp);
         });
@@ -36,8 +37,8 @@ const TutorList = () => {
                 console.log('새로고침');
                 const temp = [...outputList];
                 for(let i = outputList.length; i < outputList.length+10; i++){
-                    if(i>=tutorList.length){break;}
-                    temp.push(tutorList[i]);
+                    if(i>=NormalConsultList.length){break;}
+                    temp.push(NormalConsultList[i]);
                 }
                 setOutputList(temp);
             }
@@ -47,9 +48,9 @@ const TutorList = () => {
     const getItem = () =>{
         const result = [];
         for(let i = 0; i < outputList.length-1; i++){
-            result.push(<TutorItem key = {i} isEnd={false} data = {outputList[i]}></TutorItem>);
+            result.push(<NormalConsultItem key = {i} isEnd={false} data = {outputList[i]}></NormalConsultItem>);
         }
-        result.push(<TutorItem key = {outputList.length-1} isEnd={true} data = {outputList[outputList.length-1]} ref={ItemRef}></TutorItem>);
+        result.push(<NormalConsultItem key = {outputList.length-1} isEnd={true} data = {outputList[outputList.length-1]} ref={ItemRef}></NormalConsultItem>);
         return result;
     }
 
@@ -58,25 +59,11 @@ const TutorList = () => {
             <ScrollDiv ref = {ContainerRef} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
                 {getItem()}
             </ScrollDiv>
-            <SubmmitButton>일반 피드백 요청하기</SubmmitButton>
         </>
     )
 }
 
 const ScrollDiv = styled.div`
-<<<<<<< HEAD
-  margin: 0 auto;
-  width: 95%;
-  height: 30rem;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  overflow-y: auto;
-  ::-webkit-scrollbar {
-    display: none;
-  }
-`;
-=======
     margin: 0 auto;
     width: 95%;
     height: 30rem;
@@ -89,24 +76,4 @@ const ScrollDiv = styled.div`
     }
 `
 
-const SubmmitButton = styled.div`
-    position: fixed;
-    bottom: 3rem;
-    left: 50%;
-    margin-left: -6rem;
-    border-radius: 0.5rem;
-    text-align: center;
-    font-family: 'Noto Sans CJK KR';
-    font-style: normal;
-    font-weight: bold;
-    color: #fff;
-    background-color: #3A6C7B;
-    width: 12rem;
-    height: 3rem;
-    float: left;
-    font-size: 1rem;
-    line-height: 3rem;
-`
->>>>>>> ec1ff457ccc12a03d1658260289d9b27c3d7f5e8
-
-export default TutorList;
+export default NormalConsultList;

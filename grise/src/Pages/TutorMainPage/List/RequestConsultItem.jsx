@@ -2,17 +2,17 @@ import React,{forwardRef} from 'react'
 import styled from 'styled-components';
 
 const RequestConsultItem = forwardRef((props,ref) => {
-    const onClickShowConsultBtn = () =>{
-        console.log(props.data?.consult.consult_id,'피드백 확인');
+    const onClickRejectBtn = () =>{
+        console.log(props.data?.consult.consult_id,'거절');
     }
     return (
         <div ref={ref} style={{borderBottom:"#3A6C7B solid 0.2rem"}}>
             <Container>
                 <div style={{float:'left'}}>
                     <Title>{props.data?.consult.title}</Title>
-                    <Name>{props.data?.consult.tutor.name}</Name>
+                    <Name>{props.data?.consult.tutee.name}</Name>
                 </div>
-                <ShowConsultBtn onClick={onClickShowConsultBtn}>피드백 확인</ShowConsultBtn>
+                <RejectBtn onClick={onClickRejectBtn}>거절</RejectBtn>
             </Container>
         </div>
     )
@@ -24,14 +24,14 @@ const Name = styled.div`
     font-weight: bold;
     font-size: 1rem;
     margin-left: 1.5rem;
-    margin-top: 0.8rem;
+    margin-top: 0.5rem;
 `
 
-const ShowConsultBtn = styled.span`
+const RejectBtn = styled.span`
     float: right;
     width:5rem;
     height:1.5rem;
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
     border-radius: 1rem;
     text-align: center;
     font-family: 'Noto Sans CJK KR';
@@ -57,7 +57,7 @@ const Title = styled.div`
 
 const Container = styled.div`
     width: 100%;
-    height: 4.5rem;
+    height: 4rem;
     font-family: 'Noto Sans CJK KR';
     font-style: normal;
     font-weight: bold;

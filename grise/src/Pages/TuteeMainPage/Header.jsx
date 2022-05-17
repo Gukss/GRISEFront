@@ -4,44 +4,43 @@ import RequestConsultList from "./List/RequestConsultList"
 import TutorList from "./List/TutorList";
 
 const Header = () => {
-  const NomalConsultRef = useRef(null);
-  const RequestedConsultRef = useRef(null);
-  const TutorListRef = useRef(null);
+  const RequestConsultRef = useRef(null);
+  const TutorRef = useRef(null);
   const RequestConsultListRef = useRef(null);
+  const TutorListRef = useRef(null);
   useEffect(() => {
-    console.log("일반피드백 불러오기");
-    onClickNomalConsultBtn();
+    onClickRequestConsultBtn();
   }, []);
 
-  const onClickNomalConsultBtn = () => {
-    NomalConsultRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
-    NomalConsultRef.current.style.color = "#3A6C7B";
-    RequestedConsultRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    RequestedConsultRef.current.style.color = "#b1b1b1";
+  const onClickRequestConsultBtn = () => {
+    RequestConsultRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
+    RequestConsultRef.current.style.color = "#3A6C7B";
+    TutorRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    TutorRef.current.style.color = "#b1b1b1";
     TutorListRef.current.style.display="None";
     RequestConsultListRef.current.style.display="block";
   };
 
-  const onClickRequestedConsultBtn = () => {
-    NomalConsultRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    NomalConsultRef.current.style.color = "#b1b1b1";
-    RequestedConsultRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
-    RequestedConsultRef.current.style.color = "#3A6C7B";
+  const onClickTutorBtn = () => {
+    RequestConsultRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    RequestConsultRef.current.style.color = "#b1b1b1";
+    TutorRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
+    TutorRef.current.style.color = "#3A6C7B";
     TutorListRef.current.style.display="block";
     RequestConsultListRef.current.style.display="None";
   };
   return (
     <div>
-      <div style={{ display: "flex" }}>
-        <NormalConsultBtn ref={NomalConsultRef} onClick={onClickNomalConsultBtn}>
+      <div style={{ display: "flex",width:"95%",margin: "0 auto" }}>
+        <RequestConsultBtn ref={RequestConsultRef} onClick={onClickRequestConsultBtn}>
           피드백 요청 목록
-        </NormalConsultBtn>
-        <RequestedConsultBtn
-          ref={RequestedConsultRef}
-          onClick={onClickRequestedConsultBtn}
+        </RequestConsultBtn>
+        <TutorBtn
+          ref={TutorRef}
+          onClick={onClickTutorBtn}
         >
           튜터 목록
-        </RequestedConsultBtn>
+        </TutorBtn>
       </div>
 			<div ref={RequestConsultListRef}>
       	<RequestConsultList />
@@ -53,23 +52,27 @@ const Header = () => {
   );
 };
 
-const NormalConsultBtn = styled.span`
+const RequestConsultBtn = styled.span`
   width: 100%;
   height: 2.5rem;
   margin: 0 auto;
   display: flex;
   line-height: 2.5rem;
   justify-content: center;
+  font-family: 'Noto Sans CJK KR';
+  font-style: normal;
   font-weight: bold;
 `;
 
-const RequestedConsultBtn = styled.span`
+const TutorBtn = styled.span`
   width: 100%;
   height: 2.5rem;
   margin: 0 auto;
   display: flex;
   line-height: 2.5rem;
   justify-content: center;
+  font-family: 'Noto Sans CJK KR';
+  font-style: normal;
   font-weight: bold;
 `;
 
