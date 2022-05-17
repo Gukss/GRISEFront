@@ -1,18 +1,18 @@
 import React,{useState,useRef,useEffect} from 'react'
 import axios from 'axios';
 import styled from 'styled-components';
-import RequestConsultItem from './RequestConsultItem';
+import NormalConsultItem from './NormalConsultItem';
 
-const RequestConsultList = () => {
-    const [RequestConsultList,setRequestConsultList] = useState([]);
+const NormalConsultList = () => {
+    const [NormalConsultList,setNormalConsultList] = useState([]);
     const [outputList,setOutputList]=useState([]);
     const [touchPosition,setTouchPosition]= useState({x:0,y:0});
     const ItemRef = useRef();
     const ContainerRef = useRef();
 	
     useEffect(() => {
-        axios.get("./Json/mainPageTutee/requestConsultList.json").then((response) => {
-            setRequestConsultList(response.data?.consultList);
+        axios.get("./Json/mainPageTutor/consultList.json").then((response) => {
+            setNormalConsultList(response.data?.consultList);
             console.log(response.data?.consultList);
             let temp = [];
             for(let i=0;i<10;i++){
@@ -37,8 +37,8 @@ const RequestConsultList = () => {
                 console.log('새로고침');
                 const temp = [...outputList];
                 for(let i = outputList.length; i < outputList.length+10; i++){
-                    if(i>=RequestConsultList.length){break;}
-                    temp.push(RequestConsultList[i]);
+                    if(i>=NormalConsultList.length){break;}
+                    temp.push(NormalConsultList[i]);
                 }
                 setOutputList(temp);
             }
@@ -48,9 +48,9 @@ const RequestConsultList = () => {
     const getItem = () =>{
         const result = [];
         for(let i = 0; i < outputList.length-1; i++){
-            result.push(<RequestConsultItem key = {i} isEnd={false} data = {outputList[i]}></RequestConsultItem>);
+            result.push(<NormalConsultItem key = {i} isEnd={false} data = {outputList[i]}></NormalConsultItem>);
         }
-        result.push(<RequestConsultItem key = {outputList.length-1} isEnd={true} data = {outputList[outputList.length-1]} ref={ItemRef}></RequestConsultItem>);
+        result.push(<NormalConsultItem key = {outputList.length-1} isEnd={true} data = {outputList[outputList.length-1]} ref={ItemRef}></NormalConsultItem>);
         return result;
     }
 
@@ -76,4 +76,4 @@ const ScrollDiv = styled.div`
     }
 `
 
-export default RequestConsultList;
+export default NormalConsultList;

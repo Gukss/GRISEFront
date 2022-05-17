@@ -35,10 +35,6 @@ const TutorList = () => {
             if(distanceY>DivHeight){//스크롤링위치가 맨마지막에 되어있을때 item하나의 높이보다 더 드래그하면 새로고침
                 console.log('새로고침');
                 const temp = [...outputList];
-                // for(let i = 0 ; i < 10; i++){
-                //     temp.push(requestFeedbackList[i]);
-                // }
-                // setOutputList(temp);
                 for(let i = outputList.length; i < outputList.length+10; i++){
                     if(i>=tutorList.length){break;}
                     temp.push(tutorList[i]);
@@ -62,6 +58,7 @@ const TutorList = () => {
             <ScrollDiv ref = {ContainerRef} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
                 {getItem()}
             </ScrollDiv>
+            <SubmmitButton>일반 피드백 요청하기</SubmmitButton>
         </>
     )
 }
@@ -74,6 +71,28 @@ const ScrollDiv = styled.div`
     flex-direction: column;
     flex-wrap: nowrap;
     overflow-y:auto;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+`
+
+const SubmmitButton = styled.div`
+    position: fixed;
+    bottom: 3rem;
+    left: 50%;
+    margin-left: -6rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-family: 'Noto Sans CJK KR';
+    font-style: normal;
+    font-weight: bold;
+    color: #fff;
+    background-color: #3A6C7B;
+    width: 12rem;
+    height: 3rem;
+    float: left;
+    font-size: 1rem;
+    line-height: 3rem;
 `
 
 export default TutorList;

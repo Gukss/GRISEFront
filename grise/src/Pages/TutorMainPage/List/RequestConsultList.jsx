@@ -11,7 +11,7 @@ const RequestConsultList = () => {
     const ContainerRef = useRef();
 	
     useEffect(() => {
-        axios.get("./Json/mainPageTutee/requestConsultList.json").then((response) => {
+        axios.get("./Json/mainPageTutor/requestConsultList.json").then((response) => {
             setRequestConsultList(response.data?.consultList);
             console.log(response.data?.consultList);
             let temp = [];
