@@ -79,7 +79,7 @@ const Score = styled.span`
     color: #000000;
     font-family: 'Noto Sans CJK KR';
     font-style: normal;
-    font-weight: 100;
+    font-weight: bold;
     font-size: 0.9rem;
     vertical-align: 0.4rem;
 `

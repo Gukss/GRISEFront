@@ -21,7 +21,7 @@ const RequestConsultItem = forwardRef((props,ref) => {
 const Name = styled.div`
     font-family: 'Noto Sans CJK KR';
     font-style: normal;
-    font-weight: 100;
+    font-weight: bold;
     font-size: 1rem;
     margin-left: 1.5rem;
     margin-top: 0.5rem;
