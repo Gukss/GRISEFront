@@ -31,7 +31,7 @@ const Header = () => {
   };
   return (
     <div>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex",width:"95%",margin: "0 auto" }}>
         <RequestConsultBtn ref={RequestConsultRef} onClick={onClickRequestConsultBtn}>
           피드백 요청 목록
         </RequestConsultBtn>
