@@ -31,7 +31,7 @@ const Header = () => {
   };
   return (
     <div>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex",width:"95%",margin: "0 auto" }}>
         <NormalConsultBtn ref={NormalConsultRef} onClick={onClickNormalConsultListBtn}>
           일반 피드백
         </NormalConsultBtn>
