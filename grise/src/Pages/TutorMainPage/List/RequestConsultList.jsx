@@ -1,7 +1,7 @@
 import React,{useState,useRef,useEffect} from 'react'
 import axios from 'axios';
 import styled from 'styled-components';
-import RequestedConsultItem from './RequestConsultItem';
+import RequestConsultItem from './RequestConsultItem';
 
 const RequestConsultList = () => {
     const [RequestConsultList,setRequestConsultList] = useState([]);
@@ -48,9 +48,9 @@ const RequestConsultList = () => {
     const getItem = () =>{
         const result = [];
         for(let i = 0; i < outputList.length-1; i++){
-            result.push(<RequestedConsultItem key = {i} isEnd={false} data = {outputList[i]}></RequestedConsultItem>);
+            result.push(<RequestConsultItem key = {i} isEnd={false} data = {outputList[i]}></RequestConsultItem>);
         }
-        result.push(<RequestedConsultItem key = {outputList.length-1} isEnd={true} data = {outputList[outputList.length-1]} ref={ItemRef}></RequestedConsultItem>);
+        result.push(<RequestConsultItem key = {outputList.length-1} isEnd={true} data = {outputList[outputList.length-1]} ref={ItemRef}></RequestConsultItem>);
         return result;
     }
 
