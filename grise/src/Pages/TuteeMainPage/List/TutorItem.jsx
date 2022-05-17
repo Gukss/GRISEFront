@@ -36,7 +36,7 @@ const TutorFeedbackBtn = styled.span`
     width:6rem;
     height:1.5rem;
     margin-top: 1.25rem;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     text-align: center;
     font-family: 'Noto Sans CJK KR';
     font-style: normal;
