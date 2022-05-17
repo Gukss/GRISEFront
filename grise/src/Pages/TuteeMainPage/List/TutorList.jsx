@@ -75,6 +75,9 @@ const ScrollDiv = styled.div`
     flex-direction: column;
     flex-wrap: nowrap;
     overflow-y:auto;
+    ::-webkit-scrollbar {
+        display: none;
+    }
 `
 
 const SubmmitButton = styled.div`

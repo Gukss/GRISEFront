@@ -1,14 +1,16 @@
-import React,{forwardRef,useRef} from 'react'
+import React,{forwardRef,useRef,useEffect} from 'react'
 import styled from 'styled-components';
 import { ReactComponent as Star} from '../../../Image/star.svg';
 import { ReactComponent as InfoImage} from '../../../Image/info.svg';
 const TutorItem = forwardRef((props,ref) => {
     const detailDivRef = useRef();
     const isShowDetail = useRef(false);
-    const showDetailInfo = () =>{
+    const ShowDetailBtn = useRef();
+    const showDetailInfo = (e) =>{
         detailDivRef.current.style.display = (isShowDetail.current)? 'none':'block';
         isShowDetail.current = !isShowDetail.current;
         if(props.isEnd){detailDivRef.current.scrollIntoView({ behavior: 'smooth' });}
+        ShowDetailBtn.current.innerHTML = (isShowDetail.current)? '접기':'정보 보기';
     }
     return (
         <div ref={ref} style={{borderBottom:"#3A6C7B solid 0.2rem"}}>
@@ -18,6 +20,7 @@ const TutorItem = forwardRef((props,ref) => {
                     <div>
                         <StarImage><Star style={{width:'1.5rem',height:'1.5rem'}}></Star></StarImage>
                         <Score>{props.data?.tutor.score}</Score>
+                        <span ref={ShowDetailBtn} onClick={showDetailInfo} style={{color:'#000000', fontSize:'1rem'}}>정보 보기</span>
                     </div>
                 </div>
                 <InfoBtn onClick={showDetailInfo}><InfoImage></InfoImage></InfoBtn>
@@ -61,7 +64,6 @@ const Score = styled.span`
 const Container = styled.div`
     width: 100%;
     height: 4rem;
-    color: white;
     font-weight: 900;
     font-size: 2rem;
     flex: 0 0 auto;
@@ -69,6 +71,6 @@ const Container = styled.div`
 const DetailInfo = styled.div`
     display: none;
     margin-left: 1.5rem;
-    text-indent : -2.5rem;
+    text-indent : -4.5rem;
 `
 export default TutorItem;
