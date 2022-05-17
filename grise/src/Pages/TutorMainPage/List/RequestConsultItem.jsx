@@ -28,19 +28,20 @@ const Name = styled.div`
 `
 
 const RejectBtn = styled.span`
-    float: right;
-    width:5rem;
-    height:1.5rem;
-    margin-top: 1.25rem;
-    border-radius: 1rem;
-    text-align: center;
-    font-family: 'Noto Sans CJK KR';
-    font-style: normal;
-    font-weight: bold;
-    color: #fff;
-    background-color: #3A6C7B;
-    font-size:0.8rem;
-`
+  float: right;
+  width: 5rem;
+  height: 1.5rem;
+  margin-top: 1.25rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: bold;
+  color: #fff;
+  background-color: #3a6c7b;
+  font-size: 0.8rem;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+`;
 
 const Title = styled.div`
     margin-left: 1.5rem;

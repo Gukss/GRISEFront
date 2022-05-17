@@ -64,19 +64,6 @@ const TutorList = () => {
 }
 
 const ScrollDiv = styled.div`
-<<<<<<< HEAD
-  margin: 0 auto;
-  width: 95%;
-  height: 30rem;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  overflow-y: auto;
-  ::-webkit-scrollbar {
-    display: none;
-  }
-`;
-=======
     margin: 0 auto;
     width: 95%;
     height: 30rem;
@@ -107,6 +94,5 @@ const SubmmitButton = styled.div`
     font-size: 1rem;
     line-height: 3rem;
 `
->>>>>>> ec1ff457ccc12a03d1658260289d9b27c3d7f5e8
 
 export default TutorList;

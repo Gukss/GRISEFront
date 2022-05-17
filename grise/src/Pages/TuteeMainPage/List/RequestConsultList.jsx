@@ -54,60 +54,6 @@ const RequestConsultList = () => {
         return result;
     }
 
-<<<<<<< HEAD
-	return (
-    <>
-      <ScrollDiv
-        ref={ContainerRef}
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
-      >
-        {getItem()}
-      </ScrollDiv>
-    </>
-  );
-};
-
-const ScrollDiv = styled.div`
-  width: 100%;
-  height: 30rem;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  overflow-y: auto;
-  ::-webkit-scrollbar {
-    display: none;
-  }
-`;
-
-const ScrollItem = styled.div`
-  width: 100%;
-  height: 4rem;
-  font-weight: 900;
-  font-size: 2rem;
-  flex: 0 0 auto;
-`;
-
-const Title = styled.div`
-  margin-left: 1.5rem;
-  margin-top: 0.5rem;
-  display: block;
-  font-size: 1rem;
-  text-align: left;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 900;
-  color: #3a6c7b;
-  height: 1rem;
-`;
-
-const TutorName = styled.span`
-  color: #000000;
-  font-size: 0.9rem;
-  vertical-align: 0.4rem;
-  margin-left: 1.5rem;
-`;
-=======
     return ( 
         <>
             <ScrollDiv ref = {ContainerRef} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
@@ -129,6 +75,5 @@ const ScrollDiv = styled.div`
         display: none;
     }
 `
->>>>>>> ec1ff457ccc12a03d1658260289d9b27c3d7f5e8
 
 export default RequestConsultList;
