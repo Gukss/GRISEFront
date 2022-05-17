@@ -67,13 +67,16 @@ const TutorList = () => {
 }
 
 const ScrollDiv = styled.div`
-    margin: 0 auto;
-    width: 95%;
-    height: 30rem;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    overflow-y:auto;
-`
+  margin: 0 auto;
+  width: 95%;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
 
 export default TutorList;

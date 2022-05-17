@@ -70,26 +70,6 @@ const RequestConsultList = () => {
   };
 
 	return (
-    // <>
-    //   <ScrollDiv ref={ContainerRef}>
-    //     {outputList.map((el, idx) => (
-    //       <ScrollItem
-    //         onTouchStart={onTouchStart}
-    //         onTouchEnd={onTouchEnd}
-    //         key={idx}
-    //         ref={(e) => (ItemRef.current[idx] = e)}
-    //       >
-    //         {/* {el.consult.title} */}
-    //         {<div style={{ float: "left" }}>
-    //           <Title>{el.consult.title}</Title>
-    //           <div>
-    //             <TutorName>{el.consult.tutor.name}</TutorName>
-    //           </div>
-    //         </div>}
-    //       </ScrollItem>
-    //     ))}
-    //   </ScrollDiv>
-    // </>
     <>
       <ScrollDiv
         ref={ContainerRef}
@@ -103,12 +83,15 @@ const RequestConsultList = () => {
 };
 
 const ScrollDiv = styled.div`
-    width: 100%;
-    height: 30rem;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    overflow-y:auto;
+  width: 100%;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const ScrollItem = styled.div`
