@@ -83,9 +83,9 @@ const SubmmitButton = styled.div`
     margin-left: -6rem;
     border-radius: 0.5rem;
     text-align: center;
-    font-family: 'Roboto';
+    font-family: 'Noto Sans CJK KR';
     font-style: normal;
-    font-weight: 900;
+    font-weight: bold;
     color: #fff;
     background-color: #3A6C7B;
     width: 12rem;

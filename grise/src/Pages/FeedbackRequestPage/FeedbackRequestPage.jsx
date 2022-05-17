@@ -86,9 +86,9 @@ const SubmmitButton = styled.div`
     font-size: 1rem;
     line-height: 3rem;
     text-align: center;
-    font-family: 'Roboto';
+    font-family: 'Noto Sans CJK KR';
     font-style: normal;
-    font-weight: 900;
+    font-weight: bold;
     color: #fff;
     background-color: #3A6C7B;
 `
@@ -104,6 +104,9 @@ const FileName = styled.div`
     height:2rem;
     border-radius: 0.5rem;
     line-height: 1rem;
+    font-family: 'Noto Sans CJK KR';
+    font-style: normal;
+    font-weight: bold;
 `
 
 const VideoInput = styled.label`
@@ -115,70 +118,13 @@ const VideoInput = styled.label`
     font-size: 1rem;
     line-height: 2rem;
     text-align: center;
-    font-family: 'Roboto';
+    font-family: 'Noto Sans CJK KR';
     font-style: normal;
-    font-weight: 900;
+    font-weight: bold;
     color: white;
     background-color: #3A6C7B;
 `
 
-/*
-<div>
-  <div style={{height:'2.5rem'}}>
-    <SpanTitle>지역 선택</SpanTitle>
-    <SpanSubTitle>지역을 선택해 주세요</SpanSubTitle>
-  </div>
-  <div style={{height:'3rem'}}>
-    <Select onChange={(e)=>{setLocal(e.target.value)}}>
-      {localList.map(e=><option key = {e}>{e}</option>)}
-    </Select>
-  </div>
-</div>
-const SpanTitle = styled.span`
-    margin-left: 0.5rem;
-    float: left;
-    width: 6rem;
-    padding: 0.5rem;
-    padding-right: 0;
-    font-size: 1rem;
-    text-align:left;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 900;
-    color: #3A6C7B;
-    width: 5rem;
-`
-
-const SpanSubTitle = styled.span`
-    position: relative;
-    top: 1rem;
-    float: left;
-    font-size: 0.5rem;
-    text-align:left;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 900;
-`
-
-
-const Select = styled.select`
-    margin-left: 0.5rem;
-    border-radius: 0.5rem;
-    width: 10rem;
-    height: 2rem;
-    border:solid;
-    border-color: black;
-    float: left;
-    font-size: 1rem;
-    line-height: 2rem;
-    text-align: center;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 900;
-    color: #3A6C7B;
-    background-color: white;
-`
-*/
 const TextArea = styled.textarea`
     margin-left: 0.5rem;
     width: 95%;
@@ -188,6 +134,9 @@ const TextArea = styled.textarea`
     text-align:left;
     border: none;
     border-bottom: #3A6C7B solid 0.1rem;
+    font-family: 'Noto Sans CJK KR';
+    font-style: normal;
+    font-weight: 100;
     :focus {
       outline: none;
     }
@@ -199,9 +148,9 @@ const Title = styled.div`
     font-size: 1rem;
     text-align:left;
     padding: 0.3rem;
-    font-family: 'Roboto';
+    font-family: 'Noto Sans CJK KR';
     font-style: normal;
-    font-weight: 900;
+    font-weight: bold;
     color: #3A6C7B;
 `
 
@@ -211,6 +160,9 @@ const Input = styled.input`
     margin-left: 0.5rem;
     size: 100%;
     font-size: 1rem;
+    font-family: 'Noto Sans CJK KR';
+    font-style: normal;
+    font-weight: 100;
     text-align:left;
     border: none;
     border-bottom: #3A6C7B solid 0.1rem;
