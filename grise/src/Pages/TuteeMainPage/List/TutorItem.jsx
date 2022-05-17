@@ -48,6 +48,9 @@ const TutorFeedbackBtn = styled.span`
 
 const ShowDetailBtn = styled.span`
     color : #808080;
+    font-family: 'Noto Sans CJK KR';
+    font-style: normal;
+    font-weight: 100;
     font-size : 1rem;
     margin-left : 1rem;
     vertical-align:30%;
@@ -74,6 +77,9 @@ const Title = styled.div`
 
 const Score = styled.span`
     color: #000000;
+    font-family: 'Noto Sans CJK KR';
+    font-style: normal;
+    font-weight: 100;
     font-size: 0.9rem;
     vertical-align: 0.4rem;
 `
@@ -83,7 +89,7 @@ const Container = styled.div`
     height: 4rem;
     font-family: 'Noto Sans CJK KR';
     font-style: normal;
-    font-weight: bold;
+    font-weight: 100;
     font-size: 2rem;
     flex: 0 0 auto;
 `
