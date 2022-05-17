@@ -59,6 +59,8 @@ const RequestConsultBtn = styled.span`
   display: flex;
   line-height: 2.5rem;
   justify-content: center;
+  font-family: 'Noto Sans CJK KR';
+  font-style: normal;
   font-weight: bold;
 `;
 
@@ -69,6 +71,8 @@ const TutorBtn = styled.span`
   display: flex;
   line-height: 2.5rem;
   justify-content: center;
+  font-family: 'Noto Sans CJK KR';
+  font-style: normal;
   font-weight: bold;
 `;
 
