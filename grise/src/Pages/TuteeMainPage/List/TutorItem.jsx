@@ -22,7 +22,7 @@ const TutorItem = forwardRef((props,ref) => {
                         <ShowDetailBtn ref={ShowDetailBtnRef} onClick={showDetailInfo}>정보 보기</ShowDetailBtn>
                     </div>
                 </div>
-                <TutorFeedbackBtn onClick={()=>{console.log('피드백받기')}}>피드백받기</TutorFeedbackBtn>
+                <TutorFeedbackBtn onClick={()=>{console.log('피드백받기')}}>피드백 요청</TutorFeedbackBtn>
             </Container>
             <DetailInfo ref = {detailDivRef}>
                 {props.data?.tutor.resume.content}
@@ -33,7 +33,7 @@ const TutorItem = forwardRef((props,ref) => {
 
 const TutorFeedbackBtn = styled.span`
     float: right;
-    width:6rem;
+    width:5rem;
     height:1.5rem;
     margin-top: 1.25rem;
     border-radius: 1rem;
@@ -43,7 +43,7 @@ const TutorFeedbackBtn = styled.span`
     font-weight: bold;
     color: #fff;
     background-color: #3A6C7B;
-    font-size:1rem;
+    font-size:0.8rem;
 `
 
 const ShowDetailBtn = styled.span`
