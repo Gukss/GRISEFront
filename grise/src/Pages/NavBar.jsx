@@ -1,4 +1,4 @@
-import React,{useState,useRef,useEffect} from 'react';
+import React,{useRef,useEffect} from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import { ReactComponent as Search} from '../Image/search.svg';
@@ -7,13 +7,23 @@ import { ReactComponent as Logo} from '../Image/GRISE_logo.svg';
 import SideBarContainer from './SideBar/SideBarContainer';
 
 export const NavBar = () => {
-  const [searchText, setSearchText] = useState('');
-  const [hiddenSearch,setHiddenSearch] = useState(true);
+  const searchText = useRef('');
   const sideBarRef = useRef();
+  const searchRef = useRef();
   const onClickMenu = () =>{
     sideBarRef.current.style.display='block';
   }
+  const onClickSearch = () =>{
+    if(searchRef.current.style.display === 'none'){ //현재 검색창이 비활성화되어있을때
+      searchRef.current.style.display='block'; //검색창을 보이게함
+    }else if(searchText.current === ""){//검색창이 보이는상태이면서 텍스트가 아무것도 없으면 숨기기
+      searchRef.current.style.display='none';
+    }else{//검색
+      console.log(searchText.current);
+    }
+  }
   useEffect(()=>{
+    searchRef.current.style.display = 'none';
     sideBarRef.current.style.display='none';
   },[]);
   return (
@@ -34,15 +44,13 @@ export const NavBar = () => {
 					padding: "auto 0"
 				}}>
           <Link to="/">
-						<Logo style={{width: "4rem",
+						<Logo style={{
+              width: "4rem",
   						height: "100%",
   						float: "left",
   						marginLeft: "0.5rem"}}/>
-            {/* <Home>GRISE</Home> */}
           </Link>
-          <SideBar ref={sideBarRef}>
-            <SideBarContainer/>
-          </SideBar>
+          <SideBarContainer ref = {sideBarRef}/>
           <Menu
             style={{
               width: "2rem",
@@ -57,21 +65,13 @@ export const NavBar = () => {
               height: "2rem",
               float: "right",
             }}
-            onClick={() => {
-              if (hiddenSearch) {
-                setHiddenSearch(false);
-              } else if (searchText === "") {
-                setHiddenSearch(true);
-              } else {
-                console.log("서치버튼클릭", { searchText });
-              }
-            }}
+            onClick={onClickSearch}
           ></Search>
           <Input
-            hidden={hiddenSearch}
+            ref = {searchRef}
             type="text"
             onChange={(e) => {
-              setSearchText(e.target.value);
+              searchText.current = e.target.value;
             }}
           />
         </div>
@@ -80,20 +80,9 @@ export const NavBar = () => {
   );
 }
 
-const SideBar = styled.div`
-  position:absolute;
-  width:100%;
-  height:100%;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-`
-
 const Input = styled.input`
-  display:${props=>props.hidden ? 'none':'block'};
   width:10rem;
-  height:3rem;
+  height:2rem;
   float:right;
 `
 export default NavBar;
