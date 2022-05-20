@@ -1,7 +1,7 @@
 import TuteeMainPage from "./Pages/TuteeMainPage/TuteeMain";
 import TutorMainPage from "./Pages/TutorMainPage/TutorMain";
-import FeedBackBoard from "./Pages/FeedBackPage/Board";
-import FeedbackRequestPage from "./Pages/FeedbackRequestPage/FeedbackRequestPage";
+import ConsultBoard from "./Pages/ConsultPage/Board";
+import ConsultRequestPage from "./Pages/ConsultRequestPage/ConsultRequestPage";
 import TuteeLoginPage from "./Pages/LoginPage/TuteeLoginPage"
 import TutorLoginPage from "./Pages/LoginPage/TutorLoginPage";
 const routes = [
@@ -26,12 +26,12 @@ const routes = [
     component: TutorLoginPage
   },
   {
-    path: "/feedback",
-    component: FeedBackBoard
+    path: "/Consult",
+    component: ConsultBoard
   },
   {
-    path: "/feedbackRequest",
-    component: FeedbackRequestPage
+    path: "/ConsultRequest",
+    component: ConsultRequestPage
   }
 ];
 
