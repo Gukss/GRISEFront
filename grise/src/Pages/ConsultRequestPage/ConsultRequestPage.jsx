@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import styled from 'styled-components';
 import NavBar from '../NavBar'
 
-const FeedbackRequestPage = ()=>{
+const ConsultRequestPage = ()=>{
   const [title, setTitle] = useState('');
   const [content,setContent] = useState('');
   const [postfiles, setPostfiles] = useState({
@@ -192,4 +192,4 @@ const Wrap = styled.div`
   }
 `
 
-export default FeedbackRequestPage;
+export default ConsultRequestPage;
