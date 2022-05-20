@@ -8,63 +8,95 @@ const SideBarList = () => {
   return (
     <div>
       <SideBarItem>
-        <Link to="/" style={{ textDecoration: 'none'}}>
-          <AiOutlineHome 
+        <Link
+          to="/"
+          style={{
+            textDecoration: "none",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-evenly",
+          }}
+        >
+          <AiOutlineHome
             style={{
-              float: 'left',
-              width:'3rem',
-              height:'3rem',
-              color:'#000000',
-              margin: '1rem 2rem 1rem 4rem'
-            }} 
+              float: "left",
+              width: "2rem",
+              height: "2rem",
+              color: "#3A6C7B",
+              margin: "1rem 0",
+            }}
           />
           <Content>홈화면</Content>
         </Link>
       </SideBarItem>
       <SideBarItem>
-        <Link to="/" style={{ textDecoration: 'none'}}>
-          <CgProfile 
+        <Link
+          to="/"
+          style={{
+            textDecoration: "none",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-evenly",
+          }}
+        >
+          <CgProfile
             style={{
-              float: 'left',
-              width:'3rem',
-              height:'3rem',
-              color:'#000000',
-              margin: '1rem 2rem 1rem 4rem'
-            }} 
+              float: "left",
+              width: "2rem",
+              height: "2rem",
+              color: "#3A6C7B",
+              margin: "1rem 0",
+            }}
           />
           <Content>내 정보 수정</Content>
         </Link>
       </SideBarItem>
       <SideBarItem>
-        <Link to="/" style={{ textDecoration: 'none'}}>
-          <FiHelpCircle 
+        <Link
+          to="/"
+          style={{
+            textDecoration: "none",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-evenly",
+          }}
+        >
+          <FiHelpCircle
             style={{
-              float: 'left',
-              width:'3rem',
-              height:'3rem',
-              color:'#000000',
-              margin: '1rem 2rem 1rem 4rem'
-            }} 
+              float: "left",
+              width: "2rem",
+              height: "2rem",
+              color: "#3A6C7B",
+              margin: "1rem 0",
+            }}
           />
           <Content>도움말</Content>
         </Link>
       </SideBarItem>
       <SideBarItem>
-        <Link to="/" style={{ textDecoration: 'none'}}>
-          <AiOutlineLogout 
+        <Link
+          to="/"
+          style={{
+            textDecoration: "none",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-evenly",
+          }}
+        >
+          <AiOutlineLogout
             style={{
-              float: 'left',
-              width:'3rem',
-              height:'3rem',
-              color:'#000000',
-              margin: '1rem 2rem 1rem 4rem'
-            }} 
+              float: "left",
+              width: "2rem",
+              height: "2rem",
+              color: "#3A6C7B",
+              margin: "1rem 0",
+            }}
           />
           <Content>로그아웃</Content>
         </Link>
       </SideBarItem>
     </div>
-  )
+  );
 }
 
 const Content = styled.div`
@@ -73,15 +105,16 @@ const Content = styled.div`
   font-family: 'Noto Sans CJK KR';
   font-style: normal;
   font-weight: 100;
-  font-size: 2rem;
+  font-size: 1rem;
   color: #000000;
+	width: 10rem;
 `
 
 const SideBarItem = styled.div`
   width: 95%;
   margin-left: 2.5%;
   height: 5rem;
-  border-bottom: #3A6C7B solid 0.1rem;
-`
+  border-bottom: #3a6c7b solid 0.1rem;
+`;
 
 export default SideBarList

@@ -62,7 +62,7 @@ const Footer = () => {
           <input
             type="text"
             placeholder="피드백을 입력해주세요."
-            style={{ height: "100%", width: "75%", border: "none", flex: "1" }}
+            style={{ height: "100%", width: "75%", border: "none", flex: "1", }}
             onChange={(e) => {
               getComment(e);
             }}

@@ -1,15 +1,32 @@
-import React,{useState} from "react";
+import React,{useState, useCallback} from "react";
 import styled from 'styled-components';
 import NavBar from '../NavBar'
 
 const ConsultRequestPage = ()=>{
   const [title, setTitle] = useState('');
   const [content,setContent] = useState('');
+  const [isTitle, setIsTitle] = useState(false);
+  const [isContent, setIsContent] = useState(false);
   const [postfiles, setPostfiles] = useState({
     file: [],
     previewURL: "",
   });
   const [fileName,setFileName] = useState('');
+
+	//제목 검사
+	const onChangeTitle = useCallback((e) => {
+		setTitle(e.target.value);
+		if (e.target.value.length > 2) {
+			setIsTitle(true);
+		};
+	})
+	//본문 검사
+	const onChangeContent = useCallback((e) => {
+		setContent(e.target.value);
+		if (e.target.value.length > 5) {
+			setIsContent(true);
+		};
+	})
 
   const uploadFile = (e) => {
     e.stopPropagation();
@@ -29,7 +46,14 @@ const ConsultRequestPage = ()=>{
     }
   };
 
-  const summitConsult = ()=>{
+	//제목이랑 본문 둘 중 하나 안 채워 졌을 때 어떻게 나타낼지 정하기
+  const summitConsult = () => {
+		if (isTitle && isContent) {
+			console.log("정상 제출");
+		}
+		else {
+			console.log("비정상 제출");
+		}
     const consult = {
       "request_consult":{
         "title": title,
@@ -39,36 +63,38 @@ const ConsultRequestPage = ()=>{
       }
     }
     console.log(consult);
-  }
+  };
+
   return (
     <Wrap>
-      <NavBar/>
+      <NavBar />
       <Title>제목</Title>
-      <Input 
-        type='text'
+      <Input
+        type="text"
         placeholder="제목을 입력해 주세요"
-        onChange={(e)=>{setTitle(e.target.value)}}
+        onChange={onChangeTitle}
       ></Input>
       <Title>본문</Title>
-      <TextArea 
+      <TextArea
         placeholder="피드백 받고 싶은 내용을 입력해 주세요"
-        onChange={(e)=>{setContent(e.target.value)}}/>
-      <div style={{width:'100%',height:'4.5rem'}}>
+        onChange={onChangeContent}
+      />
+      <div style={{ width: "100%", height: "4.5rem" }}>
         <Title>영상 업로드</Title>
-        <div style={{height:'2rem',display:'flex'}}>
+        <div style={{ height: "2rem", display: "flex" }}>
           <VideoInput htmlFor="input-file">업로드</VideoInput>
           <input
             id="input-file"
             type="file"
-            accept= "video/*"
-            name={'filename'}
-            style={{display:'none'}}
+            accept="video/*"
+            name={"filename"}
+            style={{ display: "none" }}
             onChange={uploadFile}
           />
-          <FileName >{fileName}</FileName>
+          <FileName>{fileName}</FileName>
         </div>
       </div>
-      
+
       <SubmmitButton onClick={summitConsult}>피드백 요청</SubmmitButton>
     </Wrap>
   );

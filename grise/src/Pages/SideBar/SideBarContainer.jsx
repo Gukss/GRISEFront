@@ -9,7 +9,7 @@ const SideBarContainer = forwardRef((props,ref)=> {
     return (
         <Contianer ref = {ref}>
             <SideBarHeader>
-                <CloseBtn onClick={onClickCloseBtn}><AiOutlineArrowLeft style={{width:'3rem',height:'3rem'}}></AiOutlineArrowLeft></CloseBtn>
+                <CloseBtn onClick={onClickCloseBtn}><AiOutlineArrowLeft style={{width:'2rem',height:'2rem'}}></AiOutlineArrowLeft></CloseBtn>
                 <Name>김OO님</Name>
                 <span style={{width:'3rem'}} />
             </SideBarHeader>
@@ -20,14 +20,15 @@ const SideBarContainer = forwardRef((props,ref)=> {
 
 const CloseBtn = styled.span`
     color:#3A6C7B;
-    width: 3rem;
+    display: flex;
+		align-items: center;
 `
 
 const Name = styled.span`
   font-family: "Noto Sans CJK KR";
   font-style: normal;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #3A6C7B;
 `
 
@@ -43,16 +44,16 @@ const Contianer = styled.div`
 `
 
 const SideBarHeader = styled.div`
-    width: 95%;
-    display: inline-flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 2.5%;
-    height: 3.5rem;
-    border-bottom: #3A6C7B solid 0.2rem;
-    font-family: 'Noto Sans CJK KR';
-    font-style: normal;
-    font-weight: bold;
-`
+  width: 95%;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2.5%;
+  height: 3.5rem;
+  border-bottom: 1px solid rgb(227, 227, 227);
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: bold;
+`;
 
 export default SideBarContainer
