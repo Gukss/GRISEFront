@@ -1,21 +1,35 @@
-import React,{forwardRef} from 'react';
+import React, { forwardRef, useEffect, useRef } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import styled from 'styled-components';
 import SideBarList from './SideBarList';
+
 const SideBarContainer = forwardRef((props,ref)=> {
+	const username = useRef(null);
+	const nameRef = useRef(null);
+
+	useEffect(() => {
+		username.current = window.localStorage.getItem("username");
+		console.log(username.current);
+		nameRef.current.innerHTML = username.current;
+	}, []);
+	
     const onClickCloseBtn = ()=>{
         ref.current.style.display='none';
     }
     return (
-        <Contianer ref = {ref}>
-            <SideBarHeader>
-                <CloseBtn onClick={onClickCloseBtn}><AiOutlineArrowLeft style={{width:'2rem',height:'2rem'}}></AiOutlineArrowLeft></CloseBtn>
-                <Name>김OO님</Name>
-                <span style={{width:'3rem'}} />
-            </SideBarHeader>
-            <SideBarList/>
-        </Contianer>
-    )
+      <Contianer ref={ref}>
+        <SideBarHeader>
+          <CloseBtn onClick={onClickCloseBtn}>
+            <AiOutlineArrowLeft
+              style={{ width: "2rem", height: "2rem" }}
+            ></AiOutlineArrowLeft>
+          </CloseBtn>
+          <Name ref={nameRef}></Name>
+          <span style={{ width: "3rem" }} />
+        </SideBarHeader>
+        <SideBarList />
+      </Contianer>
+    );
 });
 
 const CloseBtn = styled.span`

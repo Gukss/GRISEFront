@@ -23,15 +23,18 @@ const Redirect = (props) => {
       })
       .then((res) => {
         console.log("로그인되었습니다.");
-        console.log(res.data.body);
+        console.log(res.data.body.user);
+				window.localStorage.setItem('userId', res.data.body.user.userId);
+				window.localStorage.setItem('username', res.data.body.user.username);
+
+				window.location.href = "http://localhost:3000/tuteeMain";
       })
       .catch((error) => alert("Error가 발생하였습니다", error));
-  };
+		};
+		
 
 	return (
-    <>
-      <div>로그인</div>
-    </>
+    null
   );
 };
 
