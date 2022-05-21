@@ -49,7 +49,7 @@ const Footer = () => {
       <div>
         <Comment commentList={commentList} tutee_name={tutee_name}></Comment>
       </div>
-      <StyeldFooter>
+      <StyledFooter>
         <form
           style={{
             height: "100%",
@@ -59,16 +59,15 @@ const Footer = () => {
           }}
           onSubmit={onSubmit}
         >
-          <input
+          <StyledInput
             type="text"
             placeholder="피드백을 입력해주세요."
-            style={{ height: "100%", width: "75%", border: "none", flex: "1", }}
             onChange={(e) => {
               getComment(e);
             }}
             value={content}
             ref={inputEl}
-          ></input>
+          ></StyledInput>
           <button
             style={{
               border: "none",
@@ -89,13 +88,13 @@ const Footer = () => {
             />
           </button>
         </form>
-      </StyeldFooter>
+      </StyledFooter>
     </>
   );
 };
 
 
-const StyeldFooter = styled.footer`
+const StyledFooter = styled.footer`
   width: 100%;
   height: 3rem;
   position: fixed;
@@ -105,6 +104,16 @@ const StyeldFooter = styled.footer`
   border-top: #3a6c7b solid 1px;
   display: flex;
 	background-color: #fff;
+`;
+
+const StyledInput = styled.input`
+	height: 100%;
+	width: 75%; 
+	border: none;
+	flex: 1;
+	:focus {
+		outline: none;
+	}
 `;
 
 export default Footer;
