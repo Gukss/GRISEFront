@@ -1,6 +1,7 @@
 import React, {useState, useRef} from "react";
-import { Row, Col, Select, Divider } from "antd";
-import styled from 'styled-components'
+import styled from 'styled-components';
+import ModalButton from "./ModalButton";
+
 const Title = ({title, tuteeName, tutorName}) => {
 	
   return (
@@ -10,7 +11,9 @@ const Title = ({title, tuteeName, tutorName}) => {
         {tutorName}
         {tuteeName}
       </StyledName>
-      <CompleteButton>피드백<br />완료</CompleteButton>
+      <ModalButton>
+        
+      </ModalButton>
     </StyledTitle>
   );
 };

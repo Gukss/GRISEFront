@@ -11,7 +11,7 @@ const Comment = ({ commentList, tutee_name }) => {
             listStyleType: "none",
             backgroundColor:
               tutee_name === comment.comment?.user_name ? "#e3e3e3" : "#3a6c7b",
-            width: "20rem",
+            width: "90%",
             marginBottom: "0.5rem",
             borderRadius: "10px",
             padding: "0.2rem 0",
