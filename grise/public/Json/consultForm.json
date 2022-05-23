@@ -1,5 +1,5 @@
 {
-  "request_consult": {
+  "requestConsult": {
     "title": "제목테스트1",
     "content": "피드백본문1",
 		"is_post": "True",

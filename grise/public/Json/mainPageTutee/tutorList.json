@@ -2,7 +2,7 @@
   "tutorList": [
     {
       "tutor": {
-        "tutor_id": 1,
+        "tutorId": 1,
         "name": "이름1",
         "score": 1,
         "resume": {
@@ -12,7 +12,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 2,
+        "tutorId": 2,
         "name": "이름2",
         "score": 2,
         "resume": {
@@ -22,7 +22,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 3,
+        "tutorId": 3,
         "name": "이름3",
         "score": 3,
         "resume": {
@@ -32,7 +32,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 1,
+        "tutorId": 1,
         "name": "이름1",
         "score": 1,
         "resume": {
@@ -42,7 +42,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 2,
+        "tutorId": 2,
         "name": "이름2",
         "score": 2,
         "resume": {
@@ -52,7 +52,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 3,
+        "tutorId": 3,
         "name": "이름3",
         "score": 3,
         "resume": {
@@ -62,7 +62,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 1,
+        "tutorId": 1,
         "name": "이름1",
         "score": 1,
         "resume": {
@@ -72,7 +72,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 2,
+        "tutorId": 2,
         "name": "이름2",
         "score": 2,
         "resume": {
@@ -82,7 +82,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 3,
+        "tutorId": 3,
         "name": "이름3",
         "score": 3,
         "resume": {
@@ -92,7 +92,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 1,
+        "tutorId": 1,
         "name": "이름1",
         "score": 1,
         "resume": {
@@ -102,7 +102,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 2,
+        "tutorId": 2,
         "name": "이름2",
         "score": 2,
         "resume": {
@@ -112,7 +112,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 3,
+        "tutorId": 3,
         "name": "이름3",
         "score": 3,
         "resume": {
@@ -122,7 +122,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 1,
+        "tutorId": 1,
         "name": "이름1",
         "score": 1,
         "resume": {
@@ -132,7 +132,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 2,
+        "tutorId": 2,
         "name": "이름2",
         "score": 2,
         "resume": {
@@ -142,7 +142,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 3,
+        "tutorId": 3,
         "name": "이름3",
         "score": 3,
         "resume": {
@@ -152,7 +152,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 1,
+        "tutorId": 1,
         "name": "이름1",
         "score": 1,
         "resume": {
@@ -162,7 +162,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 2,
+        "tutorId": 2,
         "name": "이름2",
         "score": 2,
         "resume": {
@@ -172,7 +172,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 3,
+        "tutorId": 3,
         "name": "이름3",
         "score": 3,
         "resume": {
@@ -181,7 +181,7 @@
       }
     },    {
       "tutor": {
-        "tutor_id": 1,
+        "tutorId": 1,
         "name": "이름1",
         "score": 1,
         "resume": {
@@ -191,7 +191,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 2,
+        "tutorId": 2,
         "name": "이름2",
         "score": 2,
         "resume": {
@@ -201,7 +201,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 3,
+        "tutorId": 3,
         "name": "이름3",
         "score": 3,
         "resume": {
@@ -211,7 +211,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 1,
+        "tutorId": 1,
         "name": "이름1",
         "score": 1,
         "resume": {
@@ -221,7 +221,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 2,
+        "tutorId": 2,
         "name": "이름2",
         "score": 2,
         "resume": {
@@ -231,7 +231,7 @@
     },
     {
       "tutor": {
-        "tutor_id": 3,
+        "tutorId": 3,
         "name": "이름3",
         "score": 3,
         "resume": {
