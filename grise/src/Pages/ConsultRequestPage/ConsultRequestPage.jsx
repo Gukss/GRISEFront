@@ -1,68 +1,107 @@
-import React,{useState, useCallback} from "react";
+import React,{useRef} from "react";
 import styled from 'styled-components';
-import NavBar from '../NavBar'
+import NavBar from '../NavBar';
 
 const ConsultRequestPage = ()=>{
-  const [title, setTitle] = useState('');
-  const [content,setContent] = useState('');
-  const [isTitle, setIsTitle] = useState(false);
-  const [isContent, setIsContent] = useState(false);
-  const [postfiles, setPostfiles] = useState({
+  const title = useRef('');
+  const content = useRef('');
+  const youtubeSrc = useRef('');
+  const isTitle = useRef(false);
+  const isContent = useRef(false);
+  const fileNameRef = useRef('');
+  const iframeRef = useRef(null);
+  const uploadDivRef = useRef(null);
+  const youtubeDivRef = useRef(null);
+  const postfiles = useRef({
     file: [],
     previewURL: "",
   });
-  const [fileName,setFileName] = useState('');
 
 	//제목 검사
-	const onChangeTitle = useCallback((e) => {
-		setTitle(e.target.value);
-		if (e.target.value.length > 2) {
-			setIsTitle(true);
-		};
-	})
+	const onChangeTitle = (e) => {
+		title.current = e.target.value;
+		if (e.target.value.length >= 2) {
+			isTitle.current = true;
+		}else{
+      isTitle.current = false;
+    }
+	}
+
 	//본문 검사
-	const onChangeContent = useCallback((e) => {
-		setContent(e.target.value);
-		if (e.target.value.length > 5) {
-			setIsContent(true);
-		};
-	})
+	const onChangeContent = (e) => {
+		content.current = e.target.value;
+		if (e.target.value.length >= 5) {
+			isContent.current = true;
+		}else{
+      isContent.current = false;
+    }
+	}
+
+  //유튜브 주소 입력
+  const onChangeYoutubeSrc = (e) => {
+    if(e.target.value.includes('https://youtu.be/')){
+      const src = "https://www.youtube.com/embed/"+e.target.value.split('https://youtu.be/')[1];
+		  youtubeSrc.current = src;
+		  iframeRef.current.src=src;
+    }
+	}
+
+  //영상업로드 or 유튜브선택
+  const onChangeOption = (e) =>{
+    if(e.target.value==="영상 업로드"){
+      youtubeDivRef.current.style.display="none";
+      uploadDivRef.current.style.display="flex";
+    }else{
+      youtubeDivRef.current.style.display="block";
+      uploadDivRef.current.style.display="none";
+    }
+  }
 
   const uploadFile = (e) => {
-    e.stopPropagation();
-    let reader = new FileReader();
-    let file = e.target.files[0];
-    setFileName(e.target.files[0].name);
-    const filesInArr = Array.from(e.target.files);
-  
-    reader.onloadend = () => {
-      setPostfiles({
-        file: filesInArr,
-        previewURL: reader.result,
-      });
-    };
-    if (file) {
-      reader.readAsDataURL(file);
+    if(e.target.files && e.target.files[0].size > (20 * 1024 * 1024)){
+      alert("파일사이즈가 20mb를 넘습니다.");
+    }else{
+      e.stopPropagation();
+      let reader = new FileReader();
+      let file = e.target.files[0];
+      const filesInArr = Array.from(e.target.files);
+      fileNameRef.current.innerHTML = e.target.files[0].name
+      reader.onloadend = () => {
+        postfiles.current = {
+          file: filesInArr,
+          previewURL: reader.result,
+        };
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+      }
     }
   };
 
 	//제목이랑 본문 둘 중 하나 안 채워 졌을 때 어떻게 나타낼지 정하기
   const summitConsult = () => {
-		if (isTitle && isContent) {
+		if (isTitle.current && isContent.current) {
 			console.log("정상 제출");
-		}
-		else {
-			console.log("비정상 제출");
-		}
-    const consult = {
-      "request_consult":{
-        "title": title,
-        "content": content,
-        "tutor":"None",
-        "video":postfiles
+      const consult = {
+        "request_consult":{
+          "title": title.current,
+          "content": content.current,
+          "tutor":"None",
+          "video":postfiles.current
+        }
       }
+      console.log(consult);
+      console.log('유튜브 주소 :',youtubeSrc.current);
+		}
+    else if(!isTitle.current){
+      console.log("제목 미입력");
+      alert('제목을 입력해 주세요!(3글자 이상)');
     }
-    console.log(consult);
+		else if(!isContent.current) {
+			console.log("본문 미입력");
+      alert('본문을 입력해 주세요!(5글자 이상)');
+		}
+    //동영상, 유튜브 둘 다 미입력시 경고
   };
 
   return (
@@ -73,32 +112,82 @@ const ConsultRequestPage = ()=>{
         type="text"
         placeholder="제목을 입력해 주세요"
         onChange={onChangeTitle}
-      ></Input>
+      />
       <Title>본문</Title>
       <TextArea
         placeholder="피드백 받고 싶은 내용을 입력해 주세요"
         onChange={onChangeContent}
       />
-      <div style={{ width: "100%", height: "4.5rem" }}>
-        <Title>영상 업로드</Title>
-        <div style={{ height: "2rem", display: "flex" }}>
-          <VideoInput htmlFor="input-file">업로드</VideoInput>
-          <input
-            id="input-file"
-            type="file"
-            accept="video/*"
-            name={"filename"}
-            style={{ display: "none" }}
-            onChange={uploadFile}
-          />
-          <FileName>{fileName}</FileName>
-        </div>
+      <Select onChange={onChangeOption}>
+        <Option key="1" value="영상 업로드">영상 업로드</Option>
+        <Option key="2" value="유튜브영상 공유">유튜브영상 공유</Option>
+      </Select>
+      <VideoInputContainer ref={uploadDivRef}>
+        <VideoInput htmlFor="input-file">업로드</VideoInput>
+        <input
+          id="input-file"
+          type="file"
+          accept="video/*"
+          name={"filename"}
+          style={{ display: "none" }}
+          onChange={uploadFile}
+        />
+        <FileName ref={fileNameRef} />
+      </VideoInputContainer>
+      <div style={{display:'none'}} ref={youtubeDivRef}>
+        <Input
+          type="text"
+          placeholder="공유하기 버튼을 눌러 링크주소를 입력해 주세요"
+          onChange={onChangeYoutubeSrc}
+        />
+        <Iframe 
+          ref={iframeRef}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
       </div>
-
       <SubmmitButton onClick={summitConsult}>피드백 요청</SubmmitButton>
     </Wrap>
   );
 }
+
+const Select = styled.select`
+  font-size: 1rem;
+  padding: 0.5rem;
+  font-family: 'Noto Sans CJK KR';
+  font-style: normal;
+  font-weight: bold;
+  color: #3A6C7B;
+  border: none;
+  :focus {
+    outline: none;
+  }
+`
+
+const Option = styled.option`
+  font-size: 1rem;
+  padding: 0.5rem;
+  font-family: 'Noto Sans CJK KR';
+  font-style: normal;
+  font-weight: bold;
+  color: #000000;
+  border: none;
+  :focus {
+    outline: none;
+  }
+`
+
+const VideoInputContainer = styled.div`
+  height:2rem;
+  display:flex;
+`
+
+const Iframe = styled.iframe`
+  width:97%;
+  height: auto;
+`
 
 const SubmmitButton = styled.div`
     position: fixed;
