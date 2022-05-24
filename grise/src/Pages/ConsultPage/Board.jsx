@@ -23,27 +23,30 @@ const Board = () => {
       <Video />
       <Title title={consult?.title} tuteeName={consult?.tutee?.name} tutorName={consult?.tutor?.name}/>
       <MainText content={consult?.content}/>
-      <CommentContainer />
+      {/* <CommentContainer /> */}
+			<Footer />
     </Wrap>
   );
 };
 
 const Wrap = styled.div`
   width: 1200px;
-  height:100%;
-  margin:0 auto;
+  height: 100%;
+  margin: 0 auto;
 
-  @media (max-width:1220px){
+  @media (max-width: 1220px) {
     width: 100%;
+    
   }
 
-  @media (max-width:768px){
+  @media (max-width: 768px) {
     width: 100%;
+    
   }
 
-  @media (max-width:480px){
-    width:100%;
-    background-color:white;
+  @media (max-width: 480px) {
+    width: 100%;
+    
   }
 `;
 
