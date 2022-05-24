@@ -2,6 +2,10 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {ReactComponent as TuteeLogo} from '../../Image/TuteeLogo.svg';
 import GoogleBtn from '../../Image/btn_google_signin_light_normal_web.png';
+// import { ReactComponent as gBtn } from "../../Image/btn_google_light_normal_ios.svg";
+// import GoogleLoginButton from "react-social-login-buttons/lib/buttons/GoogleLoginButton";
+import { GoogleLoginButton } from "react-social-login-buttons";
+
 
 export const TuteeLoginPage = () => {
 
@@ -11,6 +15,7 @@ export const TuteeLoginPage = () => {
       <a href="http://study-with-ai.p-e.kr/oauth2/authorization/google?redirect_uri=http://localhost:3000/oauth/redirect">
         <div style={{ textAlign: "center" }}>
           <img src={GoogleBtn} alt="구글 로그인" />
+					<GoogleLoginButton></GoogleLoginButton>
         </div>
       </a>
     </Wrap>

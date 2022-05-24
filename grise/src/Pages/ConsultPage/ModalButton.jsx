@@ -1,7 +1,7 @@
 import { Modal, Rate } from "antd";
 import { useState, useRef } from "react";
 import styled from "styled-components";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 
 const ModalButton = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -37,7 +37,7 @@ const ModalButton = () => {
         onCancel={handleCancel}
       >
         <div>별점을 주세요.</div>
-        <Rate defaultValue={0} onChange={onChangeRate} />
+        <Rate defaultValue={0} onChange={onChangeRate}/>
       </Modal>
     </>
   );
