@@ -2,7 +2,7 @@
   "consultList": [
     {
       "consult": {
-        "consult_id": 1,
+        "consultId": 1,
         "title": "제목1",
         "content": "피드백내용1",
         "tutor": {
@@ -12,7 +12,7 @@
     },
     {
       "consult": {
-        "consult_id": 2,
+        "consultId": 2,
         "title": "제목2",
         "content": "피드백내용2",
         "tutor": {
@@ -22,7 +22,7 @@
     },
     {
       "consult": {
-        "consult_id": 3,
+        "consultId": 3,
         "title": "제목3",
         "content": "피드백내용3",
         "tutor": {
@@ -32,7 +32,7 @@
     },
     {
       "consult": {
-        "consult_id": 4,
+        "consultId": 4,
         "title": "제목4",
         "content": "피드백내용4",
         "tutor": {
@@ -42,7 +42,7 @@
     },
     {
       "consult": {
-        "consult_id": 5,
+        "consultId": 5,
         "title": "제목5",
         "content": "피드백내용5",
         "tutor": {
@@ -52,7 +52,7 @@
     },
     {
       "consult": {
-        "consult_id": 1,
+        "consultId": 1,
         "title": "제목1",
         "content": "피드백내용1",
         "tutor": {
@@ -62,7 +62,7 @@
     },
     {
       "consult": {
-        "consult_id": 2,
+        "consultId": 2,
         "title": "제목2",
         "content": "피드백내용2",
         "tutor": {
@@ -72,7 +72,7 @@
     },
     {
       "consult": {
-        "consult_id": 3,
+        "consultId": 3,
         "title": "제목3",
         "content": "피드백내용3",
         "tutor": {
@@ -82,7 +82,7 @@
     },
     {
       "consult": {
-        "consult_id": 4,
+        "consultId": 4,
         "title": "제목4",
         "content": "피드백내용4",
         "tutor": {
@@ -92,7 +92,7 @@
     },
     {
       "consult": {
-        "consult_id": 5,
+        "consultId": 5,
         "title": "제목5",
         "content": "피드백내용5",
         "tutor": {
@@ -102,7 +102,7 @@
     },
     {
       "consult": {
-        "consult_id": 1,
+        "consultId": 1,
         "title": "제목1",
         "content": "피드백내용1",
         "tutor": {
@@ -112,7 +112,7 @@
     },
     {
       "consult": {
-        "consult_id": 2,
+        "consultId": 2,
         "title": "제목2",
         "content": "피드백내용2",
         "tutor": {
@@ -122,7 +122,7 @@
     },
     {
       "consult": {
-        "consult_id": 3,
+        "consultId": 3,
         "title": "제목3",
         "content": "피드백내용3",
         "tutor": {
@@ -132,7 +132,7 @@
     },
     {
       "consult": {
-        "consult_id": 4,
+        "consultId": 4,
         "title": "제목4",
         "content": "피드백내용4",
         "tutor": {
@@ -142,7 +142,7 @@
     },
     {
       "consult": {
-        "consult_id": 5,
+        "consultId": 5,
         "title": "제목5",
         "content": "피드백내용5",
         "tutor": {
@@ -152,7 +152,7 @@
     },
     {
       "consult": {
-        "consult_id": 1,
+        "consultId": 1,
         "title": "제목1",
         "content": "피드백내용1",
         "tutor": {
@@ -162,7 +162,7 @@
     },
     {
       "consult": {
-        "consult_id": 2,
+        "consultId": 2,
         "title": "제목2",
         "content": "피드백내용2",
         "tutor": {
@@ -172,7 +172,7 @@
     },
     {
       "consult": {
-        "consult_id": 3,
+        "consultId": 3,
         "title": "제목3",
         "content": "피드백내용3",
         "tutor": {
@@ -182,7 +182,7 @@
     },
     {
       "consult": {
-        "consult_id": 4,
+        "consultId": 4,
         "title": "제목4",
         "content": "피드백내용4",
         "tutor": {
@@ -192,7 +192,7 @@
     },
     {
       "consult": {
-        "consult_id": 5,
+        "consultId": 5,
         "title": "제목5",
         "content": "피드백내용5",
         "tutor": {
@@ -202,7 +202,7 @@
     },
     {
       "consult": {
-        "consult_id": 1,
+        "consultId": 1,
         "title": "제목1",
         "content": "피드백내용1",
         "tutor": {
@@ -212,7 +212,7 @@
     },
     {
       "consult": {
-        "consult_id": 2,
+        "consultId": 2,
         "title": "제목2",
         "content": "피드백내용2",
         "tutor": {
@@ -222,7 +222,7 @@
     },
     {
       "consult": {
-        "consult_id": 3,
+        "consultId": 3,
         "title": "제목3",
         "content": "피드백내용3",
         "tutor": {
@@ -232,7 +232,7 @@
     },
     {
       "consult": {
-        "consult_id": 4,
+        "consultId": 4,
         "title": "제목4",
         "content": "피드백내용4",
         "tutor": {
@@ -242,7 +242,7 @@
     },
     {
       "consult": {
-        "consult_id": 5,
+        "consultId": 5,
         "title": "제목5",
         "content": "피드백내용5",
         "tutor": {
@@ -252,7 +252,7 @@
     },
     {
       "consult": {
-        "consult_id": 1,
+        "consultId": 1,
         "title": "제목1",
         "content": "피드백내용1",
         "tutor": {
@@ -262,7 +262,7 @@
     },
     {
       "consult": {
-        "consult_id": 2,
+        "consultId": 2,
         "title": "제목2",
         "content": "피드백내용2",
         "tutor": {
@@ -272,7 +272,7 @@
     },
     {
       "consult": {
-        "consult_id": 3,
+        "consultId": 3,
         "title": "제목3",
         "content": "피드백내용3",
         "tutor": {
@@ -282,7 +282,7 @@
     },
     {
       "consult": {
-        "consult_id": 4,
+        "consultId": 4,
         "title": "제목4",
         "content": "피드백내용4",
         "tutor": {
@@ -292,7 +292,7 @@
     },
     {
       "consult": {
-        "consult_id": 5,
+        "consultId": 5,
         "title": "제목5",
         "content": "피드백내용5",
         "tutor": {
@@ -302,7 +302,7 @@
     },
     {
       "consult": {
-        "consult_id": 1,
+        "consultId": 1,
         "title": "제목1",
         "content": "피드백내용1",
         "tutor": {
@@ -312,7 +312,7 @@
     },
     {
       "consult": {
-        "consult_id": 2,
+        "consultId": 2,
         "title": "제목2",
         "content": "피드백내용2",
         "tutor": {
@@ -322,7 +322,7 @@
     },
     {
       "consult": {
-        "consult_id": 3,
+        "consultId": 3,
         "title": "제목3",
         "content": "피드백내용3",
         "tutor": {
@@ -332,7 +332,7 @@
     },
     {
       "consult": {
-        "consult_id": 4,
+        "consultId": 4,
         "title": "제목4",
         "content": "피드백내용4",
         "tutor": {
@@ -342,7 +342,7 @@
     },
     {
       "consult": {
-        "consult_id": 5,
+        "consultId": 5,
         "title": "제목5",
         "content": "피드백내용5",
         "tutor": {

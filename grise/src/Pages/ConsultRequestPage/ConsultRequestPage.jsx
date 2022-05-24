@@ -83,7 +83,7 @@ const ConsultRequestPage = ()=>{
 		if (isTitle.current && isContent.current) {
 			console.log("정상 제출");
       const consult = {
-        "request_consult":{
+        "requestConsult":{
           "title": title.current,
           "content": content.current,
           "tutor":"None",
