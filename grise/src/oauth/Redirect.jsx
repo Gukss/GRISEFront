@@ -26,6 +26,7 @@ const Redirect = (props) => {
         console.log(res.data.body.user);
 				window.localStorage.setItem('userId', res.data.body.user.userId);
 				window.localStorage.setItem('username', res.data.body.user.username);
+        window.localStorage.setItem('token', "Bearer " + token);
 
 				window.location.href = "http://localhost:3000/tuteeMain";
       })
