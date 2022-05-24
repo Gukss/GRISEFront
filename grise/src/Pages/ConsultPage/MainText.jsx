@@ -12,8 +12,9 @@ const MainText = (props) => {
 
 const StyledMainText = styled.div`
   width: 97%;
-  height: 8rem;
+  height: 3rem;
   margin: 0 auto;
+	margin-bottom: 1rem;
   overflow-y: scroll;
   ::-webkit-scrollbar {
     display: none;

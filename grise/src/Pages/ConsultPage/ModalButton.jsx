@@ -26,9 +26,7 @@ const ModalButton = () => {
   return (
     <>
       <CompleteButton type="primary" onClick={showModal}>
-        피드백
-        <br />
-        완료
+        피드백 완료
       </CompleteButton>
       <Modal
         title="별점"
@@ -44,7 +42,7 @@ const ModalButton = () => {
 };
 
 const CompleteButton = styled.button`
-  width: 3rem;
+  width: 3.5rem;
   height: 1.5rem;
   font-size: 0.4rem;
   border-radius: 10px;
@@ -52,7 +50,7 @@ const CompleteButton = styled.button`
   background-color: #3a6c7b;
   border: none;
   color: #fff;
-  margin: auto 0.3rem auto auto;
+  margin: auto 0.3rem auto 0;
 `;
 
 export default ModalButton;

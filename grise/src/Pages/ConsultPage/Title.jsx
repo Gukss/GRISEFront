@@ -7,40 +7,52 @@ const Title = ({title, tuteeName, tutorName}) => {
   return (
     <StyledTitle>
       <StyledHeader>{title}</StyledHeader>
-      <StyledName>
+      {/* <StyledTutor>
         {tutorName}
+      </StyledTutor>
+			<StyledTutee>
         {tuteeName}
-      </StyledName>
-      <ModalButton>
-        
-      </ModalButton>
+			</StyledTutee> */}
+      <ModalButton style={{float: "right"}}></ModalButton>
     </StyledTitle>
   );
 };
 
 const StyledTitle = styled.div`
   width: 97%;
-  height: 2rem;
+  height: 10%;
   margin: 0 auto;
   border-bottom: #3a6c7b solid 1px;
   padding: 0.1rem 0;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
 `;
 
 const StyledHeader = styled.div`
-  width: 10rem;
-  height: 100%;
+  width: 80%;
+  height: 1rem;
   font-weight: bold;
   font-size: 0.7rem;
   color: #3a6c7b;
   margin: auto 0;
   display: flex;
   align-items: center;
+	overflow: hidden;
 `;
 
-const StyledName = styled.div`
-  width: 10rem;
+const StyledTutor = styled.div`
+  width: 4rem;
+  height: 100%;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #b1b1b1;
+  margin: auto 0;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+`;
+const StyledTutee = styled.div`
+  width: 4rem;
   height: 100%;
   font-size: 0.7rem;
   font-weight: bold;

@@ -13,7 +13,7 @@ const CommentContainer = (props) => {
 
 const StyledCommentContainer = styled.div`
   width: 100%;
-  height: 250px;
+  height: 18rem;
   margin: 0 auto;
   overflow-y: scroll;
   ::-webkit-scrollbar {
