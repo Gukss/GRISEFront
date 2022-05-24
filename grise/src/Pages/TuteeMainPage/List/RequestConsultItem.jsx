@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const RequestConsultItem = forwardRef((props,ref) => {
     const onClickShowConsultBtn = () =>{
-        console.log(props.data?.consult.consult_id,'피드백 확인');
+        console.log(props.data?.consult.consultId,'피드백 확인');
     }
     return (
         <div ref={ref} style={{borderBottom:"#3A6C7B solid 0.2rem"}}>

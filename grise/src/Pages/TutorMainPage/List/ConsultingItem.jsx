@@ -1,9 +1,9 @@
 import React,{forwardRef} from 'react'
 import styled from 'styled-components';
 
-const RequestConsultItem = forwardRef((props,ref) => {
-    const onClickRejectBtn = () =>{
-        console.log(props.data?.consult.consultId,'거절');
+const ConsultingItem = forwardRef((props,ref) => {
+    const onClickShowConsultBtn = () =>{
+        console.log(props.data?.consult.consultId,'피드백 확인');
     }
     return (
         <div ref={ref} style={{borderBottom:"#3A6C7B solid 0.2rem"}}>
@@ -12,7 +12,7 @@ const RequestConsultItem = forwardRef((props,ref) => {
                     <Title>{props.data?.consult.title}</Title>
                     <Name>{props.data?.consult.tutee.name}</Name>
                 </div>
-                <RejectBtn onClick={onClickRejectBtn}>거절</RejectBtn>
+                <ShowConsultBtn onClick={onClickShowConsultBtn}>피드백 확인</ShowConsultBtn>
             </Container>
         </div>
     )
@@ -27,7 +27,7 @@ const Name = styled.div`
     margin-top: 0.5rem;
 `
 
-const RejectBtn = styled.span`
+const ShowConsultBtn = styled.span`
   float: right;
   width: 5rem;
   height: 1.5rem;
@@ -66,4 +66,4 @@ const Container = styled.div`
     flex: 0 0 auto;
 `
 
-export default RequestConsultItem;
+export default ConsultingItem;
