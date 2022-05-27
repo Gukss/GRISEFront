@@ -16,7 +16,6 @@ const RequestConsultPage = ()=>{
     name:''
   });
   const navigate = useNavigate();
-  
 	//제목 검사
 	const onChangeTitle = (e) => {
 		title.current = e.target.value;
@@ -85,6 +84,7 @@ const RequestConsultPage = ()=>{
           }
         }
         console.log(consult);
+        navigate('/Consult', { state: consult });
       }
 		}
     else if(!isTitle.current){
