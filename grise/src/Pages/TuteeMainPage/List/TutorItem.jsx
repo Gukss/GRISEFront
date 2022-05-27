@@ -1,16 +1,20 @@
 import React,{forwardRef,useRef} from 'react'
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 import { ReactComponent as Star} from '../../../Image/star.svg';
+
 const TutorItem = forwardRef((props,ref) => {
     const detailDivRef = useRef();
     const isShowDetail = useRef(false);
     const ShowDetailBtnRef = useRef();
-    const showDetailInfo = (e) =>{
+
+    const showDetailInfo = (e) =>{//상세보기클릭
         detailDivRef.current.style.display = (isShowDetail.current)? 'none':'block';
         isShowDetail.current = !isShowDetail.current;
         if(props.isEnd){detailDivRef.current.scrollIntoView({ behavior: 'smooth' });}
         ShowDetailBtnRef.current.innerHTML = (isShowDetail.current)? '접기':'정보 보기';
     }
+
     return (
         <div ref={ref} style={{borderBottom:"#3A6C7B solid 0.2rem"}}>
             <Container>
@@ -22,7 +26,7 @@ const TutorItem = forwardRef((props,ref) => {
                         <ShowDetailBtn ref={ShowDetailBtnRef} onClick={showDetailInfo}>정보 보기</ShowDetailBtn>
                     </div>
                 </div>
-                <TutorConsultBtn onClick={()=>{console.log('피드백받기')}}>피드백 요청</TutorConsultBtn>
+                <Link to='/RequestConsult' state={{consult:'RequestConsult',tutorId:props.data?.tutor.tutorId}}><TutorConsultBtn>피드백 요청</TutorConsultBtn></Link>
             </Container>
             <DetailInfo ref = {detailDivRef}>
                 {props.data?.tutor.resume.content}

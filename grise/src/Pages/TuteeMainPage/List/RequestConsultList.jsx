@@ -2,6 +2,7 @@ import React,{useState,useRef,useEffect} from 'react'
 import axios from 'axios';
 import styled from 'styled-components';
 import RequestConsultItem from './RequestConsultItem';
+import {Link} from 'react-router-dom';
 
 const RequestConsultList = () => {
     const [RequestConsultList,setRequestConsultList] = useState([]);
@@ -11,7 +12,7 @@ const RequestConsultList = () => {
     const ContainerRef = useRef();
 	
     useEffect(() => {
-        axios.get("./Json/mainPageTutee/requestConsultList.json").then((response) => {
+        axios.get("./Json/mainPageTutee/RequestConsultList.json").then((response) => {
             setRequestConsultList(response.data?.consultList);
             console.log(response.data?.consultList);
             let temp = [];
@@ -59,6 +60,7 @@ const RequestConsultList = () => {
             <ScrollDiv ref = {ContainerRef} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
                 {getItem()}
             </ScrollDiv>
+            <Link to='/RequestConsult' state={{consult:'NormalConsult',tutorId:null}}><RequestButton>일반 피드백 요청하기</RequestButton></Link>
         </>
     )
 }
@@ -74,6 +76,25 @@ const ScrollDiv = styled.div`
     ::-webkit-scrollbar {
         display: none;
     }
+`
+
+const RequestButton = styled.div`
+    position: fixed;
+    bottom: 3rem;
+    left: 50%;
+    margin-left: -6rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-family: 'Noto Sans CJK KR';
+    font-style: normal;
+    font-weight: bold;
+    color: #fff;
+    background-color: #3A6C7B;
+    width: 12rem;
+    height: 3rem;
+    float: left;
+    font-size: 1rem;
+    line-height: 3rem;
 `
 
 export default RequestConsultList;

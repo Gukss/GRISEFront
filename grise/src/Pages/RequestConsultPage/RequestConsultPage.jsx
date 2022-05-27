@@ -1,22 +1,22 @@
 import React,{useRef} from "react";
 import styled from 'styled-components';
+import { useLocation,useNavigate } from 'react-router-dom';
 import NavBar from '../NavBar';
 
-const ConsultRequestPage = ()=>{
+const RequestConsultPage = ()=>{
+  const location = useLocation();
   const title = useRef('');
   const content = useRef('');
-  const youtubeSrc = useRef('');
   const isTitle = useRef(false);
   const isContent = useRef(false);
   const fileNameRef = useRef('');
-  const iframeRef = useRef(null);
   const uploadDivRef = useRef(null);
-  const youtubeDivRef = useRef(null);
   const postfiles = useRef({
-    file: [],
-    previewURL: "",
+    file: null,
+    name:''
   });
-
+  const navigate = useNavigate();
+  
 	//제목 검사
 	const onChangeTitle = (e) => {
 		title.current = e.target.value;
@@ -37,43 +37,21 @@ const ConsultRequestPage = ()=>{
     }
 	}
 
-  //유튜브 주소 입력
-  const onChangeYoutubeSrc = (e) => {
-    if(e.target.value.includes('https://youtu.be/')){
-      const src = "https://www.youtube.com/embed/"+e.target.value.split('https://youtu.be/')[1];
-		  youtubeSrc.current = src;
-		  iframeRef.current.src=src;
-    }
-	}
-
-  //영상업로드 or 유튜브선택
-  const onChangeOption = (e) =>{
-    if(e.target.value==="영상 업로드"){
-      youtubeDivRef.current.style.display="none";
-      uploadDivRef.current.style.display="flex";
-    }else{
-      youtubeDivRef.current.style.display="block";
-      uploadDivRef.current.style.display="none";
-    }
-  }
-
   const uploadFile = (e) => {
     if(e.target.files && e.target.files[0].size > (20 * 1024 * 1024)){
       alert("파일사이즈가 20mb를 넘습니다.");
     }else{
-      e.stopPropagation();
       let reader = new FileReader();
-      let file = e.target.files[0];
-      const filesInArr = Array.from(e.target.files);
-      fileNameRef.current.innerHTML = e.target.files[0].name
       reader.onloadend = () => {
         postfiles.current = {
-          file: filesInArr,
-          previewURL: reader.result,
+          file: e.target.files[0],
+          name: e.target.files[0].name,
         };
       };
-      if (file) {
-        reader.readAsDataURL(file);
+      e.stopPropagation();
+      fileNameRef.current.innerHTML = e.target.files[0].name;
+      if (e.target.files[0]) {
+        reader.readAsDataURL(e.target.files[0]);
       }
     }
   };
@@ -82,16 +60,32 @@ const ConsultRequestPage = ()=>{
   const summitConsult = () => {
 		if (isTitle.current && isContent.current) {
 			console.log("정상 제출");
-      const consult = {
-        "requestConsult":{
-          "title": title.current,
-          "content": content.current,
-          "tutor":"None",
-          "video":postfiles.current
+      if(location.state.consult === 'NormalConsult'){
+        const consult = {
+          "requestConsult":{
+            "title": title.current,
+            "content": content.current,
+            "isPost": "True",
+            "video":postfiles.current
+          }
         }
+        console.log(consult);
+        navigate('/Consult', { state: consult });
       }
-      console.log(consult);
-      console.log('유튜브 주소 :',youtubeSrc.current);
+      else if(location.state.consult === 'RequestConsult'){
+        const consult = {
+          "requestConsult":{
+            "title": title.current,
+            "content": content.current,
+            "isPost": "False",
+            "tutor":{
+              "id":location.state.tutorId
+            },
+            "video":postfiles.current
+          }
+        }
+        console.log(consult);
+      }
 		}
     else if(!isTitle.current){
       console.log("제목 미입력");
@@ -118,10 +112,6 @@ const ConsultRequestPage = ()=>{
         placeholder="피드백 받고 싶은 내용을 입력해 주세요"
         onChange={onChangeContent}
       />
-      <Select onChange={onChangeOption}>
-        <Option key="1" value="영상 업로드">영상 업로드</Option>
-        <Option key="2" value="유튜브영상 공유">유튜브영상 공유</Option>
-      </Select>
       <VideoInputContainer ref={uploadDivRef}>
         <VideoInput htmlFor="input-file">업로드</VideoInput>
         <input
@@ -134,20 +124,6 @@ const ConsultRequestPage = ()=>{
         />
         <FileName ref={fileNameRef} />
       </VideoInputContainer>
-      <div style={{display:'none'}} ref={youtubeDivRef}>
-        <Input
-          type="text"
-          placeholder="공유하기 버튼을 눌러 링크주소를 입력해 주세요"
-          onChange={onChangeYoutubeSrc}
-        />
-        <Iframe 
-          ref={iframeRef}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      </div>
       <SubmmitButton onClick={summitConsult}>피드백 요청</SubmmitButton>
     </Wrap>
   );
@@ -307,4 +283,4 @@ const Wrap = styled.div`
   }
 `
 
-export default ConsultRequestPage;
+export default RequestConsultPage;
