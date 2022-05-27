@@ -2,6 +2,7 @@ import React,{useState,useRef,useEffect} from 'react'
 import axios from 'axios';
 import styled from 'styled-components';
 import TutorItem from './TutorItem';
+import {Link} from 'react-router-dom';
 
 const TutorList = () => {
     const [tutorList,setTutorList] = useState([]);
@@ -58,7 +59,7 @@ const TutorList = () => {
             <ScrollDiv ref = {ContainerRef} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
                 {getItem()}
             </ScrollDiv>
-            <SubmmitButton>일반 피드백 요청하기</SubmmitButton>
+            <Link to='/RequestConsult' state={{consult:'NormalConsult',tutorId:null}}><RequestButton>일반 피드백 요청하기</RequestButton></Link>
         </>
     )
 }
@@ -76,7 +77,7 @@ const ScrollDiv = styled.div`
     }
 `
 
-const SubmmitButton = styled.div`
+const RequestButton = styled.div`
     position: fixed;
     bottom: 3rem;
     left: 50%;

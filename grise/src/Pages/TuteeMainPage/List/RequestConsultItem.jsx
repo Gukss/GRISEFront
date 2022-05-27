@@ -1,7 +1,7 @@
 import React,{forwardRef} from 'react'
 import styled from 'styled-components';
 
-const RequestConsultItem = forwardRef((props,ref) => {
+const ConsultRequestItem = forwardRef((props,ref) => {
     const onClickShowConsultBtn = () =>{
         console.log(props.data?.consult.consultId,'피드백 확인');
     }
@@ -66,4 +66,4 @@ const Container = styled.div`
     flex: 0 0 auto;
 `
 
-export default RequestConsultItem;
+export default ConsultRequestItem;
