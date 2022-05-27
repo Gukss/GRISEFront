@@ -84,7 +84,7 @@ const RequestConsultPage = ()=>{
           }
         }
         console.log(consult);
-        navigate('/Consult', { state: consult });
+        navigate('/Consult', { consult: consult });
       }
 		}
     else if(!isTitle.current){
