@@ -84,7 +84,7 @@ const RequestConsultPage = ()=>{
           }
         }
         console.log(consult);
-        navigate('/Consult', { consult: consult });
+        navigate('/Consult', consult);
       }
 		}
     else if(!isTitle.current){
