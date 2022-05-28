@@ -33,7 +33,8 @@ const Wrap = styled.div`
   width: 1200px;
   height: 100%;
   margin: 0 auto;
-
+	/* display: flex;
+	flex-direction: column; */
   @media (max-width: 1220px) {
     width: 100%;
     

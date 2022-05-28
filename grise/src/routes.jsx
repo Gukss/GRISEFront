@@ -1,6 +1,7 @@
 import TuteeMainPage from "./Pages/TuteeMainPage/TuteeMain";
 import TutorMainPage from "./Pages/TutorMainPage/TutorMain";
-import ConsultBoard from "./Pages/ConsultPage/Board";
+import TuteeConsultBoard from "./Pages/TuteeConsultPage/Board";
+import TutorConsultBoard from "./Pages/TutorConsultPage/Board";
 import RequestConsultPage from "./Pages/RequestConsultPage/RequestConsultPage";
 import TuteeLoginPage from "./Pages/LoginPage/TuteeLoginPage"
 import TutorLoginPage from "./Pages/LoginPage/TutorLoginPage";
@@ -27,11 +28,15 @@ const routes = [
     component: TutorLoginPage,
   },
   {
-    path: "/Consult",
-    component: ConsultBoard,
+    path: "/tuteeConsult",
+    component: TuteeConsultBoard,
   },
   {
-    path: "/RequestConsult",
+    path: "/tutorConsult",
+    component: TutorConsultBoard,
+  },
+  {
+    path: "/requestConsult",
     component: RequestConsultPage,
   },
   {
