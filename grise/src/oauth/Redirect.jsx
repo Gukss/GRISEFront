@@ -15,7 +15,7 @@ const Redirect = (props) => {
 
 	const GoogleApiPOST = (token) => {
     axios
-      .get(`http://study-with-ai.p-e.kr/api/v1/users`, {
+      .get(`http://grise.p-e.kr/api/v1/users`, {
         headers: {
           Authorization: "Bearer " + token,
           "Content-Type": "application/json",
@@ -24,11 +24,11 @@ const Redirect = (props) => {
       .then((res) => {
         console.log("로그인되었습니다.");
         console.log(res.data.body.user);
-				window.localStorage.setItem('userId', res.data.body.user.userId);
-				window.localStorage.setItem('username', res.data.body.user.username);
-        window.localStorage.setItem('token', "Bearer " + token);
+        window.localStorage.setItem("userId", res.data.body.user.userId);
+        window.localStorage.setItem("username", res.data.body.user.username);
+        window.localStorage.setItem("token", "Bearer " + token);
 
-				window.location.href = "http://localhost:3000/tuteeMain";
+        window.location.href = "http://localhost:3000/tuteeMain";
       })
       .catch((error) => alert("Error가 발생하였습니다", error));
 		};

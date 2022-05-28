@@ -12,9 +12,12 @@ export const TuteeLoginPage = () => {
   return (
     <Wrap>
       <TuteeLogo style={{ width: "100%", height: "100%" }}></TuteeLogo>
-      <a href="http://study-with-ai.p-e.kr/oauth2/authorization/google?redirect_uri=http://localhost:3000/oauth/redirect" style={{display: "flex", justifyContent: "center"}}>
-        <div style={{ width: "60%"}}>
-					<GoogleLoginButton></GoogleLoginButton>
+      <a
+        href="http://grise.p-e.kr/oauth2/authorization/google?redirect_uri=http://localhost:3000/oauth/redirect"
+        style={{ display: "flex", justifyContent: "center" }}
+      >
+        <div style={{ width: "60%" }}>
+          <GoogleLoginButton></GoogleLoginButton>
         </div>
       </a>
     </Wrap>
