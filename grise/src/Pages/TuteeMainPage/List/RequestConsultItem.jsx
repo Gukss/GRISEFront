@@ -1,9 +1,15 @@
 import React,{forwardRef} from 'react'
 import styled from 'styled-components';
+import {useNavigate} from 'react-router-dom';
 
 const ConsultRequestItem = forwardRef((props,ref) => {
+		const navigate = useNavigate();
+		const consult = {
+			data: props.data.consult
+		}
     const onClickShowConsultBtn = () =>{
-        console.log(props.data?.consult.consultId,'피드백 확인');
+        console.log(consult.data,'피드백 확인');
+				navigate("/Consult", { state: consult });
     }
     return (
         <div ref={ref} style={{borderBottom:"#3A6C7B solid 0.2rem"}}>

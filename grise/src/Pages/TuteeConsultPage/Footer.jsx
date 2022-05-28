@@ -99,9 +99,6 @@ const Footer = () => {
 	
 	return (
     <div>
-      {/* <Comment commentList={commentList} tutee_name={tutee_name}></Comment> */}
-      {/* <div style={{height: "100%"}}>
-      </div> */}
 			<StyledComment>
       	{getItem()}
 			</StyledComment>
@@ -183,6 +180,7 @@ const StyledFooter = styled.footer`
   border-top: #3a6c7b solid 1px;
   display: flex;
 	background-color: #fff;
+	
 `;
 
 const StyledInput = styled.input`
