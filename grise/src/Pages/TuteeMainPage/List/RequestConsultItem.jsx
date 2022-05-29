@@ -2,21 +2,21 @@ import React,{forwardRef} from 'react'
 import styled from 'styled-components';
 import {useNavigate} from 'react-router-dom';
 
-const ConsultRequestItem = forwardRef((props,ref) => {
-		const navigate = useNavigate();
-		const consult = {
-			data: props.data.consult
-		}
+const RequestConsultItem = forwardRef((props,ref) => {
+    const navigate = useNavigate();
+    const consult = {
+        data: props.data.consult
+    }
     const onClickShowConsultBtn = () =>{
         console.log(consult.data,'피드백 확인');
-				navigate("/Consult", { state: consult });
+	    navigate("/tuteeConsult", { state: consult });
     }
     return (
         <div ref={ref} style={{borderBottom:"#3A6C7B solid 0.2rem"}}>
             <Container>
                 <div style={{float:'left'}}>
-                    <Title>{props.data?.consult.title}</Title>
-                    <Name>{props.data?.consult.tutor.name}</Name>
+                    <Title>{props.data?.title}</Title>
+                    <Name>{props.data?.username}</Name>
                 </div>
                 <ShowConsultBtn onClick={onClickShowConsultBtn}>피드백 확인</ShowConsultBtn>
             </Container>
@@ -72,4 +72,4 @@ const Container = styled.div`
     flex: 0 0 auto;
 `
 
-export default ConsultRequestItem;
+export default RequestConsultItem;

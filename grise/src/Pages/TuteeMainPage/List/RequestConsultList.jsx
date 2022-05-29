@@ -10,18 +10,29 @@ const RequestConsultList = () => {
     const [touchPosition,setTouchPosition]= useState({x:0,y:0});
     const ItemRef = useRef();
     const ContainerRef = useRef();
-	
     useEffect(() => {
-        axios.get("./Json/mainPageTutee/RequestConsultList.json").then((response) => {
-            setRequestConsultList(response.data?.consultList);
-            console.log(response.data?.consultList);
+        
+        //튜터목록리스트 요청
+        axios({
+            method:'GET',
+            url:`http://grise.p-e.kr/tutee/consults`,
+            headers: {
+              Authorization: window.localStorage.getItem('token') ,
+              "Content-Type": "application/json",
+            }
+        })
+        .then((res) => {
+            console.log(res.data);
+            setRequestConsultList(res.data);
             let temp = [];
             for(let i=0;i<10;i++){
-                if(i >= response.data?.consultList.length){break;}
-                temp.push(response.data?.consultList[i]);
+                if(i > res.data.length-1){break;}
+                temp.push(res.data[i]);
             };
             setOutputList(temp);
-        });
+            
+        }).catch((error) => console.log(error));
+        
       }, []);
 
     const onTouchStart=(e)=>{
@@ -47,6 +58,7 @@ const RequestConsultList = () => {
     }
 
     const getItem = () =>{
+        if(outputList.length === 0){return;}
         const result = [];
         for(let i = 0; i < outputList.length-1; i++){
             result.push(<RequestConsultItem key = {i} isEnd={false} data = {outputList[i]}></RequestConsultItem>);
