@@ -56,6 +56,7 @@ const TutorList = () => {
     }
 
     const getItem = () =>{
+        if(outputList.length === 0){return;}
         const result = [];
         for(let i = 0; i < outputList.length-1; i++){
             result.push(<TutorItem key = {i} isEnd={false} data = {outputList[i]}></TutorItem>);
