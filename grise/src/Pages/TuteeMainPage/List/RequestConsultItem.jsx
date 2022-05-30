@@ -4,12 +4,9 @@ import {useNavigate} from 'react-router-dom';
 
 const RequestConsultItem = forwardRef((props,ref) => {
     const navigate = useNavigate();
-    const consult = {
-        data: props.data.consult
-    }
     const onClickShowConsultBtn = () =>{
-        console.log(consult.data,'피드백 확인');
-	    navigate("/tuteeConsult", { state: consult });
+        console.log(props.data,'피드백 확인');
+	    navigate("/tuteeConsult", { state: props.data });
     }
     return (
         <div ref={ref} style={{borderBottom:"#3A6C7B solid 0.2rem"}}>
