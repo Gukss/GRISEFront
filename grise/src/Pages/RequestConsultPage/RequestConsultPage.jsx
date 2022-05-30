@@ -30,7 +30,6 @@ const RequestConsultPage = ()=>{
       let URL = 'http://grise.p-e.kr/tutee/consults';
       
       if(location.state.consult === 'NormalConsult'){
-        data.append("tutorId",null);
         URL+='/general';
       }
       else if(location.state.consult === 'RequestConsult'){
