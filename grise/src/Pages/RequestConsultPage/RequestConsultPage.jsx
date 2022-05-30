@@ -82,7 +82,7 @@ const RequestConsultPage = ()=>{
           </div>
           <div>
             <VideoTitleDiv>영상 업로드</VideoTitleDiv>
-            <input id="video" name="video" type="File" accept='application/mp4' style={{display:'none'}} onChange={onChangeVideo} ref={VideoRef}></input>
+            <input id="video" name="video" type="File" accept='video/*' style={{display:'none'}} onChange={onChangeVideo} ref={VideoRef}></input>
             <VideoConatiner>
               <UploadButton htmlFor="video">동영상선택</UploadButton>
               <VideoName ref={VideoNameRef}>선택된 파일없음</VideoName>
