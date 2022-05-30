@@ -10,6 +10,7 @@ const RequestConsultPage = ()=>{
   const ContentRef = useRef(null);
   const VideoRef = useRef(null);
   const VideoNameRef = useRef(null);
+  const SubmitingRef = useRef(null);
   const navigate = useNavigate();
 
   const onChangeVideo = (e) =>{
@@ -18,15 +19,16 @@ const RequestConsultPage = ()=>{
 
 	//제목이랑 본문 둘 중 하나 안 채워 졌을 때 어떻게 나타낼지 정하기
   const summitConsult = (event) => {
+    event.preventDefault();
     const isTitle = TitleRef.current.value.length > 2 ? true:false;
     const isContent = ContentRef.current.value.length > 4 ? true:false;
     const isVideo = VideoRef.current.files[0] !== undefined ? true:false;
-
-    event.preventDefault();
+    SubmitingRef.current.style.display='block';
 		if (isTitle&&isContent&&isVideo) {
 			console.log("정상 제출");
       let data = new FormData(FormRef.current);
       let URL = 'http://grise.p-e.kr/tutee/consults';
+      
       if(location.state.consult === 'NormalConsult'){
         data.append("tutorId",null);
         URL+='/general';
@@ -43,8 +45,10 @@ const RequestConsultPage = ()=>{
         data:data
       }).then((res) => {
         console.log(res);
+        SubmitingRef.current.style.display='none';
         navigate('/tuteeMain');
       }).catch((error) => console.log(error));
+      
 		}   
     else if(!isTitle){
       console.log("제목 미입력");
@@ -62,6 +66,9 @@ const RequestConsultPage = ()=>{
 
   return (
     <Wrap>
+      <SubmitingDiv ref={SubmitingRef}>
+        전송중입니다
+      </SubmitingDiv>
       <NavBar />
       <form id = "video-form" ref={FormRef}>
         <fieldset>
@@ -87,6 +94,27 @@ const RequestConsultPage = ()=>{
     </Wrap>
   );
 }
+
+const SubmitingDiv = styled.div`
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: 'Noto Sans CJK KR';
+  font-style: normal;
+  font-weight: bold;
+  color: #fff;
+  font-size: 3rem;
+  text-align: center;
+  line-height: 80vh;
+  background-color: rgba(0,0,0,0.8);
+`
+
 
 const VideoConatiner = styled.div`
   display: flex;
@@ -134,7 +162,8 @@ const UploadButton = styled.label`
 `
 
 const SubmmitButton = styled.button`
-  position: fixed;
+  position: absolute;
+  z-index: 0;
   bottom: 1rem;
   left: 50%;
   margin-left: -6rem;
