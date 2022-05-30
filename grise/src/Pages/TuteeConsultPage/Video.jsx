@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect,useRef} from "react";
 import styled from 'styled-components'
 const Video = (props) => {
   const videoRef = useRef(null);
