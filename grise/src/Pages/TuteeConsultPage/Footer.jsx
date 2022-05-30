@@ -5,32 +5,45 @@ import Comment from "./Comment";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import axios from 'axios';
 
-const Footer = () => {
-	const ItemRef = useRef(null);
-	const [content, setContent] = useState('');
-	const [commentList, setCommentList] = useState([]);
-	const [tuteeName, setTuteeName] = useState('');
+const Footer = ({ consultId }) => {
+  const ItemRef = useRef(null);
+  const [content, setContent] = useState("");
+  const [commentList, setCommentList] = useState([]);
+  const [tuteeName, setTuteeName] = useState("");
+  const inputEl = useRef(null);
 
-	const inputEl = useRef(null);
+	const commentListCheck = (comments) => {
 
-	useEffect(() => {
-		axios.get("./Json/consultPage/consult.json")
-		.then((response) => {
-			setCommentList(response.data.consult?.commentList);
-			setTuteeName(response.data.consult?.tutee.name);
-			// console.log(response.data.consult?.tutee.name);
-			// console.log(response.data.consult?.commentList);
-		});
-		// ItemRef.current.scrollIntoView({ behavior: "smooth" });
-	}, []);
+	};
 
-	useEffect (() => {
-		ItemRef.current.scrollIntoView({ behavior: "smooth" });
-	},[commentList])
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: `http://grise.p-e.kr/tutee/consults/${consultId}/comments`,
+      headers: {
+        Authorization: window.localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+    })
+		.then((res) => {
+			commentListCheck(res.data);
+		})
+		.catch((error) => {
+      console.log(error);
+    });
+  }, []);
 
-	const getItem = () => {
+  useEffect(() => {
+    if (commentList.length !== 0) {    
+    	ItemRef.current.scrollIntoView({ behavior: "smooth" });
+		}
+	}, [commentList]);
+
+  const getItem = () => {
+    if(commentList.length === 0){
+			return;
+		};
     const result = [];
-		console.log(commentList);
 
     for (let i = 0; i < commentList.length - 1; i++) {
       result.push(
@@ -46,9 +59,7 @@ const Footer = () => {
           }
         >
           <span>{commentList[i]?.comment.userName}</span>
-					<span>
-          	{commentList[i]?.comment.content}
-					</span>
+          <span>{commentList[i]?.comment.content}</span>
         </CommentItem>
       );
     }
@@ -74,34 +85,52 @@ const Footer = () => {
     return result;
   };
 
-	const getComment = (e) => {
+  const getComment = (e) => {
     setContent(e.target.value);
-		console.log(content);
   };
 
-	const onSubmit = (e) => {
-		e.preventDefault();
-		if (content === '') {
-			return;
-		}
-		setCommentList(
-			//연결후 post, get으로 수정필요
-			commentList.concat({comment: {
-				comment_id: 1,
-				content: content,
-				userName: "유저이름1"
-			}})
-		);
-		
-		setContent('');
-		inputEl.current.focus();
-	}
-	
-	return (
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (content === "") {
+      return;
+    }
+		axios({
+      method: "POST",
+      url: `http://grise.p-e.kr/tutee/consults/${consultId}/comments`,
+      headers: {
+        Authorization: window.localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+      data: {
+        content: content,
+      },
+    })
+      .then((res) => {
+        axios({
+          method: "GET",
+          url: `http://grise.p-e.kr/tutee/consults/${consultId}/comments`,
+          headers: {
+            Authorization: window.localStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => {
+						setCommentList(res.data);
+						setContent("");
+            inputEl.current.focus();
+					})
+          .catch((error) => {
+            console.log("1", error);
+          });
+      })
+      .catch((error) => {
+        console.log("2", error);
+      });
+  };
+
+  return (
     <div>
-			<StyledComment>
-      	{getItem()}
-			</StyledComment>
+      <StyledComment>{getItem()}</StyledComment>
       <StyledFooter>
         <form
           style={{

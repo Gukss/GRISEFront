@@ -17,6 +17,10 @@ const GlobalStyle = createGlobalStyle`
         padding: 0%;
         margin: 0%;
     }
-`
+		.ant-btn-primary {
+        background: #3A6C7B;
+        border: #3A6C7B;
+		}
+`;
 
 export default GlobalStyle

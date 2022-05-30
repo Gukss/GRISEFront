@@ -13,8 +13,6 @@ const ModalButton = () => {
 
   const handleOk = () => {
     setIsModalVisible(false);
-		// console.log(rate.current);
-		// window.location.href = "http://localhost:3000/tuteeMain";
   };
 
   const handleCancel = () => {

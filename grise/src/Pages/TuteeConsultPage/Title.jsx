@@ -7,12 +7,6 @@ const Title = ({title, tuteeName, tutorName}) => {
   return (
     <StyledTitle>
       <StyledHeader>{title}</StyledHeader>
-      {/* <StyledTutor>
-        {tutorName}
-      </StyledTutor>
-			<StyledTutee>
-        {tuteeName}
-			</StyledTutee> */}
       <ModalButton style={{float: "right"}}></ModalButton>
     </StyledTitle>
   );
