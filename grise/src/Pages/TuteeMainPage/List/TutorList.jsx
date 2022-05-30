@@ -12,15 +12,25 @@ const TutorList = () => {
     const ContainerRef = useRef();
 	
     useEffect(() => {
-        axios.get("./Json/mainPageTutee/tutorList.json").then((response) => {
-            setTutorList(response.data?.tutorList);
+        axios({
+            method:'GET',
+            url:`http://grise.p-e.kr/tutee/tutors`,
+            headers: {
+              Authorization: window.localStorage.getItem('token') ,
+              "Content-Type": "application/json",
+            }
+        })
+        .then((res) => {
+            console.log(res.data);
+            setTutorList(res.data);
             let temp = [];
             for(let i=0;i<10;i++){
-                if(i >= response.data?.tutorList.length){break;}
-                temp.push(response.data?.tutorList[i]);
+                if(i > res.data.length-1){break;}
+                temp.push(res.data[i]);
             };
             setOutputList(temp);
-        });
+            
+        }).catch((error) => console.log(error));
       }, []);
 
     const onTouchStart=(e)=>{

@@ -1,119 +1,28 @@
-import React, { useState, useRef, useEffect } from "react";
-import axios from "axios";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import RequestConsultItem from "./RequestConsultItem";
-import { Link } from "react-router-dom";
 
-const RequestConsultList = () => {
-  const [RequestConsultList, setRequestConsultList] = useState([]);
-  const [outputList, setOutputList] = useState([]);
-  const [touchPosition, setTouchPosition] = useState({ x: 0, y: 0 });
-  const ItemRef = useRef();
-  const ContainerRef = useRef();
-	
-
-  useEffect(() => {
-		// axios.post(
-    //   "http://grise.p-e.kr/tutee/consults/general",
-    //     {
-    //       title: "123트1",
-    //       content: "피드백본문1",
-    //       isPost: false,
-    //       video: {
-    //         name: "asdf",
-    //         data: "010011",
-    //       },
-    //       tutorId: null,
-    //     },
-    //   {
-    //     headers: {
-    //       Authorization: window.localStorage.getItem("token"),
-    //       "Content-Type": "application/json",
-    //     },
-    //   },
-      
-    // );
-    //일반피드백 요청
-    
-
-    
-        axios({
-            method: `post`,
-            url: `http://grise.p-e.kr/tutee/consults/general`,
-            headers: {
-                Authorization: window.localStorage.getItem('token'),
-                "Content-Type": "application/json",
-            },
-            body: {
-                'title': "123트1",
-                'content': "피드백본문1",
-                'isPost': false,
-                'video': {
-                  'name': "asdf",
-                  'data': null
-                },
-                "tutorId": 1
-							},
-        });
-        
-    /*
-        axios({
-            url: "http://grise.p-e.kr/tutee/consults/general",
-            method: "POST",
-            headers: {
-                Authorization: window.localStorage.getItem('token'),
-                "Content-Type": "application/json",
-            },
-            body: {
-                "title": "123트1",
-                "content": "피드백본문1",
-                "isPost": false,
-                "video":{
-                  "name":"asdf",
-                  "data":"010011"
-                },
-                "tutorId":null
-            },
-            
-          })
-            .then((res) => {
-              console.log("등록완료");
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        */
-  }, []);
-
-  const onTouchStart = (e) => {
-    setTouchPosition({
-      x: e.changedTouches[0].pageX,
-      y: e.changedTouches[0].pageY,
-    });
-  };
-
-  const onTouchEnd = (e) => {
-    const distanceY = touchPosition.y - e.changedTouches[0].pageY; //드래그한 Y길이 시작Y좌표 - 드래그끝났을때 Y좌표 내릴때 양수
-    const DivHeight = ItemRef.current.style.height; //아이템 하나의 높이
-    const scrollY =
-      ContainerRef.current.getBoundingClientRect().bottom -
-      ItemRef.current.getBoundingClientRect().bottom;
-    //높이가 소수점이면 애매하게 딱 안맞을 수 있어서 수정
-    if (-0.1 < scrollY && scrollY < 0.1) {
-      if (distanceY > DivHeight) {
-        //스크롤링위치가 맨마지막에 되어있을때 item하나의 높이보다 더 드래그하면 새로고침
-        console.log("새로고침");
-        const temp = [...outputList];
-        for (let i = outputList.length; i < outputList.length + 10; i++) {
-          if (i >= RequestConsultList.length) {
-            break;
-          }
-          temp.push(RequestConsultList[i]);
-        }
-        setOutputList(temp);
-      }
+const RequestConsultItem = forwardRef((props,ref) => {
+    const navigate = useNavigate();
+    const consult = {
+        data: props.data.consult
     }
-  };
+    const onClickShowConsultBtn = () =>{
+        console.log(consult.data,'피드백 확인');
+	    navigate("/tuteeConsult", { state: consult });
+    }
+    return (
+        <div ref={ref} style={{borderBottom:"#3A6C7B solid 0.2rem"}}>
+            <Container>
+                <div style={{float:'left'}}>
+                    <Title>{props.data?.title}</Title>
+                    <Name>{props.data?.username}</Name>
+                </div>
+                <ShowConsultBtn onClick={onClickShowConsultBtn}>피드백 확인</ShowConsultBtn>
+            </Container>
+        </div>
+    )
+});
 
   const getItem = () => {
     if (outputList.length === 0) {
@@ -191,4 +100,27 @@ const RequestButton = styled.div`
   line-height: 3rem;
 `;
 
-export default RequestConsultList;
+const Title = styled.div`
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+    display: block;
+    font-size: 1rem;
+    text-align:left;
+    font-family: 'Noto Sans CJK KR';
+    font-style: normal;
+    font-weight: bold;
+    color: #3A6C7B;
+    height: 1rem;
+`
+
+const Container = styled.div`
+    width: 100%;
+    height: 4.5rem;
+    font-family: 'Noto Sans CJK KR';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2rem;
+    flex: 0 0 auto;
+`
+
+export default RequestConsultItem;

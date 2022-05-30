@@ -19,17 +19,17 @@ const TutorItem = forwardRef((props,ref) => {
         <div ref={ref} style={{borderBottom:"#3A6C7B solid 0.2rem"}}>
             <Container>
                 <div style={{float:'left'}}>
-                    <Title>{props.data?.tutor.name}</Title>
+                    <Title>{props.data?.username}</Title>
                     <div>
                         <StarImage><Star style={{width:'1.5rem',height:'1.5rem'}}></Star></StarImage>
-                        <Score>{props.data?.tutor.score}</Score>
+                        <Score>{props.data?.review.star}</Score>
                         <ShowDetailBtn ref={ShowDetailBtnRef} onClick={showDetailInfo}>정보 보기</ShowDetailBtn>
                     </div>
                 </div>
-                <Link to='/RequestConsult' state={{consult:'RequestConsult',tutorId:props.data?.tutor.tutorId}}><TutorConsultBtn>피드백 요청</TutorConsultBtn></Link>
+                <Link to='/RequestConsult' state={{consult:'RequestConsult',tutorId:props.data?.tutorId}}><TutorConsultBtn>피드백 요청</TutorConsultBtn></Link>
             </Container>
             <DetailInfo ref = {detailDivRef}>
-                {props.data?.tutor.resume.content}
+                {props.data?.resumeContent}
             </DetailInfo>
         </div>
     )
@@ -99,8 +99,16 @@ const Container = styled.div`
     flex: 0 0 auto;
 `
 const DetailInfo = styled.div`
+    margin-top: 0.7rem;
+    padding-left: 1.5rem;
     display: none;
-    margin-left: 1.5rem;
-    text-indent : -5.5rem;
+    width: 100%;
+    white-space: normal;
+    word-break: break-all;
+    height:auto;
+    font-family: 'Noto Sans CJK KR';
+    font-style: normal;
+    font-weight: 100;
+    font-size: 1rem;
 `
 export default TutorItem;
