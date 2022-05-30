@@ -46,19 +46,26 @@ const RequestConsultPage = ()=>{
         console.log(res);
         SubmitingRef.current.style.display='none';
         navigate('/tuteeMain');
-      }).catch((error) => console.log(error));
+      }).catch((error) => {
+        console.log(error);
+        alert("동영상 업로드 에러");
+        SubmitingRef.current.style.display='none';
+      });
       
 		}   
     else if(!isTitle){
       console.log("제목 미입력");
+      SubmitingRef.current.style.display='none';
       alert('제목을 입력해 주세요!(3글자 이상)');
     }
 		else if(!isContent) {
 			console.log("본문 미입력");
+      SubmitingRef.current.style.display='none';
       alert('본문을 입력해 주세요!(5글자 이상)');
 		}
     else if(!isVideo){
       console.log("비디오 미입력");
+      SubmitingRef.current.style.display='none';
       alert('비디오를 업로드해 주세요')
     }
   };
