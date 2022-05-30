@@ -3,9 +3,11 @@ import styled from "styled-components";
 
 const Comment = ({ commentList, tutee_name }) => {
 	const ItemRef = useRef(null);
+	
 	useEffect (() => {
 		ItemRef.current.scrollIntoView({ behavior: "smooth" });
-	}, [])
+	}, []);
+
 	const getItem = () => {
     const result = [];
     for (let i = 0; i < commentList.length - 1; i++) {

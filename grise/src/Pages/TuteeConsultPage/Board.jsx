@@ -42,9 +42,14 @@ const Board = () => {
         title={consult?.title}
         tuteeName={consult?.tutee?.name}
         tutorName={consult?.tutor?.name}
+        consultId={location.state.consultId}
       />
       <MainText content={consult?.content} />
-      <Footer consultId={location.state.consultId}/>
+      <Footer
+        consultId={location.state.consultId}
+        tuteeName={consult?.tutee?.name}
+        // tutorName={location.state.tutor.name}
+      />
     </Wrap>
   );
 };

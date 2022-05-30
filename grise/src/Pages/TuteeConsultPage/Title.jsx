@@ -2,12 +2,14 @@ import React, {useState, useRef} from "react";
 import styled from 'styled-components';
 import ModalButton from "./ModalButton";
 
-const Title = ({title, tuteeName, tutorName}) => {
-	
+const Title = ({ title, tuteeName, tutorName, consultId }) => {
   return (
     <StyledTitle>
       <StyledHeader>{title}</StyledHeader>
-      <ModalButton style={{float: "right"}}></ModalButton>
+      <ModalButton
+        consultId={consultId}
+        style={{ float: "right" }}
+      ></ModalButton>
     </StyledTitle>
   );
 };

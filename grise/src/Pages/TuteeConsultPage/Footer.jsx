@@ -5,16 +5,14 @@ import Comment from "./Comment";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import axios from 'axios';
 
-const Footer = ({ consultId }) => {
+const Footer = ({ consultId, tuteeName }) => {
   const ItemRef = useRef(null);
   const [content, setContent] = useState("");
   const [commentList, setCommentList] = useState([]);
-  const [tuteeName, setTuteeName] = useState("");
+  // const [tuteeName, setTuteeName] = useState("");
   const inputEl = useRef(null);
 
-	const commentListCheck = (comments) => {
-
-	};
+  const commentListCheck = (comments) => {};
 
   useEffect(() => {
     axios({
@@ -25,24 +23,25 @@ const Footer = ({ consultId }) => {
         "Content-Type": "application/json",
       },
     })
-		.then((res) => {
-			commentListCheck(res.data);
-		})
-		.catch((error) => {
-      console.log(error);
-    });
+      .then((res) => {
+        setCommentList(res.data);
+        console.log("리스트", commentList);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   useEffect(() => {
-    if (commentList.length !== 0) {    
-    	ItemRef.current.scrollIntoView({ behavior: "smooth" });
-		}
-	}, [commentList]);
+    if (commentList.length !== 0) {
+      ItemRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [commentList]);
 
   const getItem = () => {
-    if(commentList.length === 0){
-			return;
-		};
+    if (commentList.length === 0) {
+      return;
+    }
     const result = [];
 
     for (let i = 0; i < commentList.length - 1; i++) {
@@ -50,16 +49,12 @@ const Footer = ({ consultId }) => {
         <CommentItem
           key={i}
           backgroundColor={
-            tuteeName === commentList[i]?.comment.userName
-              ? "#e3e3e3"
-              : "#3a6c7b"
+            tuteeName === commentList[i]?.userName ? "#e3e3e3" : "#3a6c7b"
           }
-          color={
-            tuteeName === commentList[i]?.comment.userName ? "#000" : "#fff"
-          }
+          color={tuteeName === commentList[i]?.userName ? "#000" : "#fff"}
         >
-          <span>{commentList[i]?.comment.userName}</span>
-          <span>{commentList[i]?.comment.content}</span>
+          <span>{commentList[i]?.userName}</span>
+          <span>{commentList[i]?.content}</span>
         </CommentItem>
       );
     }
@@ -68,18 +63,18 @@ const Footer = ({ consultId }) => {
         key={commentList.length - 1}
         ref={ItemRef}
         backgroundColor={
-          tuteeName === commentList[commentList.length - 1]?.comment.userName
+          tuteeName === commentList[commentList.length - 1]?.userName
             ? "#e3e3e3"
             : "#3a6c7b"
         }
         color={
-          tuteeName === commentList[commentList.length - 1]?.comment.userName
+          tuteeName === commentList[commentList.length - 1]?.userName
             ? "#000"
             : "#fff"
         }
       >
-        <span>{commentList[commentList.length - 1]?.comment?.userName}</span>
-        <span>{commentList[commentList.length - 1]?.comment.content}</span>
+        <span>{commentList[commentList.length - 1]?.userName}: </span>
+        <span>{commentList[commentList.length - 1]?.content}</span>
       </CommentItem>
     );
     return result;
@@ -94,17 +89,19 @@ const Footer = ({ consultId }) => {
     if (content === "") {
       return;
     }
-		axios({
-      method: "POST",
-      url: `http://grise.p-e.kr/tutee/consults/${consultId}/comments`,
-      headers: {
-        Authorization: window.localStorage.getItem("token"),
-        "Content-Type": "application/json",
-      },
-      data: {
-        content: content,
-      },
-    })
+    axios
+      .post(
+        `http://grise.p-e.kr/tutee/consults/${consultId}/comment`,
+        {
+          content: content,
+        },
+        {
+          headers: {
+            Authorization: window.localStorage.getItem("token"),
+            "Content-Type": `application/json`,
+          },
+        }
+      )
       .then((res) => {
         axios({
           method: "GET",
@@ -115,10 +112,10 @@ const Footer = ({ consultId }) => {
           },
         })
           .then((res) => {
-						setCommentList(res.data);
-						setContent("");
+            setCommentList(res.data);
+            setContent("");
             inputEl.current.focus();
-					})
+          })
           .catch((error) => {
             console.log("1", error);
           });
@@ -126,6 +123,38 @@ const Footer = ({ consultId }) => {
       .catch((error) => {
         console.log("2", error);
       });
+    // axios({
+    //   method: "POST",
+    //   url: `http://grise.p-e.kr/tutee/consults/${consultId}/comment`,
+    //   headers: {
+    //     "Authorization": window.localStorage.getItem("token"),
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: {
+    //     "content": content
+    // 	}
+    // })
+    //   .then((res) => {
+    //     axios({
+    //       method: "GET",
+    //       url: `http://grise.p-e.kr/tutee/consults/${consultId}/comments`,
+    //       headers: {
+    //         Authorization: window.localStorage.getItem("token"),
+    //         "Content-Type": "application/json",
+    //       },
+    //     })
+    //       .then((res) => {
+    // 				setCommentList(res.data);
+    // 				setContent("");
+    //         inputEl.current.focus();
+    // 			})
+    //       .catch((error) => {
+    //         console.log("1", error);
+    //       });
+    //   })
+    //   .catch((error) => {
+    //     console.log("2", error);
+    //   });
   };
 
   return (
