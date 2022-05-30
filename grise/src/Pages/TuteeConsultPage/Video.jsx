@@ -1,11 +1,34 @@
 import React, {useState} from "react";
 import styled from 'styled-components'
-const Video = () => {
-	const [videoSrc, setVideoSrc] = useState('/videos/test.mp4')
+const Video = (props) => {
+  const videoRef = useRef(null);
+  async function VideoInit(){
+    const result = await fetch(`http://grise.p-e.kr/tutee/video/${props.videoId}`, {
+      headers: {
+        Authorization: window.localStorage.getItem('token')
+      }
+    });
+
+    const blob = await result.blob();
+
+    if (blob) {
+      videoRef.current.src = URL.createObjectURL(blob);
+
+      // Load the new resource
+      videoRef.current.parentElement.load();
+
+      console.info("Ready!", videoRef.current.src);
+    } else {
+      console.warn("Can not load");
+    }
+  }
+  useEffect(()=>{
+    VideoInit();
+  },[])
   return (
     <StyledVideo>
       <video controls style={{width: "100%", height: "100%"}}>
-        <source src={videoSrc}></source>
+        <source ref={videoRef}></source>
       </video>
     </StyledVideo>
   );
