@@ -5,11 +5,12 @@ import { GoogleLoginButton } from "react-social-login-buttons";
 
 
 export const TuteeLoginPage = () => {
+	const baseUrl = window.location.origin;
   return (
     <Wrap>
       <TuteeLogo style={{ width: "100%", height: "100%" }}></TuteeLogo>
       <a
-        href="http://grise.p-e.kr/oauth2/authorization/google?redirect_uri=http://localhost:3000/Redirect"
+        href={`http://grise.p-e.kr/oauth2/authorization/google?redirect_uri=http://${baseUrl}/Redirect`}
         style={{ display: "flex", justifyContent: "center" }}
       >
         <div style={{ width: "60%" }}>
