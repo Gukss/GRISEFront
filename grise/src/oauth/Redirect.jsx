@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useNavigate } from "react";
 import axios from "axios";
 
 const Redirect = (props) => {
+  const navigate = useNavigate();
 	useEffect (() => {
 		const current = decodeURI(window.location.href);
     const search = current.split("?")[1];
@@ -35,12 +36,14 @@ const Redirect = (props) => {
           }
         }).then((res)=>{
           console.log("튜티 등록성공");
-          window.location.href = "http://localhost:3000/tuteeMain";
+					navigate("/tuteeMain");
+          // window.location.href = "http://localhost:3000/tuteeMain";
         })
         .catch((error) => alert("등록 Error가 발생하였습니다", error));
       }else{ //튜티일때
         console.log("등록된 유저입니다.");
-        window.location.href = "http://localhost:3000/tuteeMain";
+				navigate("/tuteeMain");
+        // window.location.href = "http://localhost:3000/tuteeMain";
       }
       })
       .catch((error) => alert("Error가 발생하였습니다", error));
