@@ -1,11 +1,12 @@
-import React, {useState} from "react";
+import React, { useState, useRef } from "react";
 import styled from 'styled-components'
 const Video = () => {
+	const videoRef = useRef(null);
 	
   return (
     <StyledVideo>
       <video controls style={{ width: "100%", height: "100%" }}>
-        <source ref={} type="video/mp4"></source>
+        <source ref={videoRef} type="video/mp4"></source>
       </video>
     </StyledVideo>
   );
