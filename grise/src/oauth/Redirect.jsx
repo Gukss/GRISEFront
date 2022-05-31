@@ -1,4 +1,5 @@
-import { useEffect, useNavigate } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Redirect = (props) => {
