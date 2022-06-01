@@ -1,79 +1,53 @@
-import React, { useRef, useEffect } from "react";
-import styled from "styled-components";
-import RequestConsultList from "./List/RequestConsultList"
-import TutorList from "./List/TutorList";
+import GlobalStyle from '../../styles/globalStyle/GlobalStyle';
+import React, { useRef } from "react";
+import ConsultList from "./List/ConsultList"
+import {Select} from 'antd';
 
 const Header = () => {
-  const RequestConsultRef = useRef(null);
-  const TutorRef = useRef(null);
   const RequestConsultListRef = useRef(null);
   const TutorListRef = useRef(null);
-  useEffect(() => {
-    onClickRequestConsultBtn();
-  }, []);
+  const SolvedConsultListRef = useRef(null);
+  const { Option } = Select;
 
-  const onClickRequestConsultBtn = () => {
-    RequestConsultRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
-    RequestConsultRef.current.style.color = "#3A6C7B";
-    TutorRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    TutorRef.current.style.color = "#b1b1b1";
-    TutorListRef.current.style.display="None";
-    RequestConsultListRef.current.style.display="block";
-  };
 
-  const onClickTutorBtn = () => {
-    RequestConsultRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    RequestConsultRef.current.style.color = "#b1b1b1";
-    TutorRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
-    TutorRef.current.style.color = "#3A6C7B";
-    TutorListRef.current.style.display="block";
-    RequestConsultListRef.current.style.display="None";
-  };
+  const onChangeSelect = (value) =>{
+    if(value === 'Consulting'){
+      RequestConsultListRef.current.style.display='block';
+      SolvedConsultListRef.current.style.display='none';
+      TutorListRef.current.style.display='none';
+    }else if(value === 'SolvedConsult'){
+      RequestConsultListRef.current.style.display='none';
+      SolvedConsultListRef.current.style.display='block';
+      TutorListRef.current.style.display='none';
+    }else if(value === 'Tutor'){
+      RequestConsultListRef.current.style.display='none';
+      SolvedConsultListRef.current.style.display='none';
+      TutorListRef.current.style.display='block';
+    }
+  }
+
   return (
     <div>
-      <div style={{ display: "flex",width:"95%",margin: "0 auto" }}>
-        <RequestConsultBtn ref={RequestConsultRef} onClick={onClickRequestConsultBtn}>
-          피드백 요청 목록
-        </RequestConsultBtn>
-        <TutorBtn
-          ref={TutorRef}
-          onClick={onClickTutorBtn}
-        >
-          튜터 목록
-        </TutorBtn>
+      <GlobalStyle/>
+      <Select
+        defaultValue={'Consulting'}
+        onChange={onChangeSelect}
+      >
+        <Option key = 'Consulting'>진행중인 피드백</Option>
+        <Option key = 'SolvedConsult'>완료된 피드백</Option>
+        <Option key = 'Tutor'>튜터 목록</Option>
+      </Select>
+      <div ref={RequestConsultListRef}>
+        <ConsultList consult = "Consulting"/>
       </div>
-			<div ref={RequestConsultListRef}>
-      	<RequestConsultList />
-			</div>
-			<div ref={TutorListRef}>
-				<TutorList />
+      <div ref = {SolvedConsultListRef} style={{display:'none'}}>
+        <ConsultList consult = "SolvedConsult"/>
+      </div>
+			<div ref={TutorListRef} style={{display:'none'}}>
+				<ConsultList consult="Tutor"/>
 			</div>
     </div>
   );
 };
-
-const RequestConsultBtn = styled.span`
-  width: 100%;
-  height: 2.5rem;
-  margin: 0 auto;
-  display: flex;
-  line-height: 2.5rem;
-  justify-content: center;
-  font-family: 'Noto Sans CJK KR';
-  font-style: normal;
-  font-weight: bold;
-`;
-
-const TutorBtn = styled.span`
-  width: 100%;
-  height: 2.5rem;
-  margin: 0 auto;
-  display: flex;
-  line-height: 2.5rem;
-  justify-content: center;
-  font-family: 'Noto Sans CJK KR';
-  font-style: normal;
-  font-weight: bold;
-`;
 
 export default Header;

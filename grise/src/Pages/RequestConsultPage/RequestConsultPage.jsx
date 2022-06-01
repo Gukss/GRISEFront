@@ -10,6 +10,7 @@ const RequestConsultPage = ()=>{
   const ContentRef = useRef(null);
   const VideoRef = useRef(null);
   const VideoNameRef = useRef(null);
+  const SubmitingRef = useRef(null);
   const navigate = useNavigate();
 
   const onChangeVideo = (e) =>{
@@ -18,17 +19,21 @@ const RequestConsultPage = ()=>{
 
 	//제목이랑 본문 둘 중 하나 안 채워 졌을 때 어떻게 나타낼지 정하기
   const summitConsult = (event) => {
+    event.preventDefault();
+    if(location.state === null){ 
+      alert('잘못된 접근입니다');
+      return;
+    }
     const isTitle = TitleRef.current.value.length > 2 ? true:false;
     const isContent = ContentRef.current.value.length > 4 ? true:false;
     const isVideo = VideoRef.current.files[0] !== undefined ? true:false;
-
-    event.preventDefault();
+    SubmitingRef.current.style.display='block';
 		if (isTitle&&isContent&&isVideo) {
 			console.log("정상 제출");
       let data = new FormData(FormRef.current);
       let URL = 'http://grise.p-e.kr/tutee/consults';
+      
       if(location.state.consult === 'NormalConsult'){
-        data.append("tutorId",null);
         URL+='/general';
       }
       else if(location.state.consult === 'RequestConsult'){
@@ -43,25 +48,37 @@ const RequestConsultPage = ()=>{
         data:data
       }).then((res) => {
         console.log(res);
+        SubmitingRef.current.style.display='none';
         navigate('/tuteeMain');
-      }).catch((error) => console.log(error));
+      }).catch((error) => {
+        console.log(error);
+        alert("동영상 업로드 에러");
+        SubmitingRef.current.style.display='none';
+      });
+      
 		}   
     else if(!isTitle){
       console.log("제목 미입력");
+      SubmitingRef.current.style.display='none';
       alert('제목을 입력해 주세요!(3글자 이상)');
     }
 		else if(!isContent) {
 			console.log("본문 미입력");
+      SubmitingRef.current.style.display='none';
       alert('본문을 입력해 주세요!(5글자 이상)');
 		}
     else if(!isVideo){
       console.log("비디오 미입력");
+      SubmitingRef.current.style.display='none';
       alert('비디오를 업로드해 주세요')
     }
   };
 
   return (
     <Wrap>
+      <SubmitingDiv ref={SubmitingRef}>
+        전송중입니다
+      </SubmitingDiv>
       <NavBar />
       <form id = "video-form" ref={FormRef}>
         <fieldset>
@@ -75,7 +92,7 @@ const RequestConsultPage = ()=>{
           </div>
           <div>
             <VideoTitleDiv>영상 업로드</VideoTitleDiv>
-            <input id="video" name="video" type="File" accept='application/mp4' style={{display:'none'}} onChange={onChangeVideo} ref={VideoRef}></input>
+            <input id="video" name="video" type="File" accept='video/*' style={{display:'none'}} onChange={onChangeVideo} ref={VideoRef}></input>
             <VideoConatiner>
               <UploadButton htmlFor="video">동영상선택</UploadButton>
               <VideoName ref={VideoNameRef}>선택된 파일없음</VideoName>
@@ -87,6 +104,27 @@ const RequestConsultPage = ()=>{
     </Wrap>
   );
 }
+
+const SubmitingDiv = styled.div`
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: 'Noto Sans CJK KR';
+  font-style: normal;
+  font-weight: bold;
+  color: #fff;
+  font-size: 3rem;
+  text-align: center;
+  line-height: 80vh;
+  background-color: rgba(0,0,0,0.8);
+`
+
 
 const VideoConatiner = styled.div`
   display: flex;
@@ -134,7 +172,8 @@ const UploadButton = styled.label`
 `
 
 const SubmmitButton = styled.button`
-  position: fixed;
+  position: absolute;
+  z-index: 0;
   bottom: 1rem;
   left: 50%;
   margin-left: -6rem;
