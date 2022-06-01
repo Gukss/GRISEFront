@@ -5,6 +5,7 @@ import { GoogleLoginButton } from "react-social-login-buttons";
 
 
 export const TuteeLoginPage = () => {
+	// const baseUrl = window.location.origin;
   return (
     <Wrap>
       <TuteeLogo style={{ width: "100%", height: "100%" }}></TuteeLogo>

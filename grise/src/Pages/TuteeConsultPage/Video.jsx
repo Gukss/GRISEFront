@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, {useEffect,useRef} from "react";
+=======
+import React, { useState, useRef } from "react";
+>>>>>>> 6f6cc1f1dbb9a12eba6e5863b02c429423cca499
 import styled from 'styled-components'
 <<<<<<< HEAD
 const Video = (props) => {
@@ -32,11 +36,17 @@ const Video = (props) => {
         <source ref={videoRef}></source>
 =======
 const Video = () => {
+	const videoRef = useRef(null);
+	
   return (
     <StyledVideo>
       <video controls style={{ width: "100%", height: "100%" }}>
+<<<<<<< HEAD
         <source ref={} type="video/mp4"></source>
 >>>>>>> 1f6db699da411349813abae2ff261e92d60629b4
+=======
+        <source ref={videoRef} type="video/mp4"></source>
+>>>>>>> 6f6cc1f1dbb9a12eba6e5863b02c429423cca499
       </video>
     </StyledVideo>
   );
