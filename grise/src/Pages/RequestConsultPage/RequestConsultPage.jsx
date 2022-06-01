@@ -20,6 +20,10 @@ const RequestConsultPage = ()=>{
 	//제목이랑 본문 둘 중 하나 안 채워 졌을 때 어떻게 나타낼지 정하기
   const summitConsult = (event) => {
     event.preventDefault();
+    if(location.state === null){ 
+      alert('잘못된 접근입니다');
+      return;
+    }
     const isTitle = TitleRef.current.value.length > 2 ? true:false;
     const isContent = ContentRef.current.value.length > 4 ? true:false;
     const isVideo = VideoRef.current.files[0] !== undefined ? true:false;
