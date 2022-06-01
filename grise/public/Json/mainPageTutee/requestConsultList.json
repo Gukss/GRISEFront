@@ -1,354 +1,62 @@
-{
-  "consultList": [
-    {
-      "consult": {
-        "consultId": 1,
-        "title": "제목1",
-        "content": "피드백내용1",
-        "tutor": {
-          "name": "튜터이름1"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 2,
-        "title": "제목2",
-        "content": "피드백내용2",
-        "tutor": {
-          "name": "튜터이름2"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 3,
-        "title": "제목3",
-        "content": "피드백내용3",
-        "tutor": {
-          "name": "튜터이름3"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 4,
-        "title": "제목4",
-        "content": "피드백내용4",
-        "tutor": {
-          "name": "튜터이름4"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 5,
-        "title": "제목5",
-        "content": "피드백내용5",
-        "tutor": {
-          "name": "튜터이름5"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 1,
-        "title": "제목1",
-        "content": "피드백내용1",
-        "tutor": {
-          "name": "튜터이름1"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 2,
-        "title": "제목2",
-        "content": "피드백내용2",
-        "tutor": {
-          "name": "튜터이름2"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 3,
-        "title": "제목3",
-        "content": "피드백내용3",
-        "tutor": {
-          "name": "튜터이름3"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 4,
-        "title": "제목4",
-        "content": "피드백내용4",
-        "tutor": {
-          "name": "튜터이름4"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 5,
-        "title": "제목5",
-        "content": "피드백내용5",
-        "tutor": {
-          "name": "튜터이름5"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 1,
-        "title": "제목1",
-        "content": "피드백내용1",
-        "tutor": {
-          "name": "튜터이름1"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 2,
-        "title": "제목2",
-        "content": "피드백내용2",
-        "tutor": {
-          "name": "튜터이름2"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 3,
-        "title": "제목3",
-        "content": "피드백내용3",
-        "tutor": {
-          "name": "튜터이름3"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 4,
-        "title": "제목4",
-        "content": "피드백내용4",
-        "tutor": {
-          "name": "튜터이름4"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 5,
-        "title": "제목5",
-        "content": "피드백내용5",
-        "tutor": {
-          "name": "튜터이름5"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 1,
-        "title": "제목1",
-        "content": "피드백내용1",
-        "tutor": {
-          "name": "튜터이름1"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 2,
-        "title": "제목2",
-        "content": "피드백내용2",
-        "tutor": {
-          "name": "튜터이름2"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 3,
-        "title": "제목3",
-        "content": "피드백내용3",
-        "tutor": {
-          "name": "튜터이름3"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 4,
-        "title": "제목4",
-        "content": "피드백내용4",
-        "tutor": {
-          "name": "튜터이름4"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 5,
-        "title": "제목5",
-        "content": "피드백내용5",
-        "tutor": {
-          "name": "튜터이름5"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 1,
-        "title": "제목1",
-        "content": "피드백내용1",
-        "tutor": {
-          "name": "튜터이름1"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 2,
-        "title": "제목2",
-        "content": "피드백내용2",
-        "tutor": {
-          "name": "튜터이름2"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 3,
-        "title": "제목3",
-        "content": "피드백내용3",
-        "tutor": {
-          "name": "튜터이름3"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 4,
-        "title": "제목4",
-        "content": "피드백내용4",
-        "tutor": {
-          "name": "튜터이름4"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 5,
-        "title": "제목5",
-        "content": "피드백내용5",
-        "tutor": {
-          "name": "튜터이름5"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 1,
-        "title": "제목1",
-        "content": "피드백내용1",
-        "tutor": {
-          "name": "튜터이름1"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 2,
-        "title": "제목2",
-        "content": "피드백내용2",
-        "tutor": {
-          "name": "튜터이름2"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 3,
-        "title": "제목3",
-        "content": "피드백내용3",
-        "tutor": {
-          "name": "튜터이름3"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 4,
-        "title": "제목4",
-        "content": "피드백내용4",
-        "tutor": {
-          "name": "튜터이름4"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 5,
-        "title": "제목5",
-        "content": "피드백내용5",
-        "tutor": {
-          "name": "튜터이름5"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 1,
-        "title": "제목1",
-        "content": "피드백내용1",
-        "tutor": {
-          "name": "튜터이름1"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 2,
-        "title": "제목2",
-        "content": "피드백내용2",
-        "tutor": {
-          "name": "튜터이름2"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 3,
-        "title": "제목3",
-        "content": "피드백내용3",
-        "tutor": {
-          "name": "튜터이름3"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 4,
-        "title": "제목4",
-        "content": "피드백내용4",
-        "tutor": {
-          "name": "튜터이름4"
-        }
-      }
-    },
-    {
-      "consult": {
-        "consultId": 5,
-        "title": "제목5",
-        "content": "피드백내용5",
-        "tutor": {
-          "name": "튜터이름5"
-        }
-      }
-    }
-  ]
-}
+[
+  {
+    "consultId": 2,
+    "title": "general1",
+    "username": "김민영",
+    "isArriveMessageToTutee": false
+  },
+  {
+    "consultId": 4,
+    "title": "general3",
+    "username": "김민영",
+    "isArriveMessageToTutee": false
+  },
+  {
+    "consultId": 1,
+    "title": "11231123트1",
+    "username": "김민영",
+    "isArriveMessageToTutee": false
+  },
+  {
+    "consultId": 3,
+    "title": "general2",
+    "username": "김민영",
+    "isArriveMessageToTutee": true
+  },
+  {
+    "consultId": 2,
+    "title": "general1",
+    "username": "김민영",
+    "isArriveMessageToTutee": false
+  },
+  {
+    "consultId": 4,
+    "title": "general3",
+    "username": "김민영",
+    "isArriveMessageToTutee": false
+  },
+  {
+    "consultId": 1,
+    "title": "11231123트1",
+    "username": "김민영",
+    "isArriveMessageToTutee": false
+  },
+  {
+    "consultId": 3,
+    "title": "general2",
+    "username": "김민영",
+    "isArriveMessageToTutee": true
+  },
+  {
+    "consultId": 2,
+    "title": "general1",
+    "username": "김민영",
+    "isArriveMessageToTutee": false
+  },
+  {
+    "consultId": 4,
+    "title": "general3",
+    "username": "김민영",
+    "isArriveMessageToTutee": false
+  }
+]

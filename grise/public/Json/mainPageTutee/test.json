@@ -1,0 +1,14 @@
+[
+  {
+    "consultId": 2,
+    "title": "general1",
+    "username": "김민영",
+    "isArriveMessageToTutee": false
+  },
+  {
+    "consultId": 2,
+    "title": "general1",
+    "username": "김민영",
+    "isArriveMessageToTutee": true
+  }
+]

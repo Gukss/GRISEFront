@@ -1,243 +1,62 @@
-{
-  "tutorList": [
-    {
-      "tutor": {
-        "tutorId": 1,
-        "name": "이름1",
-        "score": 1,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 2,
-        "name": "이름2",
-        "score": 2,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 3,
-        "name": "이름3",
-        "score": 3,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 1,
-        "name": "이름1",
-        "score": 1,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 2,
-        "name": "이름2",
-        "score": 2,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 3,
-        "name": "이름3",
-        "score": 3,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 1,
-        "name": "이름1",
-        "score": 1,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 2,
-        "name": "이름2",
-        "score": 2,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 3,
-        "name": "이름3",
-        "score": 3,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 1,
-        "name": "이름1",
-        "score": 1,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 2,
-        "name": "이름2",
-        "score": 2,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 3,
-        "name": "이름3",
-        "score": 3,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 1,
-        "name": "이름1",
-        "score": 1,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 2,
-        "name": "이름2",
-        "score": 2,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 3,
-        "name": "이름3",
-        "score": 3,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 1,
-        "name": "이름1",
-        "score": 1,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 2,
-        "name": "이름2",
-        "score": 2,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 3,
-        "name": "이름3",
-        "score": 3,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },    {
-      "tutor": {
-        "tutorId": 1,
-        "name": "이름1",
-        "score": 1,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 2,
-        "name": "이름2",
-        "score": 2,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 3,
-        "name": "이름3",
-        "score": 3,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 1,
-        "name": "이름1",
-        "score": 1,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 2,
-        "name": "이름2",
-        "score": 2,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    },
-    {
-      "tutor": {
-        "tutorId": 3,
-        "name": "이름3",
-        "score": 3,
-        "resume": {
-          "content": "경력: ~~수상"
-        }
-      }
-    }
-  ]
-}
+[
+  {
+  "tutorId": 1,
+  "username": "튜티1",
+  "resumeContent": "no",
+  "review":{"tutorId": 1, "count": 2, "starTotal": 7, "star": "3.5"}
+  },
+  {
+  "tutorId": 2,
+  "username": "튜티2",
+  "resumeContent": "no",
+  "review":{"tutorId": 1, "count": 0, "starTotal": null, "star": "리뷰 없음"}
+  },
+  {
+    "tutorId": 1,
+    "username": "튜티1",
+    "resumeContent": "no",
+    "review":{"tutorId": 1, "count": 2, "starTotal": 7, "star": "3.5"}
+  },
+  {
+  "tutorId": 2,
+  "username": "튜티2",
+  "resumeContent": "no",
+  "review":{"tutorId": 1, "count": 0, "starTotal": null, "star": "리뷰 없음"}
+  },
+  {
+    "tutorId": 1,
+    "username": "튜티1",
+    "resumeContent": "no",
+    "review":{"tutorId": 1, "count": 2, "starTotal": 7, "star": "3.5"}
+  },
+  {
+  "tutorId": 2,
+  "username": "튜티2",
+  "resumeContent": "no",
+  "review":{"tutorId": 1, "count": 0, "starTotal": null, "star": "리뷰 없음"}
+  },
+  {
+    "tutorId": 1,
+    "username": "튜티1",
+    "resumeContent": "no",
+    "review":{"tutorId": 1, "count": 2, "starTotal": 7, "star": "3.5"}
+  },
+  {
+  "tutorId": 2,
+  "username": "튜티2",
+  "resumeContent": "no",
+  "review":{"tutorId": 1, "count": 0, "starTotal": null, "star": "리뷰 없음"}
+  },
+  {
+    "tutorId": 1,
+    "username": "튜티1",
+    "resumeContent": "no",
+    "review":{"tutorId": 1, "count": 2, "starTotal": 7, "star": "3.5"}
+  },
+  {
+  "tutorId": 2,
+  "username": "튜티2",
+  "resumeContent": "no",
+  "review":{"tutorId": 1, "count": 0, "starTotal": null, "star": "리뷰 없음"}
+  }
+]
