@@ -16,10 +16,10 @@ const ConsultList = (props) => {
 
   const GetConsult = useCallback(e=>{
     if(props.consult === 'NormalConsult'){
-      axios.get('Json/mainPageTutor/consultList.json')
-      .then((res) => {
-        setConsultList(res.data);
-      }).catch((error) => console.log(error));
+      // axios.get('Json/mainPageTutor/consultList.json')
+      // .then((res) => {
+      //   setConsultList(res.data);
+      // }).catch((error) => console.log(error));
 
 
       axios({
