@@ -10,7 +10,7 @@ const ConsultList = (props) => {
   const [touchPosition,setTouchPosition]= useState({x:0,y:0});
   const ItemRef = useRef(null);
   const ContainerRef = useRef(null);
-  const pageNumber = useRef(1);
+  const pageNumber = useRef(0);
   const NoRefreshRef = useRef(null);
   const Refresh = () => {
     pageNumber.current+=1;
@@ -37,7 +37,9 @@ const ConsultList = (props) => {
         }
       })
       .then((res) => {
-        setConsultList(res.data);
+        const temp = [...ConsultList,...res.data];
+        setConsultList(temp);
+        console.log(temp);
       }).catch((error) => {console.log(error);pageNumber.current-=1;});
       
     }else if(props.consult === 'Tutor'){
@@ -61,14 +63,18 @@ const ConsultList = (props) => {
         }
       })
       .then((res) => {
-        setConsultList(res.data);
-      }).catch((error) => {console.log(error);pageNumber.current-=1;});
+        const temp = [...ConsultList,...res.data];
+        setConsultList(temp);
+        console.log(temp);
+      }).catch((error) => {console.log(error);pageNumber.current-=1;NoRefreshRef.current.style.display = 'none'});
       
     }else if(props.consult === 'SolvedConsult'){
       axios.get('Json/mainPageTutee/test.json')
       .then((res) => {
-        setConsultList(res.data);
-      }).catch((error) => {console.log(error);pageNumber.current-=1;});
+        const temp = [...ConsultList,...res.data];
+        setConsultList(temp);
+        console.log(temp);
+      }).catch((error) => {console.log(error);pageNumber.current-=1;NoRefreshRef.current.style.display = 'none'});
 
       /*
       axios({
@@ -84,8 +90,10 @@ const ConsultList = (props) => {
         }
       })
       .then((res) => {
-        setConsultList(res.data);
-      }).catch((error) => console.log(error));
+        const temp = [...ConsultList,...res.data];
+        setConsultList(temp);
+        console.log(temp);
+      }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';pageNumber.current-=1;});
       */
     }
   }
@@ -112,7 +120,8 @@ const ConsultList = (props) => {
       })
       .then((res) => {
         setConsultList(res.data);
-      }).catch((error) => console.log(error));
+        console.log(pageNumber.current,res.data);
+      }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';});
 
     }else if(props.consult === 'Tutor'){
       // axios.get('Json/mainPageTutee/tutorList.json')
@@ -135,7 +144,7 @@ const ConsultList = (props) => {
       })
       .then((res) => {
         setConsultList(res.data);
-      }).catch((error) => console.log(error));
+      }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';});
       
     }else if(props.consult === 'SolvedConsult'){
       axios.get('Json/mainPageTutee/test.json')
@@ -158,7 +167,7 @@ const ConsultList = (props) => {
       // })
       // .then((res) => {
       //   setConsultList(res.data);
-      // }).catch((error) => console.log(error));
+      // }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';});
       
     }
   }, [props.consult]);

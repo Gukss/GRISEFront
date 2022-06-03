@@ -113,8 +113,10 @@ const ConsultList = (props) => {
         }
       })
       .then((res) => {
-        setConsultList(res.data);
-      }).catch((error) => {console.log(error);pageNumber.current-=1;});
+        const temp = [...ConsultList,...res.data];
+        setConsultList(temp);
+        console.log(temp);
+      }).catch((error) => {console.log(error);pageNumber.current-=1;NoRefreshRef.current.style.display = 'none';});
       
     }else if(props.consult === 'RequestConsult'){
       // axios.get('Json/mainPageTutee/tutorList.json')
@@ -137,8 +139,10 @@ const ConsultList = (props) => {
         }
       })
       .then((res) => {
-        setConsultList(res.data);
-      }).catch((error) => {console.log(error);pageNumber.current-=1;});
+        const temp = [...ConsultList,...res.data];
+        setConsultList(temp);
+        console.log(temp);
+      }).catch((error) => {console.log(error);pageNumber.current-=1;NoRefreshRef.current.style.display = 'none';});
       
     }else if(props.consult === 'consulting'){
       // axios.get('Json/mainPageTutee/test.json')
@@ -160,8 +164,10 @@ const ConsultList = (props) => {
         }
       })
       .then((res) => {
-        setConsultList(res.data);
-      }).catch((error) => {console.log(error);pageNumber.current-=1;});
+        const temp = [...ConsultList,...res.data];
+        setConsultList(temp);
+        console.log(temp);
+      }).catch((error) => {console.log(error);pageNumber.current-=1;NoRefreshRef.current.style.display = 'none';});
       
     }
   }
@@ -170,7 +176,7 @@ const ConsultList = (props) => {
     GetConsult();
   }, [GetConsult]);
 
-  useEffect(()=>{NoRefreshRef.current.style.display = 'none'},[ConsultList])
+  useEffect(()=>{NoRefreshRef.current.style.display = 'none';},[ConsultList])
 
   useEffect(()=>{//거절시 새롭게 상담지를 받아옴
     if(isReject){
