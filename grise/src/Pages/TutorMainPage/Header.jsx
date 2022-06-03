@@ -1,92 +1,90 @@
 import React, { useRef, useEffect } from "react";
 import styled from 'styled-components';
-import NormalConsultList from "./List/NormalConsultList"
-import RequestConsultList from "./List/RequestConsultList";
-import ConsultingList from "./List/ConsultingList";
+import ConsultList from './List/ConsultList';
 
 
 const Header = () => {
-  const NormalConsultRef = useRef(null);
-  const RequestConsultRef = useRef(null);
+  const NormalConsultHeaderRef = useRef(null);
+  const RequestConsultHeaderRef = useRef(null);
   const NormalConsultListRef = useRef(null);
   const RequestConsultListRef = useRef(null);
-  const consultingRef = useRef(null);
+  const consultingHeaderRef = useRef(null);
   const consultingListRef = useRef(null);
   useEffect(() => {
     onClickNormalConsultListBtn();
   }, []);
 
   const onClickNormalConsultListBtn = () => {
-    NormalConsultRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
-    NormalConsultRef.current.style.color = "#3A6C7B";
+    NormalConsultHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
+    NormalConsultHeaderRef.current.style.color = "#3A6C7B";
     NormalConsultListRef.current.style.display="block";
 
-    RequestConsultRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    RequestConsultRef.current.style.color = "#b1b1b1";
+    RequestConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    RequestConsultHeaderRef.current.style.color = "#b1b1b1";
     RequestConsultListRef.current.style.display="none";
 
-    consultingRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    consultingRef.current.style.color = "#b1b1b1";
+    consultingHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    consultingHeaderRef.current.style.color = "#b1b1b1";
     consultingListRef.current.style.display="none";
   };
 
-  const onClickRequestConsultBtn = () => {
-    NormalConsultRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    NormalConsultRef.current.style.color = "#b1b1b1";
+  const onClickRequestHeaderBtn = () => {
+    NormalConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    NormalConsultHeaderRef.current.style.color = "#b1b1b1";
     NormalConsultListRef.current.style.display="none";
 
-    RequestConsultRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
-    RequestConsultRef.current.style.color = "#3A6C7B";
+    RequestConsultHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
+    RequestConsultHeaderRef.current.style.color = "#3A6C7B";
     RequestConsultListRef.current.style.display="block";
 
-    consultingRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    consultingRef.current.style.color = "#b1b1b1";
+    consultingHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    consultingHeaderRef.current.style.color = "#b1b1b1";
     consultingListRef.current.style.display="none";
   };
 
   const onClickConsultingBtn = () =>{
-    NormalConsultRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    NormalConsultRef.current.style.color = "#b1b1b1";
+    NormalConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    NormalConsultHeaderRef.current.style.color = "#b1b1b1";
     NormalConsultListRef.current.style.display="none";
 
-    RequestConsultRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    RequestConsultRef.current.style.color = "#b1b1b1";
+    RequestConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    RequestConsultHeaderRef.current.style.color = "#b1b1b1";
     RequestConsultListRef.current.style.display="none";
 
-    consultingRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
-    consultingRef.current.style.color = "#3A6C7B";
+    consultingHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
+    consultingHeaderRef.current.style.color = "#3A6C7B";
     consultingListRef.current.style.display="block";
   }
   return (
     <div>
       <div style={{ display: "flex",width:"95%",margin: "0 auto" }}>
-        <ConsultBtn ref={NormalConsultRef} onClick={onClickNormalConsultListBtn}>
+        <HeaderBtn ref={NormalConsultHeaderRef} onClick={onClickNormalConsultListBtn}>
           일반 피드백
-        </ConsultBtn>
-        <ConsultBtn
-          ref={RequestConsultRef}
-          onClick={onClickRequestConsultBtn}
+        </HeaderBtn>
+        <HeaderBtn
+          ref={RequestConsultHeaderRef}
+          onClick={onClickRequestHeaderBtn}
         >
           요청받은 피드백
-        </ConsultBtn>
-        <ConsultBtn ref={consultingRef} onClick={onClickConsultingBtn}>
+        </HeaderBtn>
+        <HeaderBtn ref={consultingHeaderRef} onClick={onClickConsultingBtn}>
           진행중인 피드백
-        </ConsultBtn>
+        </HeaderBtn>
       </div>
 			<div ref={NormalConsultListRef}>
-      	<NormalConsultList/>
+      	<ConsultList consult = "NormalConsult"/>
 			</div>
 			<div ref={RequestConsultListRef}>
-				<RequestConsultList/>
+				<ConsultList consult = "RequestConsult" />
 			</div>
       <div ref={consultingListRef}>
-        <ConsultingList/>
+        <ConsultList consult = "consulting"/>
       </div>
     </div>
   );
 };
 
-const ConsultBtn = styled.span`
+const HeaderBtn = styled.span`
   width: 100%;
   height: 2.5rem;
   margin: 0 auto;
