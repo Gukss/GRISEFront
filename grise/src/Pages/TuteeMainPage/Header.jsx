@@ -1,43 +1,75 @@
-import GlobalStyle from '../../styles/globalStyle/GlobalStyle';
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import styled from 'styled-components';
 import ConsultList from "./List/ConsultList"
-import {Select} from 'antd';
 
 const Header = () => {
-  const RequestConsultListRef = useRef(null);
+  const ConsultingListRef = useRef(null);
+  const ConsultingHeaderRef = useRef(null);
   const TutorListRef = useRef(null);
+  const TutorHeaderRef = useRef(null);
   const SolvedConsultListRef = useRef(null);
-  const { Option } = Select;
+  const SolvedConsultHeaderRef = useRef(null);
 
+  const ShowConsultingList = () =>{
+    ConsultingHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
+    ConsultingHeaderRef.current.style.color = "#3A6C7B";
+    ConsultingListRef.current.style.display="block";
 
-  const onChangeSelect = (value) =>{
-    if(value === 'Consulting'){
-      RequestConsultListRef.current.style.display='block';
-      SolvedConsultListRef.current.style.display='none';
-      TutorListRef.current.style.display='none';
-    }else if(value === 'SolvedConsult'){
-      RequestConsultListRef.current.style.display='none';
-      SolvedConsultListRef.current.style.display='block';
-      TutorListRef.current.style.display='none';
-    }else if(value === 'Tutor'){
-      RequestConsultListRef.current.style.display='none';
-      SolvedConsultListRef.current.style.display='none';
-      TutorListRef.current.style.display='block';
-    }
+    TutorHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    TutorHeaderRef.current.style.color = "#b1b1b1";
+    TutorListRef.current.style.display="none";
+
+    SolvedConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    SolvedConsultHeaderRef.current.style.color = "#b1b1b1";
+    SolvedConsultListRef.current.style.display="none";
   }
+
+  const ShowSolvedConsultList = () =>{
+    ConsultingHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    ConsultingHeaderRef.current.style.color = "#b1b1b1";
+    ConsultingListRef.current.style.display="none";
+
+    SolvedConsultHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
+    SolvedConsultHeaderRef.current.style.color = "#3A6C7B";
+    SolvedConsultListRef.current.style.display="block";
+
+    TutorHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    TutorHeaderRef.current.style.color = "#b1b1b1";
+    TutorListRef.current.style.display="none";
+  }
+
+  const ShowTutorList = () => {
+    ConsultingHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    ConsultingHeaderRef.current.style.color = "#b1b1b1";
+    ConsultingListRef.current.style.display="none";
+
+    SolvedConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    SolvedConsultHeaderRef.current.style.color = "#b1b1b1";
+    SolvedConsultListRef.current.style.display="none";
+
+    TutorHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
+    TutorHeaderRef.current.style.color = "#3A6C7B";
+    TutorListRef.current.style.display="block";
+  }
+
+  useEffect(()=>{
+    ShowConsultingList(); //디폴트값 : 진행중인 피드백
+  },[])
 
   return (
     <div>
-      <GlobalStyle/>
-      <Select
-        defaultValue={'Consulting'}
-        onChange={onChangeSelect}
-      >
-        <Option key = 'Consulting'>진행중인 피드백</Option>
-        <Option key = 'SolvedConsult'>완료된 피드백</Option>
-        <Option key = 'Tutor'>튜터 목록</Option>
-      </Select>
-      <div ref={RequestConsultListRef}>
+      <HeaderContainer>
+        <HeaderBtn ref={ConsultingHeaderRef} onClick={ShowConsultingList}>
+          진행중인 피드백
+        </HeaderBtn>
+        <HeaderBtn ref={SolvedConsultHeaderRef} onClick={ShowSolvedConsultList}>
+          요청받은 피드백
+        </HeaderBtn>
+        <HeaderBtn ref={TutorHeaderRef} onClick={ShowTutorList}>
+          진행중인 피드백
+        </HeaderBtn>
+      </HeaderContainer>
+      <div ref={ConsultingListRef} style={{display:'none'}}>
         <ConsultList consult = "Consulting"/>
       </div>
       <div ref = {SolvedConsultListRef} style={{display:'none'}}>
@@ -49,5 +81,25 @@ const Header = () => {
     </div>
   );
 };
+
+const HeaderContainer = styled.span`
+  display: flex;
+  width: 95%;
+  margin-left: 2.5%;
+`
+
+const HeaderBtn = styled.span`
+  width: 100%;
+  height: 2.5rem;
+  margin: 0 auto;
+  display: flex;
+  line-height: 2.5rem;
+  justify-content: center;
+  font-family: 'Noto Sans CJK KR';
+  font-style: normal;
+  font-weight: bold;
+  border-bottom : #b1b1b1 solid 0.2rem;
+  color: #b1b1b1;
+`;
 
 export default Header;
