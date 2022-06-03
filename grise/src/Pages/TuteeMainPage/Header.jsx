@@ -63,10 +63,10 @@ const Header = () => {
           진행중인 피드백
         </HeaderBtn>
         <HeaderBtn ref={SolvedConsultHeaderRef} onClick={ShowSolvedConsultList}>
-          요청받은 피드백
+          완료된 피드백
         </HeaderBtn>
         <HeaderBtn ref={TutorHeaderRef} onClick={ShowTutorList}>
-          진행중인 피드백
+          튜터선택 피드백
         </HeaderBtn>
       </HeaderContainer>
       <div ref={ConsultingListRef} style={{display:'none'}}>
