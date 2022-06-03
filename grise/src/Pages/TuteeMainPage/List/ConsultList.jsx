@@ -38,7 +38,7 @@ const ConsultList = (props) => {
       })
       .then((res) => {
         setConsultList(res.data);
-      }).catch((error) => console.log(error));
+      }).catch((error) => {console.log(error);pageNumber.current-=1;});
       
     }else if(props.consult === 'Tutor'){
       // axios.get('Json/mainPageTutee/tutorList.json')
@@ -62,13 +62,13 @@ const ConsultList = (props) => {
       })
       .then((res) => {
         setConsultList(res.data);
-      }).catch((error) => console.log(error));
+      }).catch((error) => {console.log(error);pageNumber.current-=1;});
       
     }else if(props.consult === 'SolvedConsult'){
       axios.get('Json/mainPageTutee/test.json')
       .then((res) => {
         setConsultList(res.data);
-      }).catch((error) => console.log(error));
+      }).catch((error) => {console.log(error);pageNumber.current-=1;});
 
       /*
       axios({
