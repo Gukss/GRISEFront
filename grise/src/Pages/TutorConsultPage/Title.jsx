@@ -1,22 +1,32 @@
 import React, {useState, useRef} from "react";
 import styled from 'styled-components';
-import ModalButton from "./ModalButton";
+// import ModalButton from "./ModalButton";
 
-const Title = ({title, tuteeName, tutorName}) => {
-	
+const Title = ({ title, tuteeName, tutorName, consultId }) => {
+	//피드백 하기 버튼 기능 구현하기
+	const onClick = () => {
+
+	};
+
   return (
     <StyledTitle>
       <StyledHeader>{title}</StyledHeader>
-      {/* <StyledTutor>
-        {tutorName}
-      </StyledTutor>
-			<StyledTutee>
-        {tuteeName}
-			</StyledTutee> */}
-      {/* <ModalButton style={{float: "right"}}></ModalButton> */}
+			<CompleteButton onClick={onClick}>피드백 하기</CompleteButton>
     </StyledTitle>
   );
 };
+
+const CompleteButton = styled.button`
+  width: 4rem;
+  height: 1.5rem;
+  font-size: 0.4rem;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: #3a6c7b;
+  border: none;
+  color: #fff;
+  margin: auto 0.3rem auto 0;
+`;
 
 const StyledTitle = styled.div`
   width: 97%;
@@ -61,19 +71,6 @@ const StyledTutee = styled.div`
   margin-left: auto;
   display: flex;
   align-items: center;
-`;
-
-const CompleteButton = styled.button`
-  width: 3rem;
-  height: 1.5rem;
-  font-size: 0.4rem;
-  border-radius: 10px;
-  font-weight: bold;
-  background-color: #3a6c7b;
-	border: none;
-	color: #fff;
-	margin: auto 0.3rem auto auto;
-	
 `;
 
 export default Title;

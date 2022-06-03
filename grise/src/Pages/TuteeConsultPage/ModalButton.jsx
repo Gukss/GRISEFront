@@ -71,7 +71,7 @@ const ModalButton = ({ consultId }) => {
 };
 
 const CompleteButton = styled.button`
-  width: 3.5rem;
+  width: 4rem;
   height: 1.5rem;
   font-size: 0.4rem;
   border-radius: 10px;

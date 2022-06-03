@@ -3,9 +3,11 @@ import styled from "styled-components";
 
 const Comment = ({ commentList, tutee_name }) => {
 	const ItemRef = useRef(null);
+	
 	useEffect (() => {
 		ItemRef.current.scrollIntoView({ behavior: "smooth" });
-	}, [])
+	}, []);
+
 	const getItem = () => {
     const result = [];
     for (let i = 0; i < commentList.length - 1; i++) {
@@ -24,11 +26,6 @@ const Comment = ({ commentList, tutee_name }) => {
             fontSize: "0.9rem",
             color: tutee_name === comment.comment?.user_name ? "#000" : "#fff",
           }}
-          // style={
-          //   tutee_name === comment.comment?.user_name
-          //     ? { backgroundColor: "#e3e3e3" }
-          //     : { backgroundColor: "#3a6c7b" }
-          // }
         >
           <span>{comment.comment?.user_name}</span>
           {comment.comment?.content}
@@ -52,11 +49,6 @@ const Comment = ({ commentList, tutee_name }) => {
             color:
               tutee_name === comment.comment?.user_name ? "#000" : "#fff",
           }}
-          // style={
-          //   tutee_name === comment.comment?.user_name
-          //     ? { backgroundColor: "#e3e3e3" }
-          //     : { backgroundColor: "#3a6c7b" }
-          // }
         >
           <span>{comment.comment?.user_name}</span>
           {comment.comment?.content}
