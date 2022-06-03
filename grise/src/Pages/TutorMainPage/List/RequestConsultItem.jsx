@@ -1,16 +1,31 @@
 import React,{forwardRef} from 'react'
 import styled from 'styled-components';
+import axios from 'axios';
 
 const RequestConsultItem = forwardRef((props,ref) => {
     const onClickRejectBtn = () =>{
-        console.log(props.data?.consult.consultId,'거절');
+        console.log(props.data?.consultId,'거절');
+        axios({
+            method:'POST',
+            url:`http://grise.p-e.kr/tutor/consults/${props.data?.consultId}/cancel`,
+            headers: {
+              Authorization: window.localStorage.getItem('token') ,
+              "Content-Type": "application/json",
+            },
+        })
+        .then((res) => {
+            console.log(res);
+            props.setIsReject(true);
+        }).catch((error) => {
+            console.log(error);
+        });
     }
     return (
         <div ref={ref} style={{borderBottom:"#3A6C7B solid 0.2rem"}}>
             <Container>
                 <div style={{float:'left'}}>
-                    <Title>{props.data?.consult.title}</Title>
-                    <Name>{props.data?.consult.tutee.name}</Name>
+                    <Title>{props.data?.title}</Title>
+                    <Name>{props.data?.tutee.name}</Name>
                 </div>
                 <RejectBtn onClick={onClickRejectBtn}>거절</RejectBtn>
             </Container>

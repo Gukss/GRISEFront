@@ -1,16 +1,19 @@
 import React,{forwardRef} from 'react'
 import styled from 'styled-components';
+import { useNavigate } from "react-router-dom";
 
 const NormalConsultItem = forwardRef((props,ref) => {
+    const navigate = useNavigate();
     const onClickShowConsultBtn = () =>{
-        console.log(props.data?.consult.consultId,'피드백 확인');
+        console.log(props.data?.consultId,'피드백 확인');
+        navigate("/tutorConsult", { state: props.data });
     }
     return (
         <div ref={ref} style={{borderBottom:"#3A6C7B solid 0.2rem"}}>
             <Container>
                 <div style={{float:'left'}}>
-                    <Title>{props.data?.consult.title}</Title>
-                    <Name>{props.data?.consult.tutee.name}</Name>
+                    <Title>{props.data?.title}</Title>
+                    <Name>{props.data?.tutee.name}</Name>
                 </div>
                 <ShowConsultBtn onClick={onClickShowConsultBtn}>피드백 확인</ShowConsultBtn>
             </Container>
