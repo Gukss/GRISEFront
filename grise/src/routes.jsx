@@ -6,6 +6,7 @@ import RequestConsultPage from "./Pages/RequestConsultPage/RequestConsultPage";
 import TuteeLoginPage from "./Pages/LoginPage/TuteeLoginPage"
 import TutorLoginPage from "./Pages/LoginPage/TutorLoginPage";
 import RedirectPage from './oauth/Redirect';
+import TestPage from './Pages/Test';
 
 const routes = [
   {
@@ -43,6 +44,10 @@ const routes = [
   {
     path: "/Redirect",
     component: RedirectPage,
+  },
+  {
+    path: "/Test",
+    component: TestPage,
   },
 ];
 
