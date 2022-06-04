@@ -16,27 +16,27 @@ const ConsultList = (props) => {
 
   const GetConsult = useCallback(e=>{
     if(props.consult === 'NormalConsult'){
-      axios.get('Json/mainPageTutor/consultList.json')
-      .then((res) => {
-        setConsultList(res.data);
-      }).catch((error) => console.log(error));
-
-
-      // axios({
-      //   method:'GET',
-      //   url:`http://grise.p-e.kr/tutor/consults/general`,
-      //   headers: {
-      //     Authorization: window.localStorage.getItem('token') ,
-      //     "Content-Type": "application/json",
-      //   },
-      //   params:{
-      //     offset:pageNumber.current*10,
-      //     limit:10
-      //   }
-      // })
+      // axios.get('Json/mainPageTutor/consultList.json')
       // .then((res) => {
       //   setConsultList(res.data);
       // }).catch((error) => console.log(error));
+
+
+      axios({
+        method:'GET',
+        url:`http://grise.p-e.kr/tutor/consults/general`,
+        headers: {
+          Authorization: window.localStorage.getItem('token') ,
+          "Content-Type": "application/json",
+        },
+        params:{
+          offset:pageNumber.current*10,
+          limit:10
+        }
+      })
+      .then((res) => {
+        setConsultList(res.data);
+      }).catch((error) => console.log(error));
 
     }else if(props.consult === 'RequestConsult'){
       // axios.get('Json/mainPageTutor/requestConsultList.json')

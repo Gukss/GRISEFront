@@ -11,8 +11,8 @@ const Footer = ({ consultId, tuteeName }) => {
   const [commentList, setCommentList] = useState([]);
   // const [tuteeName, setTuteeName] = useState("");
   const inputEl = useRef(null);
-	const commentCountRef = useRef(3);
-	const currentCommentRef = useRef(0);
+  const commentCountRef = useRef(3);
+  const currentCommentRef = useRef(0);
 
   useEffect(() => {
     axios({
@@ -35,24 +35,23 @@ const Footer = ({ consultId, tuteeName }) => {
   useEffect(() => {
     if (commentList.length !== 0) {
       ItemRef.current.scrollIntoView({ behavior: "smooth" });
-			currentCommentRef.current = 0;
-			let localUsername = window.localStorage.getItem('username');
-			commentList.map((el) => {
-				//id로 바꿔야 한다.
-				if (el.userName === localUsername){
-					currentCommentRef.current += 1
-				}
-			})
-			commentCountRef.current = 3 - currentCommentRef.current;
-			inputEl.current.placeholder = `피드백을 입력해주세요. ${commentCountRef.current}회 입력 가능합니다.`;
-			if (commentCountRef.current === 0){
-				inputEl.current.placeholder = `입력횟수를 모두 사용하셨습니다.`;
-			}
-        if (commentCountRef <= 0) {
-          inputEl.current.disabled = true;
+      currentCommentRef.current = 0;
+      let localUsername = window.localStorage.getItem("username");
+      commentList.map((el) => {
+        //id로 바꿔야 한다.
+        if (el.userName === localUsername) {
+          currentCommentRef.current += 1;
         }
-    };
-
+      });
+      commentCountRef.current = 3 - currentCommentRef.current;
+      inputEl.current.placeholder = `피드백을 입력해주세요. ${commentCountRef.current}회 입력 가능합니다.`;
+      if (commentCountRef.current === 0) {
+        inputEl.current.placeholder = `입력횟수를 모두 사용하셨습니다.`;
+      }
+      if (commentCountRef <= 0) {
+        inputEl.current.disabled = true;
+      }
+    }
   }, [commentList]);
 
   const getItem = () => {
@@ -102,7 +101,6 @@ const Footer = ({ consultId, tuteeName }) => {
   };
 
   const onSubmit = (e) => {
-
     e.preventDefault();
     if (content === "") {
       return;
