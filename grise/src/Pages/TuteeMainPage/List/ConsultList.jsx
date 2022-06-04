@@ -16,7 +16,27 @@ const ConsultList = (props) => {
     pageNumber.current+=1;
     NoRefreshRef.current.style.display = 'block';
     console.log('새로고침',pageNumber.current);
-    if(props.consult === 'Consulting'){
+    if(props.consult === 'Requesting'){
+      axios({
+        method:'GET',
+        url:`http://grise.p-e.kr/tutee/consults`,
+        headers: {
+          Authorization: window.localStorage.getItem('token') ,
+          "Content-Type": "application/json",
+        },
+        params:{
+          offset:pageNumber.current*10,
+          limit:10,
+          content : 'posting'
+        }
+      })
+      .then((res) => {
+        const temp = [...ConsultList,...res.data];
+        setConsultList(temp);
+        console.log(temp);
+      }).catch((error) => {console.log(error);pageNumber.current-=1;});
+    }
+    else if(props.consult === 'Consulting'){
       // axios.get('Json/mainPageTutee/requestConsultList.json')
       // .then((res) => {
       //   const temp = [...ConsultList].concat(res.data);
@@ -33,7 +53,8 @@ const ConsultList = (props) => {
         },
         params:{
           offset:pageNumber.current*10,
-          limit:10
+          limit:10,
+          content : 'consulting'
         }
       })
       .then((res) => {
@@ -59,7 +80,7 @@ const ConsultList = (props) => {
         },
         params:{
           offset:pageNumber.current*10,
-          limit:10
+          limit:10,
         }
       })
       .then((res) => {
@@ -69,14 +90,14 @@ const ConsultList = (props) => {
       }).catch((error) => {console.log(error);pageNumber.current-=1;NoRefreshRef.current.style.display = 'none'});
       
     }else if(props.consult === 'SolvedConsult'){
-      axios.get('Json/mainPageTutee/test.json')
-      .then((res) => {
-        const temp = [...ConsultList,...res.data];
-        setConsultList(temp);
-        console.log(temp);
-      }).catch((error) => {console.log(error);pageNumber.current-=1;NoRefreshRef.current.style.display = 'none'});
+      // axios.get('Json/mainPageTutee/test.json')
+      // .then((res) => {
+      //   const temp = [...ConsultList,...res.data];
+      //   setConsultList(temp);
+      //   console.log(temp);
+      // }).catch((error) => {console.log(error);pageNumber.current-=1;NoRefreshRef.current.style.display = 'none'});
 
-      /*
+      
       axios({
         method:'GET',
         url:`http://grise.p-e.kr/tutee/consults`,
@@ -86,7 +107,8 @@ const ConsultList = (props) => {
         },
         params:{
           offset:pageNumber.current*10,
-          limit:10
+          limit:10,
+          content : 'done'
         }
       })
       .then((res) => {
@@ -94,12 +116,12 @@ const ConsultList = (props) => {
         setConsultList(temp);
         console.log(temp);
       }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';pageNumber.current-=1;});
-      */
+      
     }
   }
 
   useEffect(() => {
-    if(props.consult === 'Consulting'){
+    if(props.consult === 'Requesting'){
       // axios.get('Json/mainPageTutee/requestConsultList.json')
       // .then((res) => {
       //   setConsultList(res.data);
@@ -113,9 +135,40 @@ const ConsultList = (props) => {
           Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
         },
+        body:{
+          content : 'posting'
+        },
         params:{
           offset:pageNumber.current*10,
-          limit:10
+          limit:10,
+        }
+      })
+      .then((res) => {
+        setConsultList(res.data);
+        console.log(pageNumber.current,res.data);
+      }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';});
+
+    }
+    else if(props.consult === 'Consulting'){
+      // axios.get('Json/mainPageTutee/requestConsultList.json')
+      // .then((res) => {
+      //   setConsultList(res.data);
+      // }).catch((error) => console.log(error));
+
+
+      axios({
+        method:'GET',
+        url:`http://grise.p-e.kr/tutee/consults`,
+        headers: {
+          Authorization: window.localStorage.getItem('token') ,
+          "Content-Type": "application/json",
+        },
+        body:{
+          content : 'consulting'
+        },
+        params:{
+          offset:pageNumber.current*10,
+          limit:10,
         }
       })
       .then((res) => {
@@ -139,7 +192,7 @@ const ConsultList = (props) => {
         },
         params:{
           offset:pageNumber.current*10,
-          limit:10
+          limit:10,
         }
       })
       .then((res) => {
@@ -147,27 +200,30 @@ const ConsultList = (props) => {
       }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';});
       
     }else if(props.consult === 'SolvedConsult'){
-      axios.get('Json/mainPageTutee/test.json')
-      .then((res) => {
-        setConsultList(res.data);
-      }).catch((error) => console.log(error));
-
-      
-      // axios({
-      //   method:'GET',
-      //   url:`http://grise.p-e.kr/tutee/consults`,
-      //   headers: {
-      //     Authorization: window.localStorage.getItem('token') ,
-      //     "Content-Type": "application/json",
-      //   },
-      //   params:{
-      //     offset:pageNumber.current*10,
-      //     limit:10
-      //   }
-      // })
+      // axios.get('Json/mainPageTutee/test.json')
       // .then((res) => {
       //   setConsultList(res.data);
-      // }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';});
+      // }).catch((error) => console.log(error));
+
+      
+      axios({
+        method:'GET',
+        url:`http://grise.p-e.kr/tutee/consults`,
+        headers: {
+          Authorization: window.localStorage.getItem('token') ,
+          "Content-Type": "application/json",
+        },
+        body:{
+          content : 'done'
+        },
+        params:{
+          offset:pageNumber.current*10,
+          limit:10,
+        }
+      })
+      .then((res) => {
+        setConsultList(res.data);
+      }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';});
       
     }
   }, [props.consult]);
@@ -194,21 +250,27 @@ const ConsultList = (props) => {
   const getItem = () =>{
     if(ConsultList.length === 0){return;}
     const result = [];
-    if(props.consult === 'Consulting'){
+    if(props.consult === 'Requesting'){
       for(let i = 0; i < ConsultList.length-1; i++){
-        result.push(<ConsultItem key = {i} isEnd={false} data = {ConsultList[i]}></ConsultItem>);
+        result.push(<ConsultItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></ConsultItem>);
       }
-      result.push(<ConsultItem key = {ConsultList.length-1} isEnd={true} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></ConsultItem>);
+      result.push(<ConsultItem key = {ConsultList.length-1} isEnd={true} consult={props.consult} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></ConsultItem>);
+    }
+    else if(props.consult === 'Consulting'){
+      for(let i = 0; i < ConsultList.length-1; i++){
+        result.push(<ConsultItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></ConsultItem>);
+      }
+      result.push(<ConsultItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></ConsultItem>);
     }else if(props.consult === 'Tutor'){
       for(let i = 0; i < ConsultList.length-1; i++){
-        result.push(<TutorItem key = {i} isEnd={false} data = {ConsultList[i]}></TutorItem>);
+        result.push(<TutorItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></TutorItem>);
       }
-      result.push(<TutorItem key = {ConsultList.length-1} isEnd={true} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></TutorItem>);
+      result.push(<TutorItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></TutorItem>);
     }else if(props.consult === 'SolvedConsult'){
       for(let i = 0; i < ConsultList.length-1; i++){
-        result.push(<ConsultItem key = {i} isEnd={false} data = {ConsultList[i]}></ConsultItem>);
+        result.push(<ConsultItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></ConsultItem>);
       }
-      result.push(<ConsultItem key = {ConsultList.length-1} isEnd={true} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></ConsultItem>);
+      result.push(<ConsultItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></ConsultItem>);
     }
     return result;
   }

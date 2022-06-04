@@ -1,9 +1,15 @@
-import React,{forwardRef} from 'react'
+import React,{forwardRef,useRef} from 'react'
 import styled from 'styled-components';
 import axios from 'axios';
 
 const RequestConsultItem = forwardRef((props,ref) => {
+    const RejectBtnRef = useRef();
+    const isReject = useRef(false);
     const onClickRejectBtn = () =>{
+        if(isReject.current){
+            alert('거절한 요청입니다');
+            return;
+        }
         console.log(props.data?.consultId,'거절');
         axios({
             method:'POST',
@@ -15,7 +21,9 @@ const RequestConsultItem = forwardRef((props,ref) => {
         })
         .then((res) => {
             console.log(res);
-            props.setIsReject(true);
+            props.PushReject(props.key);
+            RejectBtnRef.current.backgroundColor="#B1B1B1";
+            isReject.current=true;
         }).catch((error) => {
             console.log(error);
         });
@@ -27,7 +35,7 @@ const RequestConsultItem = forwardRef((props,ref) => {
                     <Title>{props.data?.title}</Title>
                     <Name>{props.data?.tutee.name}</Name>
                 </div>
-                <RejectBtn onClick={onClickRejectBtn}>거절</RejectBtn>
+                <RejectBtn ref={RejectBtnRef} onClick={onClickRejectBtn}>거절</RejectBtn>
             </Container>
         </div>
     )
