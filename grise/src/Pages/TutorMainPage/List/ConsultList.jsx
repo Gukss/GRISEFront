@@ -1,18 +1,23 @@
 import React,{useState,useRef,useEffect,useCallback} from 'react'
 import axios from 'axios';
 import styled from 'styled-components';
-import ConsultingItem from './ConsultingItem';
-import NormalConsultItem from './NormalConsultItem';
+import ConsultItem from './ConsultItem';
 import RequestConsultItem from './RequestConsultItem';
 
 const ConsultList = (props) => {
   const [ConsultList,setConsultList] = useState([]);
   const [touchPosition,setTouchPosition]= useState({x:0,y:0});
-  const [isReject,setIsReject] = useState(false);
+  const [RejectList,setReject] = useState([]);
   const ItemRef = useRef(null);
   const ContainerRef = useRef(null);
-  const pageNumber = useRef(1);
+  const pageNumber = useRef(0);
   const NoRefreshRef = useRef(null);
+
+  const PushReject = useCallback(key=>{
+    let temp = [...RejectList];
+    temp.push(key);
+    setReject(temp);
+  },[RejectList])
 
   const GetConsult = useCallback(e=>{
     if(props.consult === 'NormalConsult'){
@@ -91,7 +96,7 @@ const ConsultList = (props) => {
     pageNumber.current+=1;
     NoRefreshRef.current.style.display = 'block';
     console.log('새로고침',pageNumber.current);
-
+    
     if(props.consult === 'NormalConsult'){
       // axios.get('Json/mainPageTutee/requestConsultList.json')
       // .then((res) => {
@@ -124,7 +129,6 @@ const ConsultList = (props) => {
       //   const temp = [...ConsultList].concat(res.data);
       //   setConsultList(temp);
       // }).catch((error) => console.log(error));
-
       
       axios({
         method:'GET',
@@ -139,7 +143,13 @@ const ConsultList = (props) => {
         }
       })
       .then((res) => {
-        const temp = [...ConsultList,...res.data];
+        const temp = [...ConsultList];
+        if(RejectList.length!==0){//거절한 요청을 목록에서 제외해서 갱신
+          RejectList.forEach((_,idx)=>{
+            temp.splice(idx,1);
+          })
+        }
+        res.data.forEach((el)=>temp.push(el));
         setConsultList(temp);
         console.log(temp);
       }).catch((error) => {console.log(error);pageNumber.current-=1;NoRefreshRef.current.style.display = 'none';});
@@ -178,16 +188,6 @@ const ConsultList = (props) => {
 
   useEffect(()=>{NoRefreshRef.current.style.display = 'none';},[ConsultList])
 
-  useEffect(()=>{//거절시 새롭게 상담지를 받아옴
-    if(isReject){
-      NoRefreshRef.current.style.display = 'block';
-      GetConsult();
-      NoRefreshRef.current.style.display = 'none';
-      setIsReject(false);
-      console.log('거절');
-    }
-  },[isReject,GetConsult])
-
   const onTouchStart=(e)=>{
     setTouchPosition({ x: e.changedTouches[0].pageX, y: e.changedTouches[0].pageY });
   }
@@ -210,19 +210,19 @@ const ConsultList = (props) => {
     const result = [];
     if(props.consult === 'NormalConsult'){
       for(let i = 0; i < ConsultList.length-1; i++){
-        result.push(<NormalConsultItem key = {i} isEnd={false} data = {ConsultList[i]}></NormalConsultItem>);
+        result.push(<ConsultItem key = {i} isEnd={false} consult = {props.consult} data = {ConsultList[i]}></ConsultItem>);
       }
-      result.push(<NormalConsultItem key = {ConsultList.length-1} isEnd={true} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></NormalConsultItem>);
+      result.push(<ConsultItem key = {ConsultList.length-1} isEnd={true} consult = {props.consult} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></ConsultItem>);
     }else if(props.consult === 'RequestConsult'){
       for(let i = 0; i < ConsultList.length-1; i++){
-        result.push(<RequestConsultItem key = {i} isEnd={false} setIsReject = {setIsReject} data = {ConsultList[i]}></RequestConsultItem>);
+        result.push(<RequestConsultItem key = {i} isEnd={false} consult = {props.consult} setReject = {PushReject} data = {ConsultList[i]}></RequestConsultItem>);
       }
-      result.push(<RequestConsultItem key = {ConsultList.length-1} isEnd={true} setIsReject = {setIsReject} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></RequestConsultItem>);
+      result.push(<RequestConsultItem key = {ConsultList.length-1} isEnd={true} consult = {props.consult} setReject = {PushReject} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></RequestConsultItem>);
     }else if(props.consult === 'consulting'){
       for(let i = 0; i < ConsultList.length-1; i++){
-        result.push(<ConsultingItem key = {i} isEnd={false} data = {ConsultList[i]}></ConsultingItem>);
+        result.push(<ConsultItem key = {i} isEnd={false} consult = {props.consult} data = {ConsultList[i]}></ConsultItem>);
       }
-      result.push(<ConsultingItem key = {ConsultList.length-1} isEnd={true} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></ConsultingItem>);
+      result.push(<ConsultItem key = {ConsultList.length-1} consult = {props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></ConsultItem>);
     }
     return result;
   }
