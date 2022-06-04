@@ -18,13 +18,13 @@ const Footer = ({ consultId, tuteeName, consultStart }) => {
 		inputEl.current.disabled = false;
 		inputEl.current.focus();
 		inputEl.current.placeholder = `피드백을 입력해주세요. ${commentCountRef.current}회 입력 가능합니다.`;
-
+		
 	}, [consultStart])
 
   useEffect(() => {
     axios({
       method: "GET",
-      url: `http://grise.p-e.kr/tutee/consults/${consultId}/comments`,
+      url: `http://grise.p-e.kr/tutor/consults/${consultId}/comments`,
       headers: {
         Authorization: window.localStorage.getItem("token"),
         "Content-Type": "application/json",
@@ -149,38 +149,6 @@ const Footer = ({ consultId, tuteeName, consultStart }) => {
       .catch((error) => {
         console.log("2", error);
       });
-    // axios({
-    //   method: "POST",
-    //   url: `http://grise.p-e.kr/tutee/consults/${consultId}/comment`,
-    //   headers: {
-    //     "Authorization": window.localStorage.getItem("token"),
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: {
-    //     "content": content
-    // 	}
-    // })
-    //   .then((res) => {
-    //     axios({
-    //       method: "GET",
-    //       url: `http://grise.p-e.kr/tutee/consults/${consultId}/comments`,
-    //       headers: {
-    //         Authorization: window.localStorage.getItem("token"),
-    //         "Content-Type": "application/json",
-    //       },
-    //     })
-    //       .then((res) => {
-    // 				setCommentList(res.data);
-    // 				setContent("");
-    //         inputEl.current.focus();
-    // 			})
-    //       .catch((error) => {
-    //         console.log("1", error);
-    //       });
-    //   })
-    //   .catch((error) => {
-    //     console.log("2", error);
-    //   });
   };
 
   return (
@@ -211,46 +179,6 @@ const Footer = ({ consultId, tuteeName, consultStart }) => {
           />
         </SubmitBtn>
       </InputContinaer>
-      {/* <StyledFooter>
-        <form
-          style={{
-            height: "100%",
-            width: "97%",
-            margin: "0 auto",
-            display: "flex",
-          }}
-          onSubmit={onSubmit}
-        >
-          <StyledInput
-            type="text"
-            placeholder="피드백을 입력해주세요."
-            onChange={(e) => {
-              getComment(e);
-            }}
-            value={content}
-            ref={inputEl}
-          ></StyledInput>
-          <button
-            style={{
-              border: "none",
-              backgroundColor: "transparent",
-            }}
-          >
-            <BsFillArrowUpCircleFill
-              style={{
-                float: "right",
-                height: "2rem",
-                width: "2rem",
-                border: "none",
-                marginLeft: "auto",
-                marginTop: "auto",
-                marginBottom: "auto",
-                color: "#3A6C7B",
-              }}
-            />
-          </button>
-        </form>
-      </StyledFooter> */}
     </div>
   );
 };

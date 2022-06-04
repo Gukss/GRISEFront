@@ -8,7 +8,12 @@ const ConsultItem = forwardRef((props, ref) => {
   const onClickShowConsultBtn = () => {
     if(props.consult === 'Requesting'){return;}
     console.log(props.data, "피드백 확인");
-    navigate("/tuteeConsult", { state: props.data,consult:props.consult });
+		navigate("/tuteeConsult", {
+      state: {
+        consult: props.consult,
+        consultId: props.data?.consultId,
+      },
+    });
   };
 
   return (

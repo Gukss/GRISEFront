@@ -7,6 +7,7 @@ import axios from "axios";
 const ModalButton = ({ consultId }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const rate = useRef(0);
+	const completeRef = useRef(null);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -22,7 +23,7 @@ const ModalButton = ({ consultId }) => {
       }
 		})
       .then((res) => {
-				console.log("별점", rate.current)
+				// console.log("별점", rate.current)
 				axios
           .post(
             `http://grise.p-e.kr/tutee/consults/${consultId}/review`,
@@ -42,6 +43,7 @@ const ModalButton = ({ consultId }) => {
             setIsModalVisible(false);
           })
           .catch((error) => console.log("1", error));
+					completeRef.current.style.display = "none";
       })
       .catch((error) => console.log("2", error));
   };
@@ -54,7 +56,7 @@ const ModalButton = ({ consultId }) => {
   };
   return (
     <>
-      <CompleteButton type="primary" onClick={showModal}>
+      <CompleteButton type="primary" onClick={showModal} ref={completeRef}>
         피드백 완료
       </CompleteButton>
       <Modal

@@ -6,7 +6,13 @@ const ConsultingItem = forwardRef((props,ref) => {
   const navigate = useNavigate();
   const onClickShowConsultBtn = () =>{
     console.log(props.data?.consultId,'피드백 확인');
-    navigate("/tutorConsult", { state: props.data,consult:props.consult });
+
+    navigate("/tutorConsult", {
+      state: {
+        consult: props.consult,
+        consultId: props.data?.consultId,
+      },
+    });
   }
   return (
     <Container ref={ref} onClick={onClickShowConsultBtn}>
