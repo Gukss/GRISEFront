@@ -135,6 +135,7 @@ const ConsultList = (props) => {
           Authorization: window.localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
+<<<<<<< HEAD
         body: {
           content: "posting",
         },
@@ -142,6 +143,13 @@ const ConsultList = (props) => {
           offset: pageNumber.current * 10,
           limit: 10,
         },
+=======
+        params:{
+          offset:pageNumber.current*10,
+          limit:10,
+          content : 'posting'
+        }
+>>>>>>> 761b82bdb7e05d8d1c707863bc009ca48437b2a4
       })
         .then((res) => {
           setConsultList(res.data);
@@ -167,12 +175,10 @@ const ConsultList = (props) => {
           Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
         },
-        body:{
-          content : 'consulting'
-        },
         params:{
           offset:pageNumber.current*10,
           limit:10,
+          content : 'consulting'
         }
       })
       .then((res) => {
@@ -217,12 +223,10 @@ const ConsultList = (props) => {
           Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
         },
-        body:{
-          content : 'done'
-        },
         params:{
           offset:pageNumber.current*10,
           limit:10,
+          content : 'done'
         }
       })
       .then((res) => {
