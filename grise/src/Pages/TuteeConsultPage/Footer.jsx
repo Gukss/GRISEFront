@@ -48,7 +48,7 @@ const Footer = ({ consultId, tuteeName }) => {
       if (commentCountRef.current === 0) {
         inputEl.current.placeholder = `입력횟수를 모두 사용하셨습니다.`;
       }
-      if (commentCountRef <= 0) {
+      if (commentCountRef.current <= 0) {
         inputEl.current.disabled = true;
       }
     }
@@ -69,7 +69,7 @@ const Footer = ({ consultId, tuteeName }) => {
           }
           color={tuteeName === commentList[i]?.userName ? "#000" : "#fff"}
         >
-          <span>{commentList[i]?.userName}</span>
+          <span>{commentList[i]?.userName}: </span>
           <span>{commentList[i]?.content}</span>
         </CommentItem>
       );
@@ -263,6 +263,7 @@ const InputComment = styled.input`
   :focus {
     outline: none;
   }
+  background: transparent;
 `;
 
 
@@ -279,6 +280,7 @@ const StyledComment = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+	overflow-x: hidden;
 `;
 
 const CommentItem = styled.div`
@@ -292,6 +294,7 @@ const CommentItem = styled.div`
 	font-size: 0.9rem;
 	color: ${(props) => props.color};
 	margin-left: 5%;
+	/* overflow-x: hidden; */
 `;
 
 const StyledFooter = styled.footer`
