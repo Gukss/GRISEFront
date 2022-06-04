@@ -14,9 +14,33 @@ const Board = () => {
 	const videoRef = useRef(null);
 	const [consultStart, setConsultStart] = useState(false);
 	const onClick = () => {
+		axios({
+      method: "POST",
+      url: `http://grise.p-e.kr/tutor/consults/${location.state.consultId}/startConsult`,
+      headers: {
+        Authorization: window.localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        console.log("피드백 시작 테스트", res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 		setConsultStart(true);
 	};
+	const typeRef = useRef();
 
+	const consultType = () => {
+		if (location.state.consult === "NormalConsult"){
+			typeRef.innerHTML = "피드백 하기";
+		} else if (location.state.consult === "RequestConsult") {
+			typeRef.current = "피드백 하기";
+    } else if (location.state.consult === "consulting"){
+			typeRef.current.style.display = "none";
+		};
+	};
 	useEffect(() => {
 		axios({
       method: "GET",
@@ -29,7 +53,8 @@ const Board = () => {
       .then((res) => {
 				setConsult(res.data);
         console.log("df", res.data);
-				videoRef.current.src = `http://grise.p-e.kr/tutee/video/${res.data.video.videoId}`;
+				videoRef.current.src = `http://grise.p-e.kr/tutor/video/${res.data.video.videoId}`;
+				consultType();
       })
       .catch((error) => console.log(error));
 	}, []);
@@ -44,7 +69,9 @@ const Board = () => {
       </StyledVideo>
       <StyledTitle>
         <StyledHeader>{consult?.title}</StyledHeader>
-        <CompleteButton onClick={onClick}>피드백 하기</CompleteButton>
+        <CompleteButton onClick={onClick} ref={typeRef}>
+          피드백 하기
+        </CompleteButton>
       </StyledTitle>
       <MainText content={consult?.content} />
       <Footer
