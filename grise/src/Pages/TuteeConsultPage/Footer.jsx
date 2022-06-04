@@ -5,7 +5,7 @@ import Comment from "./Comment";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import axios from 'axios';
 
-const Footer = ({ consultId, tuteeName }) => {
+const Footer = ({ consultId, tuteeName, consultType }) => {
   const ItemRef = useRef(null);
   const [content, setContent] = useState("");
   const [commentList, setCommentList] = useState([]);
@@ -30,6 +30,14 @@ const Footer = ({ consultId, tuteeName }) => {
       .catch((error) => {
         console.log(error);
       });
+			if (consultType === "Requesting") {
+        inputEl.current.disabled = true;
+      } else if (consultType === "Consulting") {
+        inputEl.current.disabled = false;
+      } else if (consultType === "SolvedConsult") {
+        inputEl.current.disabled = true;
+				inputEl.current.placeholder = "상담이 완료되었습니다. 입력이 불가합니다."
+      }
   }, []);
 
   useEffect(() => {
@@ -139,38 +147,6 @@ const Footer = ({ consultId, tuteeName }) => {
       .catch((error) => {
         console.log("2", error);
       });
-    // axios({
-    //   method: "POST",
-    //   url: `http://grise.p-e.kr/tutee/consults/${consultId}/comment`,
-    //   headers: {
-    //     "Authorization": window.localStorage.getItem("token"),
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: {
-    //     "content": content
-    // 	}
-    // })
-    //   .then((res) => {
-    //     axios({
-    //       method: "GET",
-    //       url: `http://grise.p-e.kr/tutee/consults/${consultId}/comments`,
-    //       headers: {
-    //         Authorization: window.localStorage.getItem("token"),
-    //         "Content-Type": "application/json",
-    //       },
-    //     })
-    //       .then((res) => {
-    // 				setCommentList(res.data);
-    // 				setContent("");
-    //         inputEl.current.focus();
-    // 			})
-    //       .catch((error) => {
-    //         console.log("1", error);
-    //       });
-    //   })
-    //   .catch((error) => {
-    //     console.log("2", error);
-    //   });
   };
 
   return (
@@ -201,46 +177,6 @@ const Footer = ({ consultId, tuteeName }) => {
           />
         </SubmitBtn>
       </InputContinaer>
-      {/* <StyledFooter>
-        <form
-          style={{
-            height: "100%",
-            width: "97%",
-            margin: "0 auto",
-            display: "flex",
-          }}
-          onSubmit={onSubmit}
-        >
-          <StyledInput
-            type="text"
-            placeholder="피드백을 입력해주세요."
-            onChange={(e) => {
-              getComment(e);
-            }}
-            value={content}
-            ref={inputEl}
-          ></StyledInput>
-          <button
-            style={{
-              border: "none",
-              backgroundColor: "transparent",
-            }}
-          >
-            <BsFillArrowUpCircleFill
-              style={{
-                float: "right",
-                height: "2rem",
-                width: "2rem",
-                border: "none",
-                marginLeft: "auto",
-                marginTop: "auto",
-                marginBottom: "auto",
-                color: "#3A6C7B",
-              }}
-            />
-          </button>
-        </form>
-      </StyledFooter> */}
     </div>
   );
 };

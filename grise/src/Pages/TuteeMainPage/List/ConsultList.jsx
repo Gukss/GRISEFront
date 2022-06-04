@@ -135,21 +135,11 @@ const ConsultList = (props) => {
           Authorization: window.localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
-<<<<<<< HEAD
-        body: {
-          content: "posting",
-        },
-        params: {
-          offset: pageNumber.current * 10,
-          limit: 10,
-        },
-=======
         params:{
           offset:pageNumber.current*10,
           limit:10,
           content : 'posting'
         }
->>>>>>> 761b82bdb7e05d8d1c707863bc009ca48437b2a4
       })
         .then((res) => {
           setConsultList(res.data);

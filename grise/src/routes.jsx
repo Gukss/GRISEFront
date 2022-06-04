@@ -5,7 +5,8 @@ import TutorConsultBoard from "./Pages/TutorConsultPage/Board";
 import RequestConsultPage from "./Pages/RequestConsultPage/RequestConsultPage";
 import TuteeLoginPage from "./Pages/LoginPage/TuteeLoginPage"
 import TutorLoginPage from "./Pages/LoginPage/TutorLoginPage";
-import RedirectPage from './oauth/Redirect';
+import RedirectTuteePage from './oauth/Redirect';
+import RedirectTutorPage from './oauth/RedirectTutor';
 import TestPage from './Pages/Test';
 
 const routes = [
@@ -42,8 +43,12 @@ const routes = [
     component: RequestConsultPage,
   },
   {
-    path: "/Redirect",
-    component: RedirectPage,
+    path: "/RedirectTutee",
+    component: RedirectTuteePage,
+  },
+  {
+    path: "/RedirectTutor",
+    component: RedirectTutorPage,
   },
   {
     path: "/Test",

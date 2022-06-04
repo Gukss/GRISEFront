@@ -13,11 +13,11 @@ const ConsultList = (props) => {
   const pageNumber = useRef(0);
   const NoRefreshRef = useRef(null);
 
-  const PushReject = useCallback(key=>{
+  function PushReject(key){
     let temp = [...RejectList];
     temp.push(key);
     setReject(temp);
-  },[RejectList])
+  }
 
   const GetConsult = useCallback(e=>{
     if(props.consult === 'NormalConsult'){

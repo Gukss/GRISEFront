@@ -1,49 +1,62 @@
 import { Modal, Rate } from "antd";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import "antd/dist/antd.min.css";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
-const ModalButton = ({ consultId }) => {
+const ModalButton = ({ consultId, consultType }) => {
+	const navigate = useNavigate();
+	const typeRef = useRef();
+	useEffect(() => {
+		if (consultType === "Requesting") {
+      typeRef.current.style.display = "none";
+    } else if (consultType === "Consulting") {
+      typeRef.current = "피드백 완료";
+    } else if (consultType === "SolvedConsult") {
+      typeRef.current.style.display = "none";
+    }
+	}, []);
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   const rate = useRef(0);
-	const completeRef = useRef(null);
 
   const showModal = () => {
     setIsModalVisible(true);
   };
 
   const handleOk = () => {
-		axios({
+    axios({
       method: "POST",
       url: `http://grise.p-e.kr/tutee/consults/${consultId}/done`,
       headers: {
         Authorization: window.localStorage.getItem("token"),
-        "Content-Type": "application/json"
-      }
-		})
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => {
-				// console.log("별점", rate.current)
-				axios
+        // console.log("별점", rate.current)
+        axios
           .post(
             `http://grise.p-e.kr/tutee/consults/${consultId}/review`,
             {},
             {
               headers: {
                 Authorization: window.localStorage.getItem("token"),
-                "Content-Type": `application/json`
+                "Content-Type": `application/json`,
               },
               body: {
                 star: rate.current,
-                content: "리뷰내용"
+                content: "리뷰내용",
               },
             }
           )
           .then((res) => {
             setIsModalVisible(false);
+						navigate('/tuteeMain');
           })
           .catch((error) => console.log("1", error));
-					completeRef.current.style.display = "none";
+        	// typeRef.current.style.display = "none";
       })
       .catch((error) => console.log("2", error));
   };
@@ -56,7 +69,7 @@ const ModalButton = ({ consultId }) => {
   };
   return (
     <>
-      <CompleteButton type="primary" onClick={showModal} ref={completeRef}>
+      <CompleteButton type="primary" onClick={showModal} ref={typeRef}>
         피드백 완료
       </CompleteButton>
       <Modal

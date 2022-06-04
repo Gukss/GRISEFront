@@ -4,7 +4,9 @@ import styled from "styled-components";
 import "antd/dist/antd.min.css";
 import axios from "axios";
 
-const ModalButton = ({ consultId }) => {
+const ModalButton = ({ consultId, consultType }) => {
+	
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   const rate = useRef(0);
 
@@ -39,6 +41,7 @@ const ModalButton = ({ consultId }) => {
             }
           )
           .then((res) => {
+
             setIsModalVisible(false);
           })
           .catch((error) => console.log("1", error));
@@ -54,7 +57,7 @@ const ModalButton = ({ consultId }) => {
   };
   return (
     <>
-      <CompleteButton type="primary" onClick={showModal}>
+      <CompleteButton type="primary" onClick={showModal} >
         피드백 하기
       </CompleteButton>
       <Modal

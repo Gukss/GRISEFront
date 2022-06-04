@@ -43,11 +43,13 @@ const Board = () => {
         tuteeName={consult?.tutee?.name}
         tutorName={consult?.tutor?.name}
         consultId={location.state.consultId}
+        consultType={location.state.consult}
       />
       <MainText content={consult?.content} />
       <Footer
         consultId={location.state.consultId}
         tuteeName={consult?.tutee?.name}
+        consultType={location.state.consult}
         // tutorName={location.state.tutor.name}
       />
     </Wrap>

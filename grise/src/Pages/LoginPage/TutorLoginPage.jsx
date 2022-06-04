@@ -1,19 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 import {ReactComponent as TutorLogo} from '../../Image/TutorLogo.svg';
-import GoogleBtn from '../../Image/btn_google_signin_light_normal_web.png';
+import { GoogleLoginButton } from "react-social-login-buttons";
 export const TutorLoginPage = () => {
   return (
     <Wrap>
-      <TutorLogo style={{width:'100%',height:'100%'}}></TutorLogo>
-      <div
-        onClick={()=>{console.log('구글로그인')}}
-        style={{textAlign:'center'}}
+      <TutorLogo style={{ width: "100%", height: "100%" }}></TutorLogo>
+      <a
+        href="http://grise.p-e.kr/oauth2/authorization/google?redirect_uri=http://localhost:3000/RedirectTutor"
+        style={{ display: "flex", justifyContent: "center" }}
       >
-        <img src={GoogleBtn} alt="구글 로그인" />
-      </div>
+        <div style={{ width: "60%" }}>
+          <GoogleLoginButton></GoogleLoginButton>
+        </div>
+      </a>
     </Wrap>
-  )
+  );
 }
 
 const Wrap = styled.div`

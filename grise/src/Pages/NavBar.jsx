@@ -42,6 +42,7 @@ export const NavBar = () => {
   }
   useEffect(()=>{
     searchRef.current.style.display = 'none';
+		// console.log(window.location.host, "패쓰확인");
   },[]);
   return (
     <div>
