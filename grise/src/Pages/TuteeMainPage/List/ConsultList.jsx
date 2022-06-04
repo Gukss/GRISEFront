@@ -129,24 +129,28 @@ const ConsultList = (props) => {
 
 
       axios({
-        method:'GET',
-        url:`http://grise.p-e.kr/tutee/consults`,
+        method: "GET",
+        url: `http://grise.p-e.kr/tutee/consults`,
         headers: {
-          Authorization: window.localStorage.getItem('token') ,
+          Authorization: window.localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
-        body:{
-          content : 'posting'
+        body: {
+          content: "posting",
         },
-        params:{
-          offset:pageNumber.current*10,
-          limit:10,
-        }
+        params: {
+          offset: pageNumber.current * 10,
+          limit: 10,
+        },
       })
-      .then((res) => {
-        setConsultList(res.data);
-        console.log(pageNumber.current,res.data);
-      }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';});
+        .then((res) => {
+          setConsultList(res.data);
+          console.log(pageNumber.current, res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+          NoRefreshRef.current.style.display = "none";
+        });
 
     }
     else if(props.consult === 'Consulting'){
