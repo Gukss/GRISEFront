@@ -55,13 +55,19 @@ const RequestConsultItem = (props) => {
 };
 
 const Container = styled.div`
+  height: 4.2rem;
   display: flex;
   border-bottom: #3a6c7b solid 0.2rem;
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
   flex-direction: row;
 `;
 
 const Content = styled.div`
-  width: 80%;
+  height: 2rem;
+  width: 90%;
   display: flex;
   flex-direction: column;
 `;
@@ -74,7 +80,7 @@ const Title = styled.div`
   font-style: normal;
   font-weight: bold;
   color: #3a6c7b;
-  height: 50%;
+  height: 1rem;
 `;
 
 const Name = styled.div`
@@ -83,12 +89,13 @@ const Name = styled.div`
   font-weight: bold;
   font-size: 1rem;
   margin-left: 1.5rem;
-  margin-bottom: 1rem;
-  height: 50%;
+  margin-top: 0.5rem;
+  /* height: 50%; */
 `;
 
 const RejectBtn = styled.div`
-  width: 20%;
+  /* width: 10%; */
+  width: 5rem;
   height: 1.5rem;
   margin-top: 1.25rem;
   border-radius: 1rem;

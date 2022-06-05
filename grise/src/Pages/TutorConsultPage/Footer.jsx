@@ -37,7 +37,7 @@ const Footer = ({ consultId, tuteeName, consultStart }) => {
       .catch((error) => {
         console.log(error);
       });
-			inputEl.current.disabled = true;
+			// inputEl.current.disabled = true;
       inputEl.current.placeholder = `피드백 하기 버튼을 눌러주세요.`;
 
   }, []);
