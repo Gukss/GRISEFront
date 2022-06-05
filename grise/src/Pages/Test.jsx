@@ -31,8 +31,8 @@ const Test = () => {
     <div>
       <video ref={video2Ref} autoPlay controls style={{ width: "100%", height: "100%" }}/>
       <div onClick={()=>{
-        //navigator.serviceWorker.controller.postMessage({token: window.localStorage.getItem('token')});
-        video2Ref.current.src=testURL;
+        navigator.serviceWorker.controller.postMessage({token: window.localStorage.getItem('token')});
+        video2Ref.current.src=griseURL;
       }}>실시간예제</div>
 
       <video ref={videoRef} autoPlay controls style={{ width: "100%", height: "100%" }}/>

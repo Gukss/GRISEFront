@@ -13,17 +13,18 @@ self.addEventListener("fetch", event => {
       }
     });
     event.respondWith((async () => {
-      const cachedResponse = await caches.match(event.request);
-      if (cachedResponse) {
-        return cachedResponse;
-      }
+      // const cachedResponse = await caches.match(event.request);
+      // if (cachedResponse) {
+      //   return cachedResponse;
+      // }
     
       const response = await fetch(newRequest);
+      console.log('test',response);
       
-      if (!response || response.status !== 200 || response.type !== 'basic') {
-        return response;
-      }
-      console.log(response);
+      // if (!response || response.status !== 200 || response.type !== 'basic') {
+      //   return response;
+      // }
+      // console.log(response);
       return response;
     })());
   }
