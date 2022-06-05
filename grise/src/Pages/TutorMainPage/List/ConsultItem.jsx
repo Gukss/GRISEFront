@@ -1,8 +1,8 @@
-import React,{forwardRef} from 'react'
+import React from 'react'
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
 
-const ConsultingItem = forwardRef((props,ref) => {
+const ConsultingItem = (props) => {
   const navigate = useNavigate();
   const onClickShowConsultBtn = () =>{
     console.log(props.data?.consultId,'피드백 확인');
@@ -15,7 +15,7 @@ const ConsultingItem = forwardRef((props,ref) => {
     });
   }
   return (
-    <Container ref={ref} onClick={onClickShowConsultBtn}>
+    <Container onClick={onClickShowConsultBtn}>
       <TitleDiv>
         <Title>{props.data?.title}</Title>
         <IsComment show={props.data?.isArriveMessageToTutor}>.</IsComment>
@@ -23,7 +23,7 @@ const ConsultingItem = forwardRef((props,ref) => {
       <Name>{props.data?.tutee.name}</Name>
     </Container>
   )
-});
+};
 
 const Container = styled.div`
   display: flex;
