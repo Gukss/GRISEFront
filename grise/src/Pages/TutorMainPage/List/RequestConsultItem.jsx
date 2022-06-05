@@ -55,9 +55,9 @@ const RequestConsultItem = (props) => {
 };
 
 const Container = styled.div`
-  height: 4rem;
+  height: 4.2rem;
   display: flex;
-  /* border-bottom: #3a6c7b solid 0.2rem; */
+  border-bottom: #3a6c7b solid 0.2rem;
   font-family: "Noto Sans CJK KR";
   font-style: normal;
   font-weight: bold;
