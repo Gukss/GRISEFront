@@ -35,7 +35,6 @@ const ModalButton = ({ consultId, consultType }) => {
       },
     })
       .then((res) => {
-        // console.log("별점", rate.current)
         axios
           .post(
             `http://grise.p-e.kr/tutee/consults/${consultId}/review`,
@@ -56,7 +55,6 @@ const ModalButton = ({ consultId, consultType }) => {
 						navigate('/tuteeMain');
           })
           .catch((error) => console.log("1", error));
-        	// typeRef.current.style.display = "none";
       })
       .catch((error) => console.log("2", error));
   };

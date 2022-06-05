@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React from "react";
 import styled from 'styled-components';
 import ModalButton from "./ModalButton";
 
@@ -39,40 +39,5 @@ const StyledHeader = styled.div`
 	overflow: hidden;
 `;
 
-const StyledTutor = styled.div`
-  width: 4rem;
-  height: 100%;
-  font-size: 0.7rem;
-  font-weight: bold;
-  color: #b1b1b1;
-  margin: auto 0;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-`;
-const StyledTutee = styled.div`
-  width: 4rem;
-  height: 100%;
-  font-size: 0.7rem;
-  font-weight: bold;
-  color: #b1b1b1;
-  margin: auto 0;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-`;
-
-const CompleteButton = styled.button`
-  width: 3rem;
-  height: 1.5rem;
-  font-size: 0.4rem;
-  border-radius: 10px;
-  font-weight: bold;
-  background-color: #3a6c7b;
-	border: none;
-	color: #fff;
-	margin: auto 0.3rem auto auto;
-	
-`;
 
 export default Title;

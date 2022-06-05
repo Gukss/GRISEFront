@@ -50,7 +50,6 @@ const Board = () => {
         consultId={location.state.consultId}
         tuteeName={consult?.tutee?.name}
         consultType={location.state.consult}
-        // tutorName={location.state.tutor.name}
       />
     </Wrap>
   );
@@ -66,8 +65,6 @@ const Wrap = styled.div`
   width: 1200px;
   height: 100%;
   margin: 0 auto;
-	/* display: flex;
-	flex-direction: column; */
   @media (max-width: 1220px) {
     width: 100%;
   }

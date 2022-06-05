@@ -1,7 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react'
-import { Row, Col, Select, Divider } from "antd";
 import styled from "styled-components";
-import Comment from "./Comment";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import axios from 'axios';
 
@@ -9,7 +7,6 @@ const Footer = ({ consultId, tuteeName, consultType }) => {
   const ItemRef = useRef(null);
   const [content, setContent] = useState("");
   const [commentList, setCommentList] = useState([]);
-  // const [tuteeName, setTuteeName] = useState("");
   const inputEl = useRef(null);
   const commentCountRef = useRef(3);
   const currentCommentRef = useRef(0);

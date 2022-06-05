@@ -1,5 +1,3 @@
-import React, { useState, useRef, useMemo, useEffect } from "react";
-import { Row, Col, Select, Divider } from "antd";
 import styled from "styled-components";
 
 const MainText = (props) => {
