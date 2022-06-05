@@ -62,7 +62,7 @@ export const NavBar = () => {
 					height: "50%",
 					padding: "auto 0"
 				}}>
-          <Link to="/">
+          <Link to="/tuteeMain">
 						<Logo style={{
               width: "4rem",
   						height: "100%",
