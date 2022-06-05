@@ -7,11 +7,12 @@ const ConsultItem = forwardRef((props, ref) => {
 	
   const onClickShowConsultBtn = () => {
     if(props.consult === 'Requesting'){return;}
-    console.log(props.data, "피드백 확인");
+    console.log(props.data, "consult 확인");
 		navigate("/tuteeConsult", {
       state: {
         consult: props.consult,
         consultId: props.data?.consultId,
+        isArriveMessageToTutee: props.data?.isArriveMessageToTutee,
       },
     });
   };

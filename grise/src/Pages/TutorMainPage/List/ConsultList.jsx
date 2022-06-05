@@ -26,7 +26,6 @@ const ConsultList = (props) => {
       //   setConsultList(res.data);
       // }).catch((error) => console.log(error));
 
-
       axios({
         method:'GET',
         url:`http://grise.p-e.kr/tutor/consults/general`,
