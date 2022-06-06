@@ -3,30 +3,34 @@ import styled from 'styled-components'
 
 const Video = (props) => {
   const videoRef = useRef(null);
-  async function VideoInit(){
-    console.log('비디오 시작 test');
-    const result = await fetch(`https://grise.p-e.kr/tutee/video/${props.videoId}`, {
-      headers: {
-        Authorization: window.localStorage.getItem('token')
-      }
-    });
+  // async function VideoInit(){
+  //   console.log('비디오 시작 test');
+  //   const result = await fetch(`https://grise.p-e.kr/tutee/video/${props.videoId}`, {
+  //     headers: {
+  //       Authorization: window.localStorage.getItem('token')
+  //     }
+  //   });
 
-    const blob = await result.blob();
-    console.log(result);
+  //   const blob = await result.blob();
+  //   console.log(result);
 
-    if (blob) {
-      videoRef.current.src = URL.createObjectURL(blob);
+  //   if (blob) {
+  //     videoRef.current.src = URL.createObjectURL(blob);
 
-      // Load the new resource
-      videoRef.current.parentElement.load();
+  //     // Load the new resource
+  //     videoRef.current.parentElement.load();
 
-      console.info("Ready!", videoRef.current.src);
-    } else {
-      console.warn("Can not load");
-    }
-  }
+  //     console.info("Ready!", videoRef.current.src);
+  //   } else {
+  //     console.warn("Can not load");
+  //   }
+  // }
   useEffect(()=>{
-    VideoInit();
+    axios.get( `https://grise.p-e.kr/tutee/video/${props.videoId}`, {headers: {Authorization: window.localStorage.getItem('token')} } )
+    .then( response => {
+      videoRef.current.src = URL.createObjectURL(new Blob(response));
+      console.log(response);
+    })
   },[])
     
   return (
