@@ -6,7 +6,6 @@ const Test = () => {
   const griseURL = 'https//grise.p-e.kr/tutee/video/23';
   const testURL = 'https://s3.amazonaws.com/codecademy-content/courses/React/react_video-cute.mp4';
   async function VideoInit(){
-    navigator.serviceWorker.controller.postMessage({token: window.localStorage.getItem('token')});
     const result = await fetch(`https//grise.p-e.kr/tutee/video/23`, {
       headers: {
         Authorization: window.localStorage.getItem('token')
