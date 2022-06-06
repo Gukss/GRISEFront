@@ -9,7 +9,6 @@ import {AiOutlineHome,AiOutlineLogout} from 'react-icons/ai';
 import {FiHelpCircle} from 'react-icons/fi'
 import {CgProfile} from 'react-icons/cg'
 import GlobalStyle from '../styles/globalStyle/GlobalStyle';
-import "antd/dist/antd.css";
 
 export const NavBar = () => {
   const searchText = useRef('');
