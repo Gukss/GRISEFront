@@ -1,6 +1,5 @@
 import React, {useEffect,useRef} from "react";
 import styled from 'styled-components'
-import axios from "axios";
 
 const Video = (props) => {
   const videoRef = useRef(null);

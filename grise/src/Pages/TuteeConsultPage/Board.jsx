@@ -35,7 +35,7 @@ const Board = () => {
     <Wrap>
       <NavBar />
       <StyledVideo>
-        <Video />
+        <Video videoId={consult?.video.videoId} />
       </StyledVideo>
       <Title
         title={consult?.title}
