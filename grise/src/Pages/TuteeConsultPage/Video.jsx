@@ -26,18 +26,14 @@ const Video = (props) => {
   useEffect(()=>{
     VideoInit();
   },[])
-
-  const Video = () => {
-    const videoRef = useRef(null);
     
-    return (
-      <StyledVideo>
-        <video controls style={{ width: "100%", height: "100%" }}>
-          <source ref={videoRef} type="video/mp4"></source>
-        </video>
-      </StyledVideo>
-    );
-  };
+  return (
+    <StyledVideo>
+      <video controls style={{ width: "100%", height: "100%" }}>
+        <source ref={videoRef} type="video/mp4"></source>
+      </video>
+    </StyledVideo>
+  );
 }
 const StyledVideo = styled.div`
   width: 97%;
