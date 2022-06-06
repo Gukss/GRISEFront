@@ -1,5 +1,6 @@
 import React, {useEffect,useRef} from "react";
 import styled from 'styled-components'
+import axios from "axios";
 
 const Video = (props) => {
   const videoRef = useRef(null);
@@ -31,6 +32,7 @@ const Video = (props) => {
       videoRef.current.src = URL.createObjectURL(new Blob(response));
       console.log(response);
     })
+    .catch((error) => console.log(error));
   },[])
     
   return (
