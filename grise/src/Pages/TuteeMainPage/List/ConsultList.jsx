@@ -19,7 +19,7 @@ const ConsultList = (props) => {
     if(props.consult === 'Requesting'){
       axios({
         method:'GET',
-        url:`http://grise.p-e.kr/tutee/consults`,
+        url:`https://grise.p-e.kr/tutee/consults`,
         headers: {
           Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
@@ -46,7 +46,7 @@ const ConsultList = (props) => {
       
       axios({
         method:'GET',
-        url:`http://grise.p-e.kr/tutee/consults`,
+        url:`https://grise.p-e.kr/tutee/consults`,
         headers: {
           Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
@@ -73,7 +73,7 @@ const ConsultList = (props) => {
       
       axios({
         method:'GET',
-        url:`http://grise.p-e.kr/tutee/tutors`,
+        url:`https://grise.p-e.kr/tutee/tutors`,
         headers: {
           Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
@@ -100,7 +100,7 @@ const ConsultList = (props) => {
       
       axios({
         method:'GET',
-        url:`http://grise.p-e.kr/tutee/consults`,
+        url:`https://grise.p-e.kr/tutee/consults`,
         headers: {
           Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
@@ -130,7 +130,7 @@ const ConsultList = (props) => {
 
       axios({
         method: "GET",
-        url: `http://grise.p-e.kr/tutee/consults`,
+        url: `https://grise.p-e.kr/tutee/consults`,
         headers: {
           Authorization: window.localStorage.getItem("token"),
           "Content-Type": "application/json",
@@ -160,7 +160,7 @@ const ConsultList = (props) => {
 
       axios({
         method:'GET',
-        url:`http://grise.p-e.kr/tutee/consults`,
+        url:`https://grise.p-e.kr/tutee/consults`,
         headers: {
           Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
@@ -185,7 +185,7 @@ const ConsultList = (props) => {
       
       axios({
         method:'GET',
-        url:`http://grise.p-e.kr/tutee/tutors`,
+        url:`https://grise.p-e.kr/tutee/tutors`,
         headers: {
           Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
@@ -208,7 +208,7 @@ const ConsultList = (props) => {
       
       axios({
         method:'GET',
-        url:`http://grise.p-e.kr/tutee/consults`,
+        url:`https://grise.p-e.kr/tutee/consults`,
         headers: {
           Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",

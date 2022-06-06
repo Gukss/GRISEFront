@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Redirect = (props) => {
+const Redirect = () => {
   const navigate = useNavigate();
 	useEffect (() => {
 		const current = decodeURI(window.location.href);
@@ -17,7 +17,7 @@ const Redirect = (props) => {
 	const GoogleApiPOST = (token) => {
     axios({
       method:'GET',
-      url:`http://grise.p-e.kr/api/v1/users`,
+      url:`https://grise.p-e.kr/api/v1/users`,
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ const Redirect = (props) => {
       if(res.data.body.user.roleType==="GUEST"){ //게스트일때 post로 등록
         axios({
           method:'POST',
-          url:`http://grise.p-e.kr/tutee/register`,
+          url:`https://grise.p-e.kr/tutee/register`,
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
@@ -38,13 +38,11 @@ const Redirect = (props) => {
         }).then((res)=>{
           console.log("튜티 등록성공");
 					navigate("/tuteeMain");
-          // window.location.href = "http://localhost:3000/tuteeMain";
         })
         .catch((error) => alert("등록 Error가 발생하였습니다", error));
       }else{ //튜티일때
         console.log("등록된 유저입니다.");
 				navigate("/tuteeMain");
-        // window.location.href = "http://localhost:3000/tuteeMain";
       }
       })
       .catch((error) => alert("Error가 발생하였습니다", error));

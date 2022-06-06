@@ -16,7 +16,7 @@ const Board = () => {
 	useEffect(() => {
 		axios({
       method: "GET",
-      url: `http://grise.p-e.kr/tutee/consults/${location.state.consultId}`,
+      url: `https://grise.p-e.kr/tutee/consults/${location.state.consultId}`,
       headers: {
         Authorization: window.localStorage.getItem("token"),
         "Content-Type": "application/json",
@@ -25,7 +25,7 @@ const Board = () => {
       .then((res) => {
 				setConsult(res.data);
         console.log("df", res.data);
-				videoRef.current.src = `http://grise.p-e.kr/tutee/video/${res.data.video.videoId}`;
+				videoRef.current.src = `https://grise.p-e.kr/tutee/video/${res.data.video.videoId}`;
       })
       .catch((error) => console.log(error));
 	}, []);

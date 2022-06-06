@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Video = (props) => {
   const videoRef = useRef(null);
   async function VideoInit(){
-    const result = await fetch(`http://grise.p-e.kr/tutee/video/${props.videoId}`, {
+    const result = await fetch(`https://grise.p-e.kr/tutee/video/${props.videoId}`, {
       headers: {
         Authorization: window.localStorage.getItem('token')
       }

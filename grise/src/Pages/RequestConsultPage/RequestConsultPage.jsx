@@ -31,7 +31,7 @@ const RequestConsultPage = ()=>{
 		if (isTitle&&isContent&&isVideo) {
 			console.log("정상 제출");
       let data = new FormData(FormRef.current);
-      let URL = 'http://grise.p-e.kr/tutee/consults';
+      let URL = 'https://grise.p-e.kr/tutee/consults';
       
       if(location.state.consult === 'NormalConsult'){
         URL+='/general';
