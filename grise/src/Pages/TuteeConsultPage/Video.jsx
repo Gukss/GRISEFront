@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const Video = (props) => {
   const videoRef = useRef(null);
   async function VideoInit(){
+    console.log('비디오 시작 test');
     const result = await fetch(`https://grise.p-e.kr/tutee/video/${props.videoId}`, {
       headers: {
         Authorization: window.localStorage.getItem('token')
@@ -11,6 +12,7 @@ const Video = (props) => {
     });
 
     const blob = await result.blob();
+    console.log(result);
 
     if (blob) {
       videoRef.current.src = URL.createObjectURL(blob);
