@@ -35,7 +35,7 @@ const Board = () => {
         <video
           controls
           ref={videoRef}
-          style={{ width: 'auto', height: '20rem' }}
+          style={{maxWidth:'100%', width: 'auto', height: '15rem' }}
         />
       </StyledVideo>
       <Title
