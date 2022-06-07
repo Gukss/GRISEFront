@@ -13,27 +13,32 @@ const Board = () => {
 	const videoRef = useRef(null);
 	
 	useEffect(() => {
-		axios({
-      method: "GET",
-      url: `https://grise.p-e.kr/tutee/consults/${location.state.consultId}`,
-      headers: {
-        Authorization: window.localStorage.getItem("token"),
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-				setConsult(res.data);
-				videoRef.current.src = `https://grise.p-e.kr/video/${res.data.video.videoId}`;
-      })
-      .catch((error) => console.log(error));
+		setConsult(location.state.data);
+		// axios({
+    //   method: "GET",
+    //   url: `https://grise.p-e.kr/tutee/consults/${location.state.consultId}`,
+    //   headers: {
+    //     Authorization: window.localStorage.getItem("token"),
+    //     "Content-Type": "application/json",
+    //   },
+    // })
+    //   .then((res) => {
+		// 		setConsult(res.data);
+		// 		videoRef.current.src = `https://grise.p-e.kr/video/${res.data.video.videoId}`;
+    //   })
+    //   .catch((error) => console.log(error));
 	}, []);
 
 	return (
     <Wrap>
       <NavBar />
       <StyledVideo>
-        <video controls style={{ width: "100%", height: "100%" }}>
-          <source ref={videoRef} type="video/mp4"></source>
+        <video
+          src={`https://grise.p-e.kr/video/${location.state.data.video.videoId}`}
+          controls
+          style={{ width: "100%", height: "100%" }}
+        >
+          {/* <source ref={videoRef} type="video/mp4"></source> */}
         </video>
       </StyledVideo>
       <Title
