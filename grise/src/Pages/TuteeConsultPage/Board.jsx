@@ -56,8 +56,8 @@ const Board = () => {
 };
 
 const StyledVideo = styled.div`
-  width: 95%;
-  margin-left: 2.5%;
+  width: 97%;
+  margin: 0.5rem auto;
   text-align: center;
 `;
 
