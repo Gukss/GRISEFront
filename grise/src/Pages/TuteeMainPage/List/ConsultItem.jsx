@@ -1,31 +1,20 @@
 import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+
 const ConsultItem = forwardRef((props, ref) => {
   const navigate = useNavigate();
 	
   const onClickShowConsultBtn = () => {
     if(props.consult === 'Requesting'){return;}
     console.log(props.data, "consult 확인");
-		axios({
-      method: "GET",
-      url: `https://grise.p-e.kr/tutee/consults/${props.data?.consultId}`,
-      headers: {
-        Authorization: window.localStorage.getItem("token"),
-        "Content-Type": "application/json",
+		navigate("/tuteeConsult", {
+      state: {
+        consult: props.consult,
+        consultId: props.data?.consultId,
+        isArriveMessageToTutee: props.data?.isArriveMessageToTutee,
       },
-    })
-      .then((res) => {
-				navigate("/tuteeConsult", {
-          state: {
-            consult: props.consult,
-            data:res.data,
-            isArriveMessageToTutee: props.data?.isArriveMessageToTutee,
-          },
-        });
-			})
-      .catch((error) => console.log(error));
+    });
   };
 
   return (

@@ -13,33 +13,30 @@ const Board = () => {
 	const videoRef = useRef(null);
 	
 	useEffect(() => {
-		setConsult(location.state.data);
-		// axios({
-    //   method: "GET",
-    //   url: `https://grise.p-e.kr/tutee/consults/${location.state.consultId}`,
-    //   headers: {
-    //     Authorization: window.localStorage.getItem("token"),
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((res) => {
-		// 		setConsult(res.data);
-		// 		videoRef.current.src = `https://grise.p-e.kr/video/${res.data.video.videoId}`;
-    //   })
-    //   .catch((error) => console.log(error));
-	}, []);
+		axios({
+      method: "GET",
+      url: `https://grise.p-e.kr/tutee/consults/${location.state.consultId}`,
+      headers: {
+        Authorization: window.localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+				setConsult(res.data);
+				videoRef.current.src = `https://grise.p-e.kr/video/${res.data.video.videoId}`;
+      })
+      .catch((error) => console.log(error));
+	}, [location.state.consultId]);
 
 	return (
     <Wrap>
       <NavBar />
       <StyledVideo>
         <video
-          src={`https://grise.p-e.kr/video/${location.state.data.video.videoId}`}
           controls
-          style={{ width: "100%", height: "100%" }}
-        >
-          {/* <source ref={videoRef} type="video/mp4"></source> */}
-        </video>
+          ref={videoRef}
+          style={{ width: 'auto', height: '20rem' }}
+        />
       </StyledVideo>
       <Title
         title={consult?.title}
@@ -59,9 +56,9 @@ const Board = () => {
 };
 
 const StyledVideo = styled.div`
-  width: 97%;
-  margin: 0.5rem auto;
-  height: 25%;
+  width: 95%;
+  margin-left: 2.5%;
+  text-align: center;
 `;
 
 const Wrap = styled.div`
