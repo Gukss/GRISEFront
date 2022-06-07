@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import styled from 'styled-components'
 import NavBar from '../NavBar'
 import Title from "./Title";
@@ -9,32 +9,8 @@ import axios from 'axios';
 
 const Board = () => {
   const location = useLocation();
-	const [videoSrc, setVideoSrc] = useState("");
 	const [consult, setConsult] = useState({});
 	const videoRef = useRef(null);
-	
-	async function VideoInit(videoId) {
-    console.log("비디오 시작 test");
-    const result = await fetch(`https://grise.p-e.kr/tutee/video/${videoId}`, {
-      headers: {
-        Authorization: window.localStorage.getItem("token"),
-      },
-    });
-
-    const blob = await result.blob();
-    console.log(result);
-
-    if (blob) {
-      videoRef.current.src = URL.createObjectURL(blob);
-
-      // Load the new resource
-      videoRef.current.parentElement.load();
-
-      console.info("Ready!", videoRef.current.src);
-    } else {
-      console.warn("Can not load");
-    }
-  }
 	
 	useEffect(() => {
 		axios({
@@ -47,8 +23,7 @@ const Board = () => {
     })
       .then((res) => {
 				setConsult(res.data);
-        console.log("df", res.data);
-				VideoInit(res.data.video.videoId);
+				videoRef.current.src = `https://grise.p-e.kr/video/${res.data.video.videoId}`;
       })
       .catch((error) => console.log(error));
 	}, []);
