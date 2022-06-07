@@ -10,43 +10,39 @@ const Redirect = () => {
     const params = new URLSearchParams(search);
     const keywords = params.get("token");
 		if (keywords !== null) {
-      GoogleApiPOST(keywords);
-    }
-	}, []);
-
-	const GoogleApiPOST = (token) => {
-    axios({
-      method:'GET',
-      url:`https://grise.p-e.kr/api/v1/users`,
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      }
-    }).then((res) => {
-      console.log("로그인되었습니다.");
-      window.localStorage.setItem('userId', res.data.body.user.userId);
-      window.localStorage.setItem('userName', res.data.body.user.username);
-      window.localStorage.setItem('token', `Bearer ${token}`); 
-      if(res.data.body.user.roleType==="GUEST"){ //게스트일때 post로 등록
-        axios({
-          method:'POST',
-          url:`https://grise.p-e.kr/tutee/register`,
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          }
-        }).then((res)=>{
-          console.log("튜티 등록성공");
-					navigate("/tuteeMain");
+      axios({
+        method:'GET',
+        url:`https://grise.p-e.kr/api/v1/users`,
+        headers: {
+          Authorization: `Bearer ${keywords}`,
+          "Content-Type": "application/json",
+        }
+      }).then((res) => {
+        console.log("로그인되었습니다.");
+        window.localStorage.setItem('userId', res.data.body.user.userId);
+        window.localStorage.setItem('userName', res.data.body.user.username);
+        window.localStorage.setItem('token', `Bearer ${keywords}`); 
+        if(res.data.body.user.roleType==="GUEST"){ //게스트일때 post로 등록
+          axios({
+            method:'POST',
+            url:`https://grise.p-e.kr/tutee/register`,
+            headers: {
+              Authorization: `Bearer ${keywords}`,
+              "Content-Type": "application/json",
+            }
+          }).then((res)=>{
+            console.log("튜티 등록성공");
+            navigate("/tuteeMain");
+          })
+          .catch((error) => alert("등록 Error가 발생하였습니다", error));
+        }else{ //튜티일때
+          console.log("등록된 유저입니다.");
+          navigate("/tuteeMain");
+        }
         })
-        .catch((error) => alert("등록 Error가 발생하였습니다", error));
-      }else{ //튜티일때
-        console.log("등록된 유저입니다.");
-				navigate("/tuteeMain");
-      }
-      })
-      .catch((error) => alert("Error가 발생하였습니다", error));
-		};
+        .catch((error) => alert("Error가 발생하였습니다", error));
+    }
+	}, [navigate]);
 		
 
 	return (
