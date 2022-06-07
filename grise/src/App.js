@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import { FeedbackRequestPage } from './Pages/FeedbackRequestPage';
 import routes from "./routes";
