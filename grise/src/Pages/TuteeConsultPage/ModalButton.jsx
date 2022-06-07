@@ -35,27 +35,40 @@ const ModalButton = ({ consultId, consultType }) => {
       },
     })
       .then((res) => {
-        axios
-          .post(
-            `https://grise.p-e.kr/tutee/consults/${consultId}/review`,
-            {},
-            {
-              headers: {
-                Authorization: window.localStorage.getItem("token"),
-                "Content-Type": `application/json`,
-              },
-              body: {
-                star: rate.current,
-                content: "리뷰내용",
-              },
-            }
-          )
+				axios({
+          method: "POST",
+          url: `https://grise.p-e.kr/tutee/consults/${consultId}/review`,
+          headers: {
+            Authorization: window.localStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+					body: {
+                  star: rate.current,
+                  content: "리뷰내용",
+                },
+        })
+          // axios
+          //   .post(
+          //     `https://grise.p-e.kr/tutee/consults/${consultId}/review`,
+          //     {},
+          //     {
+          //       headers: {
+          //         Authorization: window.localStorage.getItem("token"),
+          //         "Content-Type": `application/json`,
+          //       },
+          //       body: {
+          //         star: rate.current,
+          //         content: "리뷰내용",
+          //       },
+          //     }
+          //   )
           .then((res) => {
             setIsModalVisible(false);
-						navigate('/tuteeMain');
+            navigate("/tuteeMain");
           })
           .catch((error) => console.log("1", error));
-      })
+      }
+			)
       .catch((error) => console.log("2", error));
   };
 
