@@ -16,7 +16,7 @@ const ModalButton = ({ consultId, consultType }) => {
     } else if (consultType === "SolvedConsult") {
       typeRef.current.style.display = "none";
     }
-	}, []);
+	}, [consultType]);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const rate = useRef(0);
@@ -97,7 +97,7 @@ const ModalButton = ({ consultId, consultType }) => {
 };
 
 const CompleteButton = styled.button`
-  width: 4rem;
+  width: 5rem;
   height: 1.5rem;
   font-size: 0.4rem;
   border-radius: 10px;
