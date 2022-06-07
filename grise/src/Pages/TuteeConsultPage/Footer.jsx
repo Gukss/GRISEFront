@@ -42,7 +42,7 @@ const Footer = ({ consultId, tuteeName, consultType }) => {
       ItemRef.current.scrollIntoView({ behavior: "smooth" });
       currentCommentRef.current = 0;
       let localUserId = window.localStorage.getItem("userId");
-      commentList.map((el) => {
+      commentList.forEach((el) => {
         //id로 바꿔야 한다.
         if (el.userId === localUserId) {
           currentCommentRef.current += 1;
@@ -232,27 +232,27 @@ const CommentItem = styled.div`
 	/* overflow-x: hidden; */
 `;
 
-const StyledFooter = styled.footer`
-  width: 100%;
-  height: 3rem;
-  /* position: fixed; */
-  bottom: 0;
-  max-width: 1200px;
-  margin: 0 auto;
-  border-top: #3a6c7b solid 1px;
-  display: flex;
-	background-color: #fff;
+// const StyledFooter = styled.footer`
+//   width: 100%;
+//   height: 3rem;
+//   /* position: fixed; */
+//   bottom: 0;
+//   max-width: 1200px;
+//   margin: 0 auto;
+//   border-top: #3a6c7b solid 1px;
+//   display: flex;
+// 	background-color: #fff;
 	
-`;
+// `;
 
-const StyledInput = styled.input`
-	height: 100%;
-	width: 75%; 
-	border: none;
-	flex: 1;
-	:focus {
-		outline: none;
-	}
-`;
+// const StyledInput = styled.input`
+// 	height: 100%;
+// 	width: 75%; 
+// 	border: none;
+// 	flex: 1;
+// 	:focus {
+// 		outline: none;
+// 	}
+// `;
 
 export default Footer;
