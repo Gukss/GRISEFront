@@ -98,12 +98,15 @@ const RequestConsultPage = ()=>{
             <ContentInput ref={ContentRef} id="content" name="content" type="Text" placeholder="피드백 받고싶은 내용을 입력해 주세요"></ContentInput>
           </div>
           <div>
-            <VideoTitleDiv>영상 업로드</VideoTitleDiv>
+            <VideoNameContainer>
+              <VideoTitleDiv>영상 업로드</VideoTitleDiv>
+              <WarningVideo>※30MB 이하만 업로드 가능합니다</WarningVideo>
+            </VideoNameContainer>
             <input id="video" name="video" type="File" accept='video/*' style={{display:'none'}} onChange={onChangeVideo} ref={VideoRef}></input>
-            <VideoConatiner>
+            <VideoConatainer>
               <UploadButton htmlFor="video">동영상선택</UploadButton>
               <VideoName ref={VideoNameRef}>선택된 파일없음</VideoName>
-            </VideoConatiner>
+            </VideoConatainer>
           </div>
           <SubmmitButton type='submit' onClick={summitConsult}>피드백 요청</SubmmitButton>
         </fieldset>
@@ -111,6 +114,21 @@ const RequestConsultPage = ()=>{
     </Wrap>
   );
 }
+
+const VideoNameContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+const WarningVideo = styled.div`
+  font-family: 'Noto Sans CJK KR';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 1rem;
+  color: #FF5656;
+  margin-left: 1rem;
+  padding: 0.3rem;
+`
 
 const SubmitingDiv = styled.div`
   display: none;
@@ -133,7 +151,7 @@ const SubmitingDiv = styled.div`
 `
 
 
-const VideoConatiner = styled.div`
+const VideoConatainer = styled.div`
   display: flex;
   flex-direction: row;
   min-width: 0;
