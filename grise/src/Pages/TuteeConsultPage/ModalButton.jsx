@@ -11,8 +11,6 @@ const ModalButton = ({ consultId, consultType }) => {
 	useEffect(() => {
 		if (consultType === "Requesting") {
       typeRef.current.style.display = "none";
-    } else if (consultType === "Consulting") {
-      typeRef.current = "피드백 완료";
     } else if (consultType === "SolvedConsult") {
       typeRef.current.style.display = "none";
     }
@@ -28,48 +26,35 @@ const ModalButton = ({ consultId, consultType }) => {
   const handleOk = () => {
     axios({
       method: "POST",
+      url: `https://grise.p-e.kr/tutee/consults/${consultId}/reivew`,
+      headers: {
+        Authorization: window.localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+      body: {
+        star: rate.current,
+        content: "리뷰내용",
+      },
+    })
+    .then((res) => {
+      console.log(res);
+      setIsModalVisible(false);
+      navigate("/tuteeMain");
+    })
+    .catch((error) => console.log("리뷰API요청 에러", error));
+
+    axios({
+      method: "POST",
       url: `https://grise.p-e.kr/tutee/consults/${consultId}/done`,
       headers: {
         Authorization: window.localStorage.getItem("token"),
         "Content-Type": "application/json",
       },
     })
-      .then((res) => {
-				axios({
-          method: "POST",
-          url: `https://grise.p-e.kr/tutee/consults/${consultId}/review`,
-          headers: {
-            Authorization: window.localStorage.getItem("token"),
-            "Content-Type": "application/json",
-          },
-					body: {
-                  star: rate.current,
-                  content: "리뷰내용",
-                },
-        })
-          // axios
-          //   .post(
-          //     `https://grise.p-e.kr/tutee/consults/${consultId}/review`,
-          //     {},
-          //     {
-          //       headers: {
-          //         Authorization: window.localStorage.getItem("token"),
-          //         "Content-Type": `application/json`,
-          //       },
-          //       body: {
-          //         star: rate.current,
-          //         content: "리뷰내용",
-          //       },
-          //     }
-          //   )
-          .then((res) => {
-            setIsModalVisible(false);
-            navigate("/tuteeMain");
-          })
-          .catch((error) => console.log("1", error));
-      }
-			)
-      .catch((error) => console.log("2", error));
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((error) => console.log("완료API에러", error));
   };
 
   const handleCancel = () => {
