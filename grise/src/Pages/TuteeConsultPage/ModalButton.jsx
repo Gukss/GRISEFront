@@ -24,24 +24,6 @@ const ModalButton = ({ consultId, consultType }) => {
   };
 
   const handleOk = () => {
-    axios({
-      method: "POST",
-      url: `https://grise.p-e.kr/tutee/consults/${consultId}/reivew`,
-      headers: {
-        Authorization: window.localStorage.getItem("token"),
-        "Content-Type": "application/json",
-      },
-      body: {
-        star: rate.current,
-        content: "리뷰내용",
-      },
-    })
-    .then((res) => {
-      console.log(res);
-      setIsModalVisible(false);
-      navigate("/tuteeMain");
-    })
-    .catch((error) => console.log("리뷰API요청 에러", error));
 
     axios({
       method: "POST",
@@ -51,8 +33,23 @@ const ModalButton = ({ consultId, consultType }) => {
         "Content-Type": "application/json",
       },
     })
-    .then((res) => {
-      console.log(res);
+    .then((response) => {
+      axios.post(
+        `https://grise.p-e.kr/tutee/consults/${consultId}/review`,
+        {
+          star: rate.current,
+          content: "리뷰내용",
+        },
+        {
+          headers: {
+            Authorization: window.localStorage.getItem("token"),
+            "Content-Type": `application/json`,
+          },
+        }
+      ).then((res) => {
+        setIsModalVisible(false);
+        navigate("/tuteeMain");
+      }).catch((error) => console.log("리뷰API요청 에러", error));
     })
     .catch((error) => console.log("완료API에러", error));
   };
