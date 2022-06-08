@@ -14,7 +14,14 @@ const RequestConsultPage = ()=>{
   const navigate = useNavigate();
 
   const onChangeVideo = (e) =>{
-    VideoNameRef.current.innerHTML = e.target.files[0].name;
+    console.log(e.target.files);
+    if(e.target.files[0].size > 30*1024*1024){
+      VideoRef.current = null;
+      VideoNameRef.current.innerHTML = '선택된 파일없음';
+      alert("영상의 크기가 30MB를 넘습니다.");
+    }else{
+      VideoNameRef.current.innerHTML = e.target.files[0].name;
+    }
   }
 
 	//제목이랑 본문 둘 중 하나 안 채워 졌을 때 어떻게 나타낼지 정하기
@@ -26,7 +33,7 @@ const RequestConsultPage = ()=>{
     }
     const isTitle = TitleRef.current.value.length > 2 ? true:false;
     const isContent = ContentRef.current.value.length > 4 ? true:false;
-    const isVideo = VideoRef.current.files[0] !== undefined ? true:false;
+    const isVideo = (VideoRef.current === null||VideoRef.current.files[0] === undefined) ? false:true;
     SubmitingRef.current.style.display='block';
 		if (isTitle&&isContent&&isVideo) {
 			console.log("정상 제출");
