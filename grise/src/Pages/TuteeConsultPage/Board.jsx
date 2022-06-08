@@ -34,6 +34,7 @@ const Board = () => {
       <StyledVideo>
         <video
           controls
+          controlsList="nodownload"
           ref={videoRef}
           style={{maxWidth:'100%', width: 'auto', height: '15rem' }}
         />
