@@ -1,13 +1,13 @@
-import React,{forwardRef,useRef} from 'react'
+import React,{useRef} from 'react'
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import { ReactComponent as Star} from '../../../Image/star.svg';
 
-const TutorItem = forwardRef((props,ref) => {
+const TutorItem = (props) => {
     const detailDivRef = useRef();
     const isShowDetail = useRef(false);
     const ShowDetailBtnRef = useRef();
-
+    const ContainerRef = useRef();
     const showDetailInfo = (e) =>{//상세보기클릭
         detailDivRef.current.style.display = (isShowDetail.current)? 'none':'block';
         isShowDetail.current = !isShowDetail.current;
@@ -16,7 +16,7 @@ const TutorItem = forwardRef((props,ref) => {
     }
 
     return (
-        <div ref={ref} style={{borderBottom:"#3A6C7B solid 0.2rem"}}>
+        <div style={{borderBottom:"#3A6C7B solid 0.2rem"}}>
             <Container>
                 <div style={{float:'left'}}>
                     <Title>{props.data?.username}</Title>
@@ -33,7 +33,7 @@ const TutorItem = forwardRef((props,ref) => {
             </DetailInfo>
         </div>
     )
-});
+};
 
 const TutorConsultBtn = styled.span`
   float: right;

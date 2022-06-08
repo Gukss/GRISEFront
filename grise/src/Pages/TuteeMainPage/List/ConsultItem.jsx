@@ -1,10 +1,10 @@
-import React, { forwardRef } from "react";
+import React,{useRef} from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-const ConsultItem = forwardRef((props, ref) => {
+const ConsultItem = (props) => {
   const navigate = useNavigate();
-	
+  const ContainerRef = useRef();
   const onClickShowConsultBtn = () => {
     if(props.consult === 'Requesting'){return;}
     console.log(props.data, "consult 확인");
@@ -18,7 +18,12 @@ const ConsultItem = forwardRef((props, ref) => {
   };
 
   return (
-    <Container onClick={onClickShowConsultBtn} ref={ref}>
+    <Container 
+      onTouchStart={()=>{ContainerRef.current.style.borderColor='#3A6C7B';}}
+      onTouchEnd={()=>{ContainerRef.current.style.borderLeftColor='transparent';ContainerRef.current.style.borderRightColor='transparent';}}
+      onClick={onClickShowConsultBtn}
+      ref={ContainerRef}
+    >
       <TitleDiv>
         <Title>{props.data?.title}</Title>
         <IsComment show={props.data?.isArriveMessageToTutee}>.</IsComment>
@@ -26,7 +31,7 @@ const ConsultItem = forwardRef((props, ref) => {
       <Name>{props.data?.username}</Name>
     </Container>
   );
-});
+};
 
 const Container = styled.div`
   display: flex;
@@ -34,6 +39,8 @@ const Container = styled.div`
   font-family: "Noto Sans CJK KR";
   font-style: normal;
   font-weight: bold;
+  border-left: transparent solid 0.2rem;
+  border-right: transparent solid 0.2rem;
   border-bottom: #3A6C7B solid 0.2rem;
 `;
 

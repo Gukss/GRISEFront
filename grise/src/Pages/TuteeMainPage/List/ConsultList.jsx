@@ -252,23 +252,23 @@ const ConsultList = (props) => {
       for(let i = 0; i < ConsultList.length-1; i++){
         result.push(<ConsultItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></ConsultItem>);
       }
-      result.push(<ConsultItem key = {ConsultList.length-1} isEnd={true} consult={props.consult} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></ConsultItem>);
+      result.push(<div key = {ConsultList.length-1} ref={ItemRef}><ConsultItem key = {ConsultList.length-1} isEnd={true} consult={props.consult} data = {ConsultList[ConsultList.length-1]}></ConsultItem></div>);
     }
     else if(props.consult === 'Consulting'){
       for(let i = 0; i < ConsultList.length-1; i++){
         result.push(<ConsultItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></ConsultItem>);
       }
-      result.push(<ConsultItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></ConsultItem>);
+      result.push(<div ref={ItemRef}><ConsultItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]}></ConsultItem></div>);
     }else if(props.consult === 'Tutor'){
       for(let i = 0; i < ConsultList.length-1; i++){
         result.push(<TutorItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></TutorItem>);
       }
-      result.push(<TutorItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></TutorItem>);
+      result.push(<div key = {ConsultList.length-1} ref={ItemRef}><TutorItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]}></TutorItem></div>);
     }else if(props.consult === 'SolvedConsult'){
       for(let i = 0; i < ConsultList.length-1; i++){
         result.push(<ConsultItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></ConsultItem>);
       }
-      result.push(<ConsultItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]} ref={ItemRef}></ConsultItem>);
+      result.push(<div key = {ConsultList.length-1} ref={ItemRef}><ConsultItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]}></ConsultItem></div>);
     }
     return result;
   }
