@@ -185,6 +185,10 @@ const ConsultList = (props) => {
     }
   },[props.consult,pageNumber,NoRefreshRef,setConsultList])
 
+  const ItemDelete = useCallback(()=>{
+    GetConsult();
+  },[GetConsult])
+
   const onTouchStart=(e)=>{
     setTouchPosition({ x: e.changedTouches[0].pageX, y: e.changedTouches[0].pageY });
   }
@@ -207,25 +211,25 @@ const ConsultList = (props) => {
     const result = [];
     if(props.consult === 'Requesting'){
       for(let i = 0; i < ConsultList.length-1; i++){
-        result.push(<ConsultItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></ConsultItem>);
+        result.push(<ConsultItem key = {i} isEnd={false} ItemDelete={ItemDelete} consult={props.consult} data = {ConsultList[i]}></ConsultItem>);
       }
-      result.push(<div key = {ConsultList.length} ref={ItemRef}><ConsultItem key = {ConsultList.length-1} isEnd={true} consult={props.consult} data = {ConsultList[ConsultList.length-1]}></ConsultItem></div>);
+      result.push(<div key = {ConsultList.length} ref={ItemRef}><ConsultItem key = {ConsultList.length-1} isEnd={true} ItemDelete={ItemDelete} consult={props.consult} data = {ConsultList[ConsultList.length-1]}></ConsultItem></div>);
     }
     else if(props.consult === 'Consulting'){
       for(let i = 0; i < ConsultList.length-1; i++){
-        result.push(<ConsultItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></ConsultItem>);
+        result.push(<ConsultItem key = {i} isEnd={false} ItemDelete={ItemDelete} consult={props.consult} data = {ConsultList[i]}></ConsultItem>);
       }
-      result.push(<div key = {ConsultList.length} ref={ItemRef}><ConsultItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]}></ConsultItem></div>);
+      result.push(<div key = {ConsultList.length} ref={ItemRef}><ConsultItem key = {ConsultList.length-1} ItemDelete={ItemDelete} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]}></ConsultItem></div>);
     }else if(props.consult === 'Tutor'){
       for(let i = 0; i < ConsultList.length-1; i++){
-        result.push(<TutorItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></TutorItem>);
+        result.push(<TutorItem key = {i} isEnd={false} ItemDelete={ItemDelete} consult={props.consult} data = {ConsultList[i]}></TutorItem>);
       }
-      result.push(<div key = {ConsultList.length} ref={ItemRef}><TutorItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]}></TutorItem></div>);
+      result.push(<div key = {ConsultList.length} ref={ItemRef}><TutorItem key = {ConsultList.length-1} ItemDelete={ItemDelete} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]}></TutorItem></div>);
     }else if(props.consult === 'SolvedConsult'){
       for(let i = 0; i < ConsultList.length-1; i++){
-        result.push(<ConsultItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></ConsultItem>);
+        result.push(<ConsultItem key = {i} isEnd={false} ItemDelete={ItemDelete} consult={props.consult} data = {ConsultList[i]}></ConsultItem>);
       }
-      result.push(<div key = {ConsultList.length} ref={ItemRef}><ConsultItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]}></ConsultItem></div>);
+      result.push(<div key = {ConsultList.length} ref={ItemRef}><ConsultItem key = {ConsultList.length-1} ItemDelete={ItemDelete} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]}></ConsultItem></div>);
     }
     return result;
   }
