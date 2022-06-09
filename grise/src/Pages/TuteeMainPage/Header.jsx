@@ -1,16 +1,20 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef,useState } from "react";
 import styled from 'styled-components';
 import ConsultList from "./List/ConsultList"
 
 const Header = () => {
   const ConsultingListRef = useRef(null);
   const ConsultingHeaderRef = useRef(null);
+  const [LoadingConsulting,SetLoadingConsulting] = useState(false);
   const TutorListRef = useRef(null);
   const TutorHeaderRef = useRef(null);
+  const [LoadingTutor,SetLoadingTutor] = useState(false);
   const SolvedConsultListRef = useRef(null);
   const SolvedConsultHeaderRef = useRef(null);
+  const [LoadingSolvedConsult,SetLoadingSolvedConsult] = useState(false);
   const RequestConsultListRef = useRef(null);
   const RequestConsultHeaderRef = useRef(null);
+  const [LoadingRequestConsult,SetLoadingRequestConsult] = useState(false);
 
   const ShowRequestConsultList = () => {
     RequestConsultHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
@@ -28,6 +32,8 @@ const Header = () => {
     SolvedConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
     SolvedConsultHeaderRef.current.style.color = "#b1b1b1";
     SolvedConsultListRef.current.style.display="none";
+
+    SetLoadingRequestConsult(true);
   }
 
   const ShowConsultingList = () =>{
@@ -46,6 +52,9 @@ const Header = () => {
     SolvedConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
     SolvedConsultHeaderRef.current.style.color = "#b1b1b1";
     SolvedConsultListRef.current.style.display="none";
+
+
+    SetLoadingConsulting(true);
   }
 
   const ShowSolvedConsultList = () =>{
@@ -64,6 +73,8 @@ const Header = () => {
     TutorHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
     TutorHeaderRef.current.style.color = "#b1b1b1";
     TutorListRef.current.style.display="none";
+
+    SetLoadingSolvedConsult(true);
   }
 
   const ShowTutorList = () => {
@@ -82,6 +93,8 @@ const Header = () => {
     TutorHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
     TutorHeaderRef.current.style.color = "#3A6C7B";
     TutorListRef.current.style.display="block";
+
+    SetLoadingTutor(true);
   }
 
   useEffect(()=>{
@@ -105,16 +118,16 @@ const Header = () => {
         </HeaderBtn>
       </HeaderContainer>
       <div ref={RequestConsultListRef} style={{display:'none'}}>
-        <ConsultList consult = "Requesting"/>
+        <ConsultList SetLoading={SetLoadingRequestConsult}  Loading={LoadingRequestConsult} consult = "Requesting"/>
       </div>
       <div ref={ConsultingListRef} style={{display:'none'}}>
-        <ConsultList consult = "Consulting"/>
+        <ConsultList SetLoading={SetLoadingConsulting} Loading={LoadingConsulting} consult = "Consulting"/>
       </div>
       <div ref = {SolvedConsultListRef} style={{display:'none'}}>
-        <ConsultList consult = "SolvedConsult"/>
+        <ConsultList SetLoading={SetLoadingSolvedConsult} Loading={LoadingSolvedConsult} consult = "SolvedConsult"/>
       </div>
 			<div ref={TutorListRef} style={{display:'none'}}>
-				<ConsultList consult="Tutor"/>
+				<ConsultList SetLoading={SetLoadingTutor} Loading={LoadingTutor} consult="Tutor"/>
 			</div>
     </div>
   );

@@ -7,7 +7,6 @@ const ConsultItem = (props) => {
   const ContainerRef = useRef();
   const onClickShowConsultBtn = () => {
     if(props.consult === 'Requesting'){return;}
-    console.log(props.data, "consult 확인");
 		navigate("/tuteeConsult", {
       state: {
         consult: props.consult,

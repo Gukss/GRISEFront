@@ -12,6 +12,13 @@ const ConsultList = (props) => {
   const ContainerRef = useRef(null);
   const pageNumber = useRef(0);
   const NoRefreshRef = useRef(null);
+
+  useEffect(()=>{
+    if(props.Loading){
+      GetConsult();
+    }
+  },[props])
+
   const Refresh = () => {
     pageNumber.current+=1;
     NoRefreshRef.current.style.display = 'block';
@@ -33,7 +40,6 @@ const ConsultList = (props) => {
       .then((res) => {
         const temp = [...ConsultList,...res.data];
         setConsultList(temp);
-        console.log(temp);
       }).catch((error) => {console.log(error);pageNumber.current-=1;});
     }
     else if(props.consult === 'Consulting'){
@@ -60,17 +66,9 @@ const ConsultList = (props) => {
       .then((res) => {
         const temp = [...ConsultList,...res.data];
         setConsultList(temp);
-        console.log(temp);
       }).catch((error) => {console.log(error);pageNumber.current-=1;});
       
     }else if(props.consult === 'Tutor'){
-      // axios.get('Json/mainPageTutee/tutorList.json')
-      // .then((res) => {
-      //   const temp = [...ConsultList].concat(res.data);
-      //   setConsultList(temp);
-      // }).catch((error) => console.log(error));
-
-      
       axios({
         method:'GET',
         url:`https://grise.p-e.kr/tutee/tutors`,
@@ -86,18 +84,9 @@ const ConsultList = (props) => {
       .then((res) => {
         const temp = [...ConsultList,...res.data];
         setConsultList(temp);
-        console.log(temp);
       }).catch((error) => {console.log(error);pageNumber.current-=1;NoRefreshRef.current.style.display = 'none'});
       
     }else if(props.consult === 'SolvedConsult'){
-      // axios.get('Json/mainPageTutee/test.json')
-      // .then((res) => {
-      //   const temp = [...ConsultList,...res.data];
-      //   setConsultList(temp);
-      //   console.log(temp);
-      // }).catch((error) => {console.log(error);pageNumber.current-=1;NoRefreshRef.current.style.display = 'none'});
-
-      
       axios({
         method:'GET',
         url:`https://grise.p-e.kr/tutee/consults`,
@@ -114,20 +103,17 @@ const ConsultList = (props) => {
       .then((res) => {
         const temp = [...ConsultList,...res.data];
         setConsultList(temp);
-        console.log(temp);
       }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';pageNumber.current-=1;});
-      
     }
   }
 
-  useEffect(() => {
+  const GetConsult = () =>{
+    pageNumber.current = 0;
     if(props.consult === 'Requesting'){
       // axios.get('Json/mainPageTutee/requestConsultList.json')
       // .then((res) => {
       //   setConsultList(res.data);
       // }).catch((error) => console.log(error));
-
-
       axios({
         method: "GET",
         url: `https://grise.p-e.kr/tutee/consults`,
@@ -143,7 +129,6 @@ const ConsultList = (props) => {
       })
         .then((res) => {
           setConsultList(res.data);
-          console.log(pageNumber.current, res.data);
         })
         .catch((error) => {
           console.log(error);
@@ -152,12 +137,6 @@ const ConsultList = (props) => {
 
     }
     else if(props.consult === 'Consulting'){
-      // axios.get('Json/mainPageTutee/requestConsultList.json')
-      // .then((res) => {
-      //   setConsultList(res.data);
-      // }).catch((error) => console.log(error));
-
-
       axios({
         method:'GET',
         url:`https://grise.p-e.kr/tutee/consults`,
@@ -173,16 +152,9 @@ const ConsultList = (props) => {
       })
       .then((res) => {
         setConsultList(res.data);
-        console.log(pageNumber.current,res.data);
       }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';});
 
     }else if(props.consult === 'Tutor'){
-      // axios.get('Json/mainPageTutee/tutorList.json')
-      // .then((res) => {
-      //   setConsultList(res.data);
-      // }).catch((error) => console.log(error));
-
-      
       axios({
         method:'GET',
         url:`https://grise.p-e.kr/tutee/tutors`,
@@ -200,12 +172,6 @@ const ConsultList = (props) => {
       }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';});
       
     }else if(props.consult === 'SolvedConsult'){
-      // axios.get('Json/mainPageTutee/test.json')
-      // .then((res) => {
-      //   setConsultList(res.data);
-      // }).catch((error) => console.log(error));
-
-      
       axios({
         method:'GET',
         url:`https://grise.p-e.kr/tutee/consults`,
@@ -221,10 +187,13 @@ const ConsultList = (props) => {
       })
       .then((res) => {
         setConsultList(res.data);
-      }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';});
-      
+      }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';}); 
     }
-  }, [props.consult]);
+  }
+
+  useEffect(() => {
+    GetConsult();
+  }, []);
 
   useEffect(()=>{NoRefreshRef.current.style.display = 'none'},[ConsultList])
 
@@ -252,23 +221,23 @@ const ConsultList = (props) => {
       for(let i = 0; i < ConsultList.length-1; i++){
         result.push(<ConsultItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></ConsultItem>);
       }
-      result.push(<div key = {ConsultList.length-1} ref={ItemRef}><ConsultItem key = {ConsultList.length-1} isEnd={true} consult={props.consult} data = {ConsultList[ConsultList.length-1]}></ConsultItem></div>);
+      result.push(<div key = {ConsultList.length} ref={ItemRef}><ConsultItem key = {ConsultList.length-1} isEnd={true} consult={props.consult} data = {ConsultList[ConsultList.length-1]}></ConsultItem></div>);
     }
     else if(props.consult === 'Consulting'){
       for(let i = 0; i < ConsultList.length-1; i++){
         result.push(<ConsultItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></ConsultItem>);
       }
-      result.push(<div ref={ItemRef}><ConsultItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]}></ConsultItem></div>);
+      result.push(<div key = {ConsultList.length} ref={ItemRef}><ConsultItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]}></ConsultItem></div>);
     }else if(props.consult === 'Tutor'){
       for(let i = 0; i < ConsultList.length-1; i++){
         result.push(<TutorItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></TutorItem>);
       }
-      result.push(<div key = {ConsultList.length-1} ref={ItemRef}><TutorItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]}></TutorItem></div>);
+      result.push(<div key = {ConsultList.length} ref={ItemRef}><TutorItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]}></TutorItem></div>);
     }else if(props.consult === 'SolvedConsult'){
       for(let i = 0; i < ConsultList.length-1; i++){
         result.push(<ConsultItem key = {i} isEnd={false} consult={props.consult} data = {ConsultList[i]}></ConsultItem>);
       }
-      result.push(<div key = {ConsultList.length-1} ref={ItemRef}><ConsultItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]}></ConsultItem></div>);
+      result.push(<div key = {ConsultList.length} ref={ItemRef}><ConsultItem key = {ConsultList.length-1} consult={props.consult} isEnd={true} data = {ConsultList[ConsultList.length-1]}></ConsultItem></div>);
     }
     return result;
   }
