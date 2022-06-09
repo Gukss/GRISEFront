@@ -105,10 +105,16 @@ const DetailInfo = styled.div`
     width: 100%;
     white-space: normal;
     word-break: break-all;
-    height:auto;
+    height:5rem;
     font-family: 'Noto Sans CJK KR';
     font-style: normal;
     font-weight: 100;
     font-size: 1rem;
+    overflow-y: auto;
+    -ms-overflow-style: none; /* IE and Edge ScrollHidden */
+    scrollbar-width: none; /* Firefox ScrollHidden */
+    ::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera ScrollHidden*/
+    }
 `
 export default TutorItem;
