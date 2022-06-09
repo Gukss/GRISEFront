@@ -1,12 +1,19 @@
-import React,{useRef} from "react";
+import React,{useRef,useCallback} from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const ConsultItem = (props) => {
   const navigate = useNavigate();
   const ContainerRef = useRef();
-  const onClickShowConsultBtn = () => {
-    if(props.consult === 'Requesting'){return;}
+  const onClickShowConsultBtn = useCallback(() => {
+    if(props.consult === 'Requesting'){
+      navigate("/updateConsult",{
+        state:{
+          consultId:props.data?.consultId
+        }
+      });
+      return;
+    }
 		navigate("/tuteeConsult", {
       state: {
         consult: props.consult,
@@ -14,7 +21,7 @@ const ConsultItem = (props) => {
         isArriveMessageToTutee: props.data?.isArriveMessageToTutee,
       },
     });
-  };
+  },[props,navigate]);
 
   return (
     <Container 

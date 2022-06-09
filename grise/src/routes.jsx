@@ -3,6 +3,7 @@ import TuteeConsultBoard from "./Pages/TuteeConsultPage/Board";
 import RequestConsultPage from "./Pages/RequestConsultPage/RequestConsultPage";
 import TuteeLoginPage from "./Pages/LoginPage/TuteeLoginPage"
 import RedirectTuteePage from './oauth/Redirect';
+import UpdateConsult from "./Pages/UpdateConsultPage/UpdateConsult";
 
 const routes = [
   {
@@ -28,6 +29,10 @@ const routes = [
   {
     path: "/RedirectTutee",
     component: RedirectTuteePage,
+  },
+  {
+    path: "updateConsult",
+    component: UpdateConsult
   }
 ];
 

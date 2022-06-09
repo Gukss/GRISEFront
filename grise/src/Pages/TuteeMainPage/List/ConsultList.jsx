@@ -1,4 +1,4 @@
-import React,{useState,useRef,useEffect} from 'react'
+import React,{useState,useRef,useEffect,useCallback} from 'react'
 import axios from 'axios';
 import styled from 'styled-components';
 import ConsultItem from './ConsultItem';
@@ -12,13 +12,6 @@ const ConsultList = (props) => {
   const ContainerRef = useRef(null);
   const pageNumber = useRef(0);
   const NoRefreshRef = useRef(null);
-
-  useEffect(()=>{
-    if(props.Loading){
-      GetConsult();
-      props.SetLoading(false);
-    }
-  },[props])
 
   const Refresh = () => {
     pageNumber.current+=1;
@@ -108,7 +101,7 @@ const ConsultList = (props) => {
     }
   }
 
-  const GetConsult = () =>{
+  const GetConsult = useCallback(() =>{
     pageNumber.current = 0;
     if(props.consult === 'Requesting'){
       // axios.get('Json/mainPageTutee/requestConsultList.json')
@@ -190,13 +183,7 @@ const ConsultList = (props) => {
         setConsultList(res.data);
       }).catch((error) => {console.log(error);NoRefreshRef.current.style.display = 'none';}); 
     }
-  }
-
-  useEffect(() => {
-    GetConsult();
-  }, []);
-
-  useEffect(()=>{NoRefreshRef.current.style.display = 'none'},[ConsultList])
+  },[props.consult,pageNumber,NoRefreshRef,setConsultList])
 
   const onTouchStart=(e)=>{
     setTouchPosition({ x: e.changedTouches[0].pageX, y: e.changedTouches[0].pageY });
@@ -242,6 +229,15 @@ const ConsultList = (props) => {
     }
     return result;
   }
+
+  useEffect(()=>{
+    if(props.Loading){
+      GetConsult();
+      props.SetLoading(false);
+    }
+  },[props,GetConsult])
+
+  useEffect(()=>{NoRefreshRef.current.style.display = 'none'},[ConsultList])
 
   return (
     <div>
