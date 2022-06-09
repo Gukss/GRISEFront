@@ -16,6 +16,7 @@ const ConsultList = (props) => {
   useEffect(()=>{
     if(props.Loading){
       GetConsult();
+      props.SetLoading(false);
     }
   },[props])
 
