@@ -7,7 +7,7 @@ import { ReactComponent as Menu} from '../Image/Menu.svg';
 import { ReactComponent as Logo} from '../Image/GRISE_logo.svg';
 import {AiOutlineHome,AiOutlineLogout} from 'react-icons/ai';
 import {FiHelpCircle} from 'react-icons/fi'
-import {CgProfile} from 'react-icons/cg'
+// import {CgProfile} from 'react-icons/cg'
 import GlobalStyle from '../styles/globalStyle/GlobalStyle';
 
 export const NavBar = () => {
@@ -96,7 +96,7 @@ export const NavBar = () => {
                 <Content>홈화면</Content>
               </Link>
             </SideBarItem>
-            <SideBarItem>
+            {/* <SideBarItem>
               <Link
                 to="/"
                 style={{
@@ -117,7 +117,7 @@ export const NavBar = () => {
                 />
                 <Content>내 정보 수정</Content>
               </Link>
-            </SideBarItem>
+            </SideBarItem> */}
             <SideBarItem>
               <Link
                 to="/"
