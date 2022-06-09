@@ -7,7 +7,6 @@ const TutorItem = (props) => {
     const detailDivRef = useRef();
     const isShowDetail = useRef(false);
     const ShowDetailBtnRef = useRef();
-    const ContainerRef = useRef();
     const showDetailInfo = (e) =>{//상세보기클릭
         detailDivRef.current.style.display = (isShowDetail.current)? 'none':'block';
         isShowDetail.current = !isShowDetail.current;
@@ -36,19 +35,19 @@ const TutorItem = (props) => {
 };
 
 const TutorConsultBtn = styled.span`
-  float: right;
-  width: 5rem;
-  height: 1.5rem;
-  margin-top: 1.5rem;
-  border-radius: 1rem;
-  text-align: center;
-  font-family: "Noto Sans CJK KR";
-  font-style: normal;
-  font-weight: bold;
-  color: #fff;
-  background-color: #3a6c7b;
-  font-size: 0.8rem;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    float: right;
+    width: 5rem;
+    height: 1.5rem;
+    margin-top: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    font-family: "Noto Sans CJK KR";
+    font-style: normal;
+    font-weight: bold;
+    color: #fff;
+    background-color: #3a6c7b;
+    font-size: 0.8rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 `;
 
 const ShowDetailBtn = styled.span`
@@ -101,15 +100,16 @@ const Container = styled.div`
 const DetailInfo = styled.div`
     margin-top: 0.7rem;
     padding-left: 1.5rem;
+    padding-right: 1.5rem;
     display: none;
     width: 100%;
-    white-space: normal;
-    word-break: break-all;
-    height:5rem;
+    height:auto;
+    max-height: 5rem;
     font-family: 'Noto Sans CJK KR';
     font-style: normal;
     font-weight: 100;
     font-size: 1rem;
+    white-space:pre;
     overflow-y: auto;
     -ms-overflow-style: none; /* IE and Edge ScrollHidden */
     scrollbar-width: none; /* Firefox ScrollHidden */
