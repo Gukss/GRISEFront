@@ -1,18 +1,14 @@
-import React,{useState,useRef,useEffect} from 'react';
+import React,{useState} from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import { Drawer } from 'antd';
-import { ReactComponent as Search} from '../Image/search.svg';
 import { ReactComponent as Menu} from '../Image/Menu.svg';
 import { ReactComponent as Logo} from '../Image/GRISE_logo.svg';
 import {AiOutlineHome,AiOutlineLogout} from 'react-icons/ai';
 import {FiHelpCircle} from 'react-icons/fi'
-// import {CgProfile} from 'react-icons/cg'
 import GlobalStyle from '../styles/globalStyle/GlobalStyle';
 
 export const NavBar = () => {
-  const searchText = useRef('');
-  const searchRef = useRef();
   const [menuVisible, SetMenuVisible] = useState(false);
 
   const CloseDrawer = () => {
@@ -22,23 +18,11 @@ export const NavBar = () => {
   const ShowDrawer = () =>{
     SetMenuVisible(true);
   }
-  const onClickSearch = () =>{
-    if(searchRef.current.style.display === 'none'){ //현재 검색창이 비활성화되어있을때
-      searchRef.current.style.display='block'; //검색창을 보이게함
-    }else if(searchText.current === ""){//검색창이 보이는상태이면서 텍스트가 아무것도 없으면 숨기기
-      searchRef.current.style.display='none';
-    }else{//검색
-      console.log(searchText.current);
-    }
-  }
 
   const Logout = () =>{
     //https://velog.io/@bluejoyq/reactOAuth2.0-%EC%97%94%EB%93%9C%ED%8F%AC%EC%9D%B8%ED%8A%B8%EB%A1%9C-%EC%A7%81%EC%A0%91-%EA%B5%AC%ED%98%84%ED%95%B4%EB%B3%B4%EA%B8%B0
   }
-  useEffect(()=>{
-    searchRef.current.style.display = 'none';
-		// console.log(window.location.host, "패쓰확인");
-  },[]);
+
   return (
     <div>
       <GlobalStyle/>
@@ -73,7 +57,7 @@ export const NavBar = () => {
             onClick={ShowDrawer}
           >
           </Menu>
-          <Drawer width='100%' title={window.localStorage.getItem("userName")} placement="right" CloseDrawer={CloseDrawer} visible={menuVisible}>
+          <Drawer width='100%' title={window.localStorage.getItem("userName")} placement="right" onClose={CloseDrawer} visible={menuVisible}>
             <SideBarItem>
               <Link
                 to="/"
@@ -96,28 +80,6 @@ export const NavBar = () => {
                 <Content>홈화면</Content>
               </Link>
             </SideBarItem>
-            {/* <SideBarItem>
-              <Link
-                to="/"
-                style={{
-                  textDecoration: "none",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-evenly",
-                }}
-              >
-                <CgProfile
-                  style={{
-                    float: "left",
-                    width: "2rem",
-                    height: "2rem",
-                    color: "#3A6C7B",
-                    margin: "1rem 0",
-                  }}
-                />
-                <Content>내 정보 수정</Content>
-              </Link>
-            </SideBarItem> */}
             <SideBarItem>
               <Link
                 to="/"
@@ -163,32 +125,11 @@ export const NavBar = () => {
               </Link>
             </SideBarItem>
           </Drawer>
-          <Search
-            style={{
-              width: "2rem",
-              height: "2rem",
-              float: "right",
-            }}
-            onClick={onClickSearch}
-          ></Search>
-          <Input
-            ref = {searchRef}
-            type="text"
-            onChange={(e) => {
-              searchText.current = e.target.value;
-            }}
-          />
         </div>
       </div>
     </div>
   );
 }
-
-const Input = styled.input`
-  width:10rem;
-  height:2rem;
-  float:right;
-`
 
 const Content = styled.div`
   float: left;
