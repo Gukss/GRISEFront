@@ -22,7 +22,7 @@ const ConsultList = (props) => {
         method:'GET',
         url:`https://grise.p-e.kr/tutee/consults`,
         headers: {
-          Authorization: window.localStorage.GetItem('token') ,
+          Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
         },
         params:{
@@ -48,7 +48,7 @@ const ConsultList = (props) => {
         method:'GET',
         url:`https://grise.p-e.kr/tutee/consults`,
         headers: {
-          Authorization: window.localStorage.GetItem('token') ,
+          Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
         },
         params:{
@@ -67,7 +67,7 @@ const ConsultList = (props) => {
         method:'GET',
         url:`https://grise.p-e.kr/tutee/tutors`,
         headers: {
-          Authorization: window.localStorage.GetItem('token') ,
+          Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
         },
         params:{
@@ -85,7 +85,7 @@ const ConsultList = (props) => {
         method:'GET',
         url:`https://grise.p-e.kr/tutee/consults`,
         headers: {
-          Authorization: window.localStorage.GetItem('token') ,
+          Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
         },
         params:{
@@ -112,7 +112,7 @@ const ConsultList = (props) => {
         method: "GET",
         url: `https://grise.p-e.kr/tutee/consults`,
         headers: {
-          Authorization: window.localStorage.GetItem("token"),
+          Authorization: window.localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
         params:{
@@ -135,7 +135,7 @@ const ConsultList = (props) => {
         method:'GET',
         url:`https://grise.p-e.kr/tutee/consults`,
         headers: {
-          Authorization: window.localStorage.GetItem('token') ,
+          Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
         },
         params:{
@@ -153,7 +153,7 @@ const ConsultList = (props) => {
         method:'GET',
         url:`https://grise.p-e.kr/tutee/tutors`,
         headers: {
-          Authorization: window.localStorage.GetItem('token') ,
+          Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
         },
         params:{
@@ -170,7 +170,7 @@ const ConsultList = (props) => {
         method:'GET',
         url:`https://grise.p-e.kr/tutee/consults`,
         headers: {
-          Authorization: window.localStorage.GetItem('token') ,
+          Authorization: window.localStorage.getItem('token') ,
           "Content-Type": "application/json",
         },
         params:{
@@ -206,34 +206,6 @@ const ConsultList = (props) => {
     }
   }
 
-  const GetItem = () =>{
-    if(consultList.length === 0){return;}
-    const result = [];
-    if(props.consult === 'Requesting'){
-      for(let i = 0; i < consultList.length-1; i++){
-        result.push(<ConsultItem key = {i} isEnd={false} DeleteItem={DeleteItem} consult={props.consult} data = {consultList[i]}></ConsultItem>);
-      }
-      result.push(<div key = {consultList.length} ref={itemRef}><ConsultItem key = {consultList.length-1} isEnd={true} DeleteItem={DeleteItem} consult={props.consult} data = {consultList[consultList.length-1]}></ConsultItem></div>);
-    }
-    else if(props.consult === 'Consulting'){
-      for(let i = 0; i < consultList.length-1; i++){
-        result.push(<ConsultItem key = {i} isEnd={false} DeleteItem={DeleteItem} consult={props.consult} data = {consultList[i]}></ConsultItem>);
-      }
-      result.push(<div key = {consultList.length} ref={itemRef}><ConsultItem key = {consultList.length-1} DeleteItem={DeleteItem} consult={props.consult} isEnd={true} data = {consultList[consultList.length-1]}></ConsultItem></div>);
-    }else if(props.consult === 'Tutor'){
-      for(let i = 0; i < consultList.length-1; i++){
-        result.push(<TutorItem key = {i} isEnd={false} consult={props.consult} data = {consultList[i]}></TutorItem>);
-      }
-      result.push(<div key = {consultList.length} ref={itemRef}><TutorItem key = {consultList.length-1} consult={props.consult} isEnd={true} data = {consultList[consultList.length-1]}></TutorItem></div>);
-    }else if(props.consult === 'SolvedConsult'){
-      for(let i = 0; i < consultList.length-1; i++){
-        result.push(<ConsultItem key = {i} isEnd={false} DeleteItem={DeleteItem} consult={props.consult} data = {consultList[i]}></ConsultItem>);
-      }
-      result.push(<div key = {consultList.length} ref={itemRef}><ConsultItem key = {consultList.length-1} DeleteItem={DeleteItem} consult={props.consult} isEnd={true} data = {consultList[consultList.length-1]}></ConsultItem></div>);
-    }
-    return result;
-  }
-
   useEffect(()=>{
     if(props.Loading){
       GetConsult();
@@ -247,7 +219,33 @@ const ConsultList = (props) => {
     <div>
       <NoRefreshDiv ref = {noRefreshRef} />
       <ScrollDiv ref = {containerRef} TouchStart={TouchStart} TouchEnd={TouchEnd}>
-        {GetItem()}
+        {
+          consultList.map(function(el,i){
+            if(i === consultList.length-1){
+              if(props.consult === 'Requesting'){
+                return <div key = {consultList.length} ref={itemRef}><ConsultItem key = {consultList.length-1} isEnd={true} DeleteItem={DeleteItem} consult={props.consult} data = {consultList[consultList.length-1]}></ConsultItem></div>;
+              }
+              else if(props.consult === 'Consulting'){
+                return <div key = {consultList.length} ref={itemRef}><ConsultItem key = {consultList.length-1} DeleteItem={DeleteItem} consult={props.consult} isEnd={true} data = {consultList[consultList.length-1]}></ConsultItem></div>;
+              }else if(props.consult === 'Tutor'){
+                return <div key = {consultList.length} ref={itemRef}><TutorItem key = {consultList.length-1} consult={props.consult} isEnd={true} data = {consultList[consultList.length-1]}></TutorItem></div>;
+              }else if(props.consult === 'SolvedConsult'){
+                return <div key = {consultList.length} ref={itemRef}><ConsultItem key = {consultList.length-1} DeleteItem={DeleteItem} consult={props.consult} isEnd={true} data = {consultList[consultList.length-1]}></ConsultItem></div>;
+              }
+            }else{
+              if(props.consult === 'Requesting'){
+                return <ConsultItem key = {i} isEnd={false} DeleteItem={DeleteItem} consult={props.consult} data = {consultList[i]}></ConsultItem>;
+              }
+              else if(props.consult === 'Consulting'){
+                return <ConsultItem key = {i} isEnd={false} DeleteItem={DeleteItem} consult={props.consult} data = {consultList[i]}></ConsultItem>;
+              }else if(props.consult === 'Tutor'){
+                return <TutorItem key = {i} isEnd={false} consult={props.consult} data = {consultList[i]}></TutorItem>;
+              }else if(props.consult === 'SolvedConsult'){
+                return <ConsultItem key = {i} isEnd={false} DeleteItem={DeleteItem} consult={props.consult} data = {consultList[i]}></ConsultItem>;
+              }
+            }
+          })
+        }
       </ScrollDiv>
       <Link to='/RequestConsult' state={{consult:'NormalConsult',tutorId:null}}><RequestButton>일반 피드백 요청하기</RequestButton></Link>
     </div>

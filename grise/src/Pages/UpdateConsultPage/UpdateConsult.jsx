@@ -95,11 +95,11 @@ const UpdateConsult = ()=>{
         <fieldset>
           <div>
             <div><Label htmlFor="title">제목</Label></div>
-            <titleInput value={title} onChange={ChangeTitle} id="title" name="title" type="Text" placeholder="제목을 입력해 주세요"></titleInput>
+            <TitleInput value={title} onChange={ChangeTitle} id="title" name="title" type="Text" placeholder="제목을 입력해 주세요"></TitleInput>
           </div>
           <div>
             <div><Label htmlFor="content">본문</Label></div>
-            <contentInput value={content} onChange={ChangeContent}  id="content" name="content" type="Text" placeholder="피드백 받고싶은 내용을 입력해 주세요"></contentInput>
+            <ContentInput value={content} onChange={ChangeContent}  id="content" name="content" type="Text" placeholder="피드백 받고싶은 내용을 입력해 주세요"></ContentInput>
           </div>
           <div>
             <VideoNameContainer>
@@ -220,7 +220,7 @@ const SubmmitButton = styled.button`
   background-color: #3A6C7B;
 `
 
-const contentInput = styled.textarea`
+const ContentInput = styled.textarea`
   margin-left: 0.5rem;
   width: 95%;
   size: 100%;
@@ -249,7 +249,7 @@ const Label = styled.label`
   color: #3A6C7B;
 `
 
-const titleInput = styled.input`
+const TitleInput = styled.input`
   width: 95%;
   height: 2rem;
   margin-left: 0.5rem;
