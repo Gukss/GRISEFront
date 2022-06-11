@@ -3,96 +3,96 @@ import styled from 'styled-components';
 import ConsultList from "./List/ConsultList"
 
 const Header = () => {
-  const ConsultingListRef = useRef(null);
-  const ConsultingHeaderRef = useRef(null);
-  const [LoadingConsulting,SetLoadingConsulting] = useState(false);
-  const TutorListRef = useRef(null);
-  const TutorHeaderRef = useRef(null);
-  const [LoadingTutor,SetLoadingTutor] = useState(false);
-  const SolvedConsultListRef = useRef(null);
-  const SolvedConsultHeaderRef = useRef(null);
-  const [LoadingSolvedConsult,SetLoadingSolvedConsult] = useState(false);
-  const RequestConsultListRef = useRef(null);
-  const RequestConsultHeaderRef = useRef(null);
-  const [LoadingRequestConsult,SetLoadingRequestConsult] = useState(false);
+  const consultingListRef = useRef(null);
+  const consultingHeaderRef = useRef(null);
+  const [loadingConsulting,SetLoadingConsulting] = useState(false);
+  const tutorListRef = useRef(null);
+  const tutorHeaderRef = useRef(null);
+  const [loadingTutor,SetLoadingTutor] = useState(false);
+  const solvedConsultListRef = useRef(null);
+  const solvedConsultHeaderRef = useRef(null);
+  const [loadingSolvedConsult,SetLoadingSolvedConsult] = useState(false);
+  const requestConsultListRef = useRef(null);
+  const requestConsultHeaderRef = useRef(null);
+  const [loadingRequestConsult,SetLoadingRequestConsult] = useState(false);
 
   const ShowRequestConsultList = () => {
-    RequestConsultHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
-    RequestConsultHeaderRef.current.style.color = "#3A6C7B";
-    RequestConsultListRef.current.style.display="block";
+    requestConsultHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
+    requestConsultHeaderRef.current.style.color = "#3A6C7B";
+    requestConsultListRef.current.style.display="block";
 
-    ConsultingHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    ConsultingHeaderRef.current.style.color = "#b1b1b1";
-    ConsultingListRef.current.style.display="none";
+    consultingHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    consultingHeaderRef.current.style.color = "#b1b1b1";
+    consultingListRef.current.style.display="none";
 
-    TutorHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    TutorHeaderRef.current.style.color = "#b1b1b1";
-    TutorListRef.current.style.display="none";
+    tutorHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    tutorHeaderRef.current.style.color = "#b1b1b1";
+    tutorListRef.current.style.display="none";
 
-    SolvedConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    SolvedConsultHeaderRef.current.style.color = "#b1b1b1";
-    SolvedConsultListRef.current.style.display="none";
+    solvedConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    solvedConsultHeaderRef.current.style.color = "#b1b1b1";
+    solvedConsultListRef.current.style.display="none";
 
     SetLoadingRequestConsult(true);
   }
 
   const ShowConsultingList = () =>{
-    RequestConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    RequestConsultHeaderRef.current.style.color = "#b1b1b1";
-    RequestConsultListRef.current.style.display="none";
+    requestConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    requestConsultHeaderRef.current.style.color = "#b1b1b1";
+    requestConsultListRef.current.style.display="none";
 
-    ConsultingHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
-    ConsultingHeaderRef.current.style.color = "#3A6C7B";
-    ConsultingListRef.current.style.display="block";
+    consultingHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
+    consultingHeaderRef.current.style.color = "#3A6C7B";
+    consultingListRef.current.style.display="block";
 
-    TutorHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    TutorHeaderRef.current.style.color = "#b1b1b1";
-    TutorListRef.current.style.display="none";
+    tutorHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    tutorHeaderRef.current.style.color = "#b1b1b1";
+    tutorListRef.current.style.display="none";
 
-    SolvedConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    SolvedConsultHeaderRef.current.style.color = "#b1b1b1";
-    SolvedConsultListRef.current.style.display="none";
+    solvedConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    solvedConsultHeaderRef.current.style.color = "#b1b1b1";
+    solvedConsultListRef.current.style.display="none";
 
 
     SetLoadingConsulting(true);
   }
 
   const ShowSolvedConsultList = () =>{
-    RequestConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    RequestConsultHeaderRef.current.style.color = "#b1b1b1";
-    RequestConsultListRef.current.style.display="none";
+    requestConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    requestConsultHeaderRef.current.style.color = "#b1b1b1";
+    requestConsultListRef.current.style.display="none";
 
-    ConsultingHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    ConsultingHeaderRef.current.style.color = "#b1b1b1";
-    ConsultingListRef.current.style.display="none";
+    consultingHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    consultingHeaderRef.current.style.color = "#b1b1b1";
+    consultingListRef.current.style.display="none";
 
-    SolvedConsultHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
-    SolvedConsultHeaderRef.current.style.color = "#3A6C7B";
-    SolvedConsultListRef.current.style.display="block";
+    solvedConsultHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
+    solvedConsultHeaderRef.current.style.color = "#3A6C7B";
+    solvedConsultListRef.current.style.display="block";
 
-    TutorHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    TutorHeaderRef.current.style.color = "#b1b1b1";
-    TutorListRef.current.style.display="none";
+    tutorHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    tutorHeaderRef.current.style.color = "#b1b1b1";
+    tutorListRef.current.style.display="none";
 
     SetLoadingSolvedConsult(true);
   }
 
   const ShowTutorList = () => {
-    RequestConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    RequestConsultHeaderRef.current.style.color = "#b1b1b1";
-    RequestConsultListRef.current.style.display="none";
+    requestConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    requestConsultHeaderRef.current.style.color = "#b1b1b1";
+    requestConsultListRef.current.style.display="none";
 
-    ConsultingHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    ConsultingHeaderRef.current.style.color = "#b1b1b1";
-    ConsultingListRef.current.style.display="none";
+    consultingHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    consultingHeaderRef.current.style.color = "#b1b1b1";
+    consultingListRef.current.style.display="none";
 
-    SolvedConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
-    SolvedConsultHeaderRef.current.style.color = "#b1b1b1";
-    SolvedConsultListRef.current.style.display="none";
+    solvedConsultHeaderRef.current.style.borderBottom = "#b1b1b1 solid 0.2rem";
+    solvedConsultHeaderRef.current.style.color = "#b1b1b1";
+    solvedConsultListRef.current.style.display="none";
 
-    TutorHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
-    TutorHeaderRef.current.style.color = "#3A6C7B";
-    TutorListRef.current.style.display="block";
+    tutorHeaderRef.current.style.borderBottom = "#3A6C7B solid 0.2rem";
+    tutorHeaderRef.current.style.color = "#3A6C7B";
+    tutorListRef.current.style.display="block";
 
     SetLoadingTutor(true);
   }
@@ -104,30 +104,30 @@ const Header = () => {
   return (
     <div>
       <HeaderContainer>
-        <HeaderBtn ref={RequestConsultHeaderRef} onClick={ShowRequestConsultList}>
+        <HeaderBtn ref={requestConsultHeaderRef} onClick={ShowRequestConsultList}>
           요청중
         </HeaderBtn>
-        <HeaderBtn ref={ConsultingHeaderRef} onClick={ShowConsultingList}>
+        <HeaderBtn ref={consultingHeaderRef} onClick={ShowConsultingList}>
           진행중
         </HeaderBtn>
-        <HeaderBtn ref={SolvedConsultHeaderRef} onClick={ShowSolvedConsultList}>
+        <HeaderBtn ref={solvedConsultHeaderRef} onClick={ShowSolvedConsultList}>
           완료
         </HeaderBtn>
-        <HeaderBtn ref={TutorHeaderRef} onClick={ShowTutorList}>
+        <HeaderBtn ref={tutorHeaderRef} onClick={ShowTutorList}>
           튜터 선택
         </HeaderBtn>
       </HeaderContainer>
-      <div ref={RequestConsultListRef} style={{display:'none'}}>
-        <ConsultList SetLoading={SetLoadingRequestConsult}  Loading={LoadingRequestConsult} consult = "Requesting"/>
+      <div ref={requestConsultListRef} style={{display:'none'}}>
+        <ConsultList SetLoading={SetLoadingRequestConsult}  Loading={loadingRequestConsult} consult = "Requesting"/>
       </div>
-      <div ref={ConsultingListRef} style={{display:'none'}}>
-        <ConsultList SetLoading={SetLoadingConsulting} Loading={LoadingConsulting} consult = "Consulting"/>
+      <div ref={consultingListRef} style={{display:'none'}}>
+        <ConsultList SetLoading={SetLoadingConsulting} Loading={loadingConsulting} consult = "Consulting"/>
       </div>
-      <div ref = {SolvedConsultListRef} style={{display:'none'}}>
-        <ConsultList SetLoading={SetLoadingSolvedConsult} Loading={LoadingSolvedConsult} consult = "SolvedConsult"/>
+      <div ref = {solvedConsultListRef} style={{display:'none'}}>
+        <ConsultList SetLoading={SetLoadingSolvedConsult} Loading={loadingSolvedConsult} consult = "SolvedConsult"/>
       </div>
-			<div ref={TutorListRef} style={{display:'none'}}>
-				<ConsultList SetLoading={SetLoadingTutor} Loading={LoadingTutor} consult="Tutor"/>
+			<div ref={tutorListRef} style={{display:'none'}}>
+				<ConsultList SetLoading={SetLoadingTutor} Loading={loadingTutor} consult="Tutor"/>
 			</div>
     </div>
   );

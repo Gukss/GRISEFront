@@ -5,37 +5,37 @@ import NavBar from '../NavBar';
 import axios from 'axios';
 const RequestConsultPage = ()=>{
   const location = useLocation();
-  const FormRef = useRef(null);
-  const TitleRef = useRef(null);
-  const ContentRef = useRef(null);
-  const VideoRef = useRef(null);
-  const VideoNameRef = useRef(null);
-  const SubmitingRef = useRef(null);
-  const navigate = useNavigate();
+  const formRef = useRef(null);
+  const titleRef = useRef(null);
+  const contentRef = useRef(null);
+  const videoRef = useRef(null);
+  const videoNameRef = useRef(null);
+  const submitingRef = useRef(null);
+  const Navigate = useNavigate();
 
-  const onChangeVideo = (e) =>{
+  const ChangeVideo = (e) =>{
     if(e.target.files[0].size > 30*1024*1024){
-      VideoRef.current = null;
-      VideoNameRef.current.innerHTML = '선택된 파일없음';
+      videoRef.current = null;
+      videoNameRef.current.innerHTML = '선택된 파일없음';
       alert("영상의 크기가 30MB를 넘습니다.");
     }else{
-      VideoNameRef.current.innerHTML = e.target.files[0].name;
+      videoNameRef.current.innerHTML = e.target.files[0].name;
     }
   }
 
 	//제목이랑 본문 둘 중 하나 안 채워 졌을 때 어떻게 나타낼지 정하기
-  const summitConsult = (event) => {
+  const SubmitConsult = (event) => {
     event.preventDefault();
     if(location.state === null){ 
       alert('잘못된 접근입니다');
       return;
     }
-    const isTitle = TitleRef.current.value.length > 2 ? true:false;
-    const isContent = ContentRef.current.value.length > 4 ? true:false;
-    const isVideo = (VideoRef.current === null||VideoRef.current.files[0] === undefined) ? false:true;
-    SubmitingRef.current.style.display='block';
+    const isTitle = titleRef.current.value.length > 2 ? true:false;
+    const isContent = contentRef.current.value.length > 4 ? true:false;
+    const isVideo = (videoRef.current === null||videoRef.current.files[0] === undefined) ? false:true;
+    submitingRef.current.style.display='block';
 		if (isTitle&&isContent&&isVideo) {
-      let data = new FormData(FormRef.current);
+      let data = new FormData(formRef.current);
       let URL = 'https://grise.p-e.kr/tutee/consults';
       
       if(location.state.consult === 'NormalConsult'){
@@ -52,57 +52,57 @@ const RequestConsultPage = ()=>{
         headers: { "Content-Type": "multipart/form-data", Authorization: localStorage.getItem("token") },
         data:data
       }).then((res) => {
-        SubmitingRef.current.style.display='none';
-        navigate('/tuteeMain');
+        submitingRef.current.style.display='none';
+        Navigate('/tuteeMain');
       }).catch((error) => {
         console.log(error);
         alert("동영상 업로드 에러");
-        SubmitingRef.current.style.display='none';
+        submitingRef.current.style.display='none';
       });
       
 		}   
     else if(!isTitle){
-      SubmitingRef.current.style.display='none';
+      submitingRef.current.style.display='none';
       alert('제목을 입력해 주세요!(3글자 이상)');
     }
 		else if(!isContent) {
-      SubmitingRef.current.style.display='none';
+      submitingRef.current.style.display='none';
       alert('본문을 입력해 주세요!(5글자 이상)');
 		}
     else if(!isVideo){
-      SubmitingRef.current.style.display='none';
+      submitingRef.current.style.display='none';
       alert('비디오를 업로드해 주세요')
     }
   };
 
   return (
     <Wrap>
-      <SubmitingDiv ref={SubmitingRef}>
+      <SubmitingDiv ref={submitingRef}>
         전송중입니다
       </SubmitingDiv>
       <NavBar />
-      <form id = "video-form" ref={FormRef}>
+      <form id = "video-form" ref={formRef}>
         <fieldset>
           <div>
             <div><Label htmlFor="title">제목</Label></div>
-            <TitleInput ref={TitleRef} id="title" name="title" type="Text" placeholder="제목을 입력해 주세요"></TitleInput>
+            <TitleInput ref={titleRef} id="title" name="title" type="Text" placeholder="제목을 입력해 주세요"></TitleInput>
           </div>
           <div>
             <div><Label htmlFor="content">본문</Label></div>
-            <ContentInput ref={ContentRef} id="content" name="content" type="Text" placeholder="피드백 받고싶은 내용을 입력해 주세요"></ContentInput>
+            <ContentInput ref={contentRef} id="content" name="content" type="Text" placeholder="피드백 받고싶은 내용을 입력해 주세요"></ContentInput>
           </div>
           <div>
             <VideoNameContainer>
               <VideoTitleDiv>영상 업로드</VideoTitleDiv>
               <WarningVideo>※30MB 이하만 업로드 가능합니다</WarningVideo>
             </VideoNameContainer>
-            <input id="video" name="video" type="File" accept='video/*' style={{display:'none'}} onChange={onChangeVideo} ref={VideoRef}></input>
+            <input id="video" name="video" type="File" accept='video/*' style={{display:'none'}} onChange={ChangeVideo} ref={videoRef}></input>
             <VideoConatainer>
               <UploadButton htmlFor="video">동영상선택</UploadButton>
-              <VideoName ref={VideoNameRef}>선택된 파일없음</VideoName>
+              <VideoName ref={videoNameRef}>선택된 파일없음</VideoName>
             </VideoConatainer>
           </div>
-          <SubmmitButton type='submit' onClick={summitConsult}>피드백 요청</SubmmitButton>
+          <SubmmitButton type='submit' onClick={SubmitConsult}>피드백 요청</SubmmitButton>
         </fieldset>
       </form>
     </Wrap>

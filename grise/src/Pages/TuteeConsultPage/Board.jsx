@@ -2,9 +2,8 @@ import React, {useState, useEffect, useRef} from 'react'
 import { useLocation } from "react-router-dom";
 import styled from 'styled-components'
 import NavBar from '../NavBar'
-import Title from "./Title";
-import MainText from "./MainText";
-import Footer from "./Footer";
+import Comment from "./Comment";
+import FinishConsultButton from "./FinishConsultButton";
 import axios from 'axios';
 
 const Board = () => {
@@ -36,18 +35,19 @@ const Board = () => {
           controls
           controlsList="nodownload"
           ref={videoRef}
-          style={{maxWidth:'100%', width: 'auto', height: '15rem' }}
+          style={{ maxWidth: "100%", width: "auto", height: "15rem" }}
         />
       </StyledVideo>
-      <Title
-        title={consult?.title}
-        tuteeName={consult?.tutee?.name}
-        tutorName={consult?.tutor?.name}
-        consultId={location.state.consultId}
-        consultType={location.state.consult}
-      />
-      <MainText content={consult?.content} />
-      <Footer
+      <StyledTitle>
+        <StyledHeader>{consult?.title}</StyledHeader>
+        <FinishConsultButton
+          consultId={location.state.consultId}
+          style={{ float: "right" }}
+          consultType={location.state.consult}
+        ></FinishConsultButton>
+      </StyledTitle>
+      <StyledMainText>{consult?.content}</StyledMainText>
+      <Comment
         consultId={location.state.consultId}
         tuteeName={consult?.tutee?.name}
         consultType={location.state.consult}
@@ -55,6 +55,40 @@ const Board = () => {
     </Wrap>
   );
 };
+
+const StyledTitle = styled.div`
+  width: 97%;
+  height: 10%;
+  margin: 0 auto;
+  border-bottom: #3a6c7b solid 1px;
+  padding: 0.1rem 0;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const StyledHeader = styled.div`
+  width: 80%;
+  height: 1rem;
+  font-weight: bold;
+  font-size: 0.7rem;
+  color: #3a6c7b;
+  margin: auto 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+`;
+
+const StyledMainText = styled.div`
+  width: 97%;
+  height: 3rem;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  background-color: #fff;
+`;
 
 const StyledVideo = styled.div`
   width: 97%;

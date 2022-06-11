@@ -5,49 +5,49 @@ import NavBar from '../NavBar';
 import axios from 'axios';
 const UpdateConsult = ()=>{
   const location = useLocation();
-  const FormRef = useRef(null);
-  const [Title,SetTitle]=useState('');
-  const [Content,SetContent] = useState('');
-  const VideoRef = useRef(null);
-  const VideoNameRef = useRef(null);
-  const SubmitingRef = useRef(null);
-  const navigate = useNavigate();
+  const formRef = useRef(null);
+  const [title,SetTitle]=useState('');
+  const [content,SetContent] = useState('');
+  const videoRef = useRef(null);
+  const videoNameRef = useRef(null);
+  const submitingRef = useRef(null);
+  const Navigate = useNavigate();
 
 	//제목이랑 본문 둘 중 하나 안 채워 졌을 때 어떻게 나타낼지 정하기
-  const summitConsult = (event) => {
+  const SubmitConsult = (event) => {
     event.preventDefault();
     if(location.state === null){ 
       alert('잘못된 접근입니다');
       return;
     }
     
-    const isTitle = Title.length > 2 ? true:false;
-    const isContent = Content.length > 4 ? true:false;
-    SubmitingRef.current.style.display='block';
-		if (isTitle&&isContent) {
+    const istitle = title.length > 2 ? true:false;
+    const iscontent = content.length > 4 ? true:false;
+    submitingRef.current.style.display='block';
+		if (istitle&&iscontent) {
       let URL = `https://grise.p-e.kr/tutee/consults/${location.state.consultId}`;
-      let data = new FormData(FormRef.current);
+      let data = new FormData(formRef.current);
 
       axios({  
         method: "PUT",
         url: URL, //환경변수
-        headers: { "Content-Type": "multipart/form-data", Authorization: localStorage.getItem("token") },
+        headers: { "content-Type": "multipart/form-data", Authorization: localStorage.getItem("token") },
         data:data
       }).then((res) => {
-        SubmitingRef.current.style.display='none';
-        navigate('/tuteeMain');
+        submitingRef.current.style.display='none';
+        Navigate('/tuteeMain');
       }).catch((error) => {
         console.log(error);
-        SubmitingRef.current.style.display='none';
+        submitingRef.current.style.display='none';
       });
       
 		}   
-    else if(!isTitle){
-      SubmitingRef.current.style.display='none';
+    else if(!istitle){
+      submitingRef.current.style.display='none';
       alert('제목을 입력해 주세요!(3글자 이상)');
     }
-		else if(!isContent) {
-      SubmitingRef.current.style.display='none';
+		else if(!iscontent) {
+      submitingRef.current.style.display='none';
       alert('본문을 입력해 주세요!(5글자 이상)');
 		}
   };
@@ -60,13 +60,13 @@ const UpdateConsult = ()=>{
     SetContent(e.target.value);
   },[])
 
-  const onChangeVideo = useCallback((e) =>{
+  const ChangeVideo = useCallback((e) =>{
     if(e.target.files[0].size > 30*1024*1024){
-      VideoRef.current = null;
-      VideoNameRef.current.innerHTML = '선택된 파일없음';
+      videoRef.current = null;
+      videoNameRef.current.innerHTML = '선택된 파일없음';
       alert("영상의 크기가 30MB를 넘습니다.");
     }else{
-      VideoNameRef.current.innerHTML = e.target.files[0].name;
+      videoNameRef.current.innerHTML = e.target.files[0].name;
     }
   },[]);
 
@@ -76,7 +76,7 @@ const UpdateConsult = ()=>{
       url: `https://grise.p-e.kr/tutee/consults/${location.state.consultId}`,
       headers: {
         Authorization: window.localStorage.getItem("token"),
-        "Content-Type": "application/json",
+        "content-Type": "application/json",
       },
     })
       .then((res) => {
@@ -87,32 +87,32 @@ const UpdateConsult = ()=>{
   },[location.state])
   return (
     <Wrap>
-      <SubmitingDiv ref={SubmitingRef}>
+      <SubmitingDiv ref={submitingRef}>
         전송중입니다
       </SubmitingDiv>
       <NavBar />
-      <form id = "video-form" ref={FormRef}>
+      <form id = "video-form" ref={formRef}>
         <fieldset>
           <div>
             <div><Label htmlFor="title">제목</Label></div>
-            <TitleInput value={Title} onChange={ChangeTitle} id="title" name="title" type="Text" placeholder="제목을 입력해 주세요"></TitleInput>
+            <titleInput value={title} onChange={ChangeTitle} id="title" name="title" type="Text" placeholder="제목을 입력해 주세요"></titleInput>
           </div>
           <div>
             <div><Label htmlFor="content">본문</Label></div>
-            <ContentInput value={Content} onChange={ChangeContent}  id="content" name="content" type="Text" placeholder="피드백 받고싶은 내용을 입력해 주세요"></ContentInput>
+            <contentInput value={content} onChange={ChangeContent}  id="content" name="content" type="Text" placeholder="피드백 받고싶은 내용을 입력해 주세요"></contentInput>
           </div>
           <div>
             <VideoNameContainer>
-              <VideoTitleDiv>영상 업로드</VideoTitleDiv>
+              <VideotitleDiv>영상 업로드</VideotitleDiv>
               <WarningVideo>※30MB 이하만 업로드 가능합니다</WarningVideo>
             </VideoNameContainer>
-            <input id="video" name="video" type="File" accept='video/*' style={{display:'none'}} onChange={onChangeVideo} ref={VideoRef}></input>
+            <input id="video" name="video" type="File" accept='video/*' style={{display:'none'}} onChange={ChangeVideo} ref={videoRef}></input>
             <VideoConatainer>
               <UploadButton htmlFor="video">동영상선택</UploadButton>
-              <VideoName ref={VideoNameRef}>기존 동영상입니다</VideoName>
+              <VideoName ref={videoNameRef}>기존 동영상입니다</VideoName>
             </VideoConatainer>
           </div>
-          <SubmmitButton type='submit' onClick={summitConsult}>피드백 요청</SubmmitButton>
+          <SubmmitButton type='submit' onClick={SubmitConsult}>피드백 요청</SubmmitButton>
         </fieldset>
       </form>
     </Wrap>
@@ -173,7 +173,7 @@ const VideoName = styled.div`
   white-space:nowrap;
 `
 
-const VideoTitleDiv = styled.div`
+const VideotitleDiv = styled.div`
   margin-left: 0.5rem;
   display: block;
   font-size: 1rem;
@@ -220,7 +220,7 @@ const SubmmitButton = styled.button`
   background-color: #3A6C7B;
 `
 
-const ContentInput = styled.textarea`
+const contentInput = styled.textarea`
   margin-left: 0.5rem;
   width: 95%;
   size: 100%;
@@ -249,7 +249,7 @@ const Label = styled.label`
   color: #3A6C7B;
 `
 
-const TitleInput = styled.input`
+const titleInput = styled.input`
   width: 95%;
   height: 2rem;
   margin-left: 0.5rem;

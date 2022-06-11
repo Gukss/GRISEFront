@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ConsultItem = (props) => {
-  const navigate = useNavigate();
-  const ContainerRef = useRef();
+  const Navigate = useNavigate();
+  const containerRef = useRef();
   
   const DeleteConsult = useCallback(()=>{
     axios({
@@ -15,35 +15,35 @@ const ConsultItem = (props) => {
         Authorization: window.localStorage.getItem('token') ,
         "Content-Type": "application/json",
       }
-    }).then((res)=>{props.ItemDelete()})
+    }).then((res)=>{props.DeleteItem()})
     .catch((error) => {console.log(error);});
   },[props]);
 
-  const onClickShowConsultBtn = useCallback(() => {
+  const ShowConsultBtn = useCallback(() => {
     if(props.consult === 'Requesting'){
-      navigate("/updateConsult",{
+      Navigate("/updateConsult",{
         state:{
           consultId:props.data?.consultId
         }
       });
       return;
     }
-		navigate("/tuteeConsult", {
+		Navigate("/tuteeConsult", {
       state: {
         consult: props.consult,
         consultId: props.data?.consultId,
         isArriveMessageToTutee: props.data?.isArriveMessageToTutee,
       },
     });
-  },[props,navigate]);
+  },[props,Navigate]);
 
   return (
     <Container 
-      onTouchStart={()=>{ContainerRef.current.style.borderColor='#3A6C7B';}}
-      onTouchEnd={()=>{ContainerRef.current.style.borderLeftColor='transparent';ContainerRef.current.style.borderRightColor='transparent';}}
-      ref={ContainerRef}
+      onTouchStart={()=>{containerRef.current.style.borderColor='#3A6C7B';}}
+      onTouchEnd={()=>{containerRef.current.style.borderLeftColor='transparent';containerRef.current.style.borderRightColor='transparent';}}
+      ref={containerRef}
     > 
-      <Content onClick={onClickShowConsultBtn}>
+      <Content onClick={ShowConsultBtn}>
         <TitleDiv>
           <Title>{props.data?.title}</Title>
           <IsComment show={props.data?.isArriveMessageToTutee}>.</IsComment>

@@ -5,7 +5,7 @@ import "antd/dist/antd.min.css";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
-const ModalButton = ({ consultId, consultType }) => {
+const FinishConsultButton = ({ consultId, consultType }) => {
 	const navigate = useNavigate();
 	const typeRef = useRef();
 	useEffect(() => {
@@ -19,12 +19,11 @@ const ModalButton = ({ consultId, consultType }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const rate = useRef(0);
 
-  const showModal = () => {
+  const ShowRateModal = () => {
     setIsModalVisible(true);
   };
 
-  const handleOk = () => {
-
+  const HandleOk = () => {
     axios({
       method: "POST",
       url: `https://grise.p-e.kr/tutee/consults/${consultId}/done`,
@@ -54,25 +53,25 @@ const ModalButton = ({ consultId, consultType }) => {
     .catch((error) => console.log("완료API에러", error));
   };
 
-  const handleCancel = () => {
+  const HandleCancel = () => {
     setIsModalVisible(false);
   };
-  const onChangeRate = (e) => {
+  const ChangeRate = (e) => {
     rate.current = e;
   };
   return (
     <>
-      <CompleteButton type="primary" onClick={showModal} ref={typeRef}>
+      <CompleteButton type="primary" onClick={ShowRateModal} ref={typeRef}>
         피드백 완료
       </CompleteButton>
       <Modal
         title="별점"
         visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
+        onOk={HandleOk}
+        onCancel={HandleCancel}
       >
         <div>별점을 주세요.</div>
-        <Rate defaultValue={0} onChange={onChangeRate} />
+        <Rate defaultValue={0} onChange={ChangeRate} />
       </Modal>
     </>
   );
@@ -90,4 +89,4 @@ const CompleteButton = styled.button`
   margin: auto 0.3rem auto 0;
 `;
 
-export default ModalButton;
+export default FinishConsultButton;

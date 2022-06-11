@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Redirect = () => {
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
 	useEffect (() => {
 		const current = decodeURI(window.location.href);
     const search = current.split("?")[1];
@@ -32,17 +32,17 @@ const Redirect = () => {
             }
           }).then((res)=>{
             console.log("튜티 등록성공");
-            navigate("/tuteeMain");
+            Navigate("/tuteeMain");
           })
           .catch((error) => alert("등록 Error가 발생하였습니다", error));
         }else{ //튜티일때
           console.log("등록된 유저입니다.");
-          navigate("/tuteeMain");
+          Navigate("/tuteeMain");
         }
         })
         .catch((error) => alert("Error가 발생하였습니다", error));
     }
-	}, [navigate]);
+	}, [Navigate]);
 		
 
 	return (

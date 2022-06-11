@@ -6,12 +6,12 @@ import { ReactComponent as Star} from '../../../Image/star.svg';
 const TutorItem = (props) => {
     const detailDivRef = useRef();
     const isShowDetail = useRef(false);
-    const ShowDetailBtnRef = useRef();
-    const showDetailInfo = (e) =>{//상세보기클릭
+    const showDetailBtnRef = useRef();
+    const ShowDetailInfo = (e) =>{//상세보기클릭
         detailDivRef.current.style.display = (isShowDetail.current)? 'none':'block';
         isShowDetail.current = !isShowDetail.current;
         if(props.isEnd){detailDivRef.current.scrollIntoView({ behavior: 'smooth' });}
-        ShowDetailBtnRef.current.innerHTML = (isShowDetail.current)? '접기':'정보 보기';
+        showDetailBtnRef.current.innerHTML = (isShowDetail.current)? '접기':'정보 보기';
     }
 
     return (
@@ -22,7 +22,7 @@ const TutorItem = (props) => {
                     <div>
                         <StarImage><Star style={{width:'1.5rem',height:'1.5rem'}}></Star></StarImage>
                         <Score>{props.data?.review.star}</Score>
-                        <ShowDetailBtn ref={ShowDetailBtnRef} onClick={showDetailInfo}>정보 보기</ShowDetailBtn>
+                        <ShowDetailBtn ref={showDetailBtnRef} onClick={ShowDetailInfo}>정보 보기</ShowDetailBtn>
                     </div>
                 </div>
                 <Link to='/RequestConsult' state={{consult:'RequestConsult',tutorId:props.data?.tutorId}}><TutorConsultBtn>피드백 요청</TutorConsultBtn></Link>
@@ -59,7 +59,6 @@ const ShowDetailBtn = styled.span`
     margin-left : 1rem;
     vertical-align:30%;
 `
-
 
 const StarImage = styled.span`
     margin-left: 1.5rem;

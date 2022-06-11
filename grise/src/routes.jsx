@@ -2,7 +2,7 @@ import TuteeMainPage from "./Pages/TuteeMainPage/TuteeMain";
 import TuteeConsultBoard from "./Pages/TuteeConsultPage/Board";
 import RequestConsultPage from "./Pages/RequestConsultPage/RequestConsultPage";
 import TuteeLoginPage from "./Pages/LoginPage/TuteeLoginPage"
-import RedirectTuteePage from './oauth/Redirect';
+import RedirectTuteePage from "./oauth/RedirectTutee";
 import UpdateConsult from "./Pages/UpdateConsultPage/UpdateConsult";
 
 const routes = [
