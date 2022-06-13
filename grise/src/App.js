@@ -11,7 +11,7 @@ function App() {
       window.location.href=loginURL;
       alert('비정상적인 접근입니다. 로그인해주세요!');
     }
-  })
+  },[])
   return (
     <BrowserRouter>
       <Routes>
