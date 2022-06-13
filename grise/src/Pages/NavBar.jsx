@@ -107,7 +107,7 @@ export const NavBar = () => {
             </SideBarItem>
             <SideBarItem onClick={Logout}>
               <Link
-                to="/tuteeLogin"
+                to="/"
                 style={{
                   textDecoration: "none",
                   display: "flex",

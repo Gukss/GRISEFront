@@ -6,7 +6,7 @@ function App() {
     const loginURL = `${window.location.origin}/tuteeLogin`;
     const redirectURL = `${window.location.origin}/RedirectTutee`
     const currentURL = window.location.href;
-    if(currentURL === loginURL || currentURL.includes(redirectURL)){return;}
+    if(currentURL === window.location.origin||currentURL.includes(loginURL) || currentURL.includes(redirectURL)){return;}
     if(window.localStorage.getItem('token')===''){
       window.location.href=loginURL;
       alert('비정상적인 접근입니다. 로그인해주세요!');
