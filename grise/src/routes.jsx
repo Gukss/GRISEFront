@@ -31,7 +31,7 @@ const routes = [
     component: RedirectTuteePage,
   },
   {
-    path: "updateConsult",
+    path: "/updateConsult",
     component: UpdateConsult
   }
 ];

@@ -32,12 +32,12 @@ const Redirect = () => {
             }
           }).then((res)=>{
             console.log("튜티 등록성공");
-            Navigate("/tuteeMain");
+            Navigate("/tuteeMain",{replace:true});
           })
           .catch((error) => alert("등록 Error가 발생하였습니다", error));
         }else{ //튜티일때
           console.log("등록된 유저입니다.");
-          Navigate("/tuteeMain");
+          Navigate("/tuteeMain",{replace:true});
         }
         })
         .catch((error) => alert("Error가 발생하였습니다", error));

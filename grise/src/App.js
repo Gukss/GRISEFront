@@ -1,8 +1,17 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import { FeedbackRequestPage } from './Pages/FeedbackRequestPage';
 import routes from "./routes";
-
+import React,{useEffect} from 'react'
 function App() {
+  useEffect(()=>{
+    const loginURL = `${window.location.origin}/tuteeLogin`;
+    const redirectURL = `${window.location.origin}/RedirectTutee`
+    const currentURL = window.location.href;
+    if(currentURL === loginURL || currentURL.includes(redirectURL)){return;}
+    if(window.localStorage.getItem('token')===''){
+      window.location.href=loginURL;
+      alert('비정상적인 접근입니다. 로그인해주세요!');
+    }
+  })
   return (
     <BrowserRouter>
       <Routes>
@@ -11,7 +20,6 @@ function App() {
 						<Route key={route.path} exact path={route.path} element={<route.component />} />
 					)
 				})}
-        {/* <Route path='/board' element={<Board />} /> */}
       </Routes>
     </BrowserRouter>
   );
