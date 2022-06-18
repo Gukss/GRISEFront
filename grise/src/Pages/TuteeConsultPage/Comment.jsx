@@ -61,7 +61,7 @@ const Footer = ({ consultId, tuteeName, consultType }) => {
     }
   }, [commentList]);
 
-  const getItem = () => {
+  const GetItem = () => {
     if (commentList.length === 0) {
       return;
     }
@@ -150,7 +150,7 @@ const Footer = ({ consultId, tuteeName, consultType }) => {
 
   return (
     <div>
-      <StyledComment>{getItem()}</StyledComment>
+      <StyledComment>{GetItem()}</StyledComment>
       <InputContinaer>
         <InputComment
           onChange={(e) => {
