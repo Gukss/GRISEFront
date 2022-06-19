@@ -247,7 +247,7 @@ const ConsultList = (props) => {
           })
         }
       </ScrollDiv>
-      <Link to='/RequestConsult' state={{consult:'NormalConsult',tutorId:null}}><RequestButton>일반 피드백 요청하기</RequestButton></Link>
+      <Link to='/RequestConsult' state={{consult:'NormalConsult',tutorId:null}}><RequestButton>일반 상담 요청하기</RequestButton></Link>
     </div>
   )
 }
