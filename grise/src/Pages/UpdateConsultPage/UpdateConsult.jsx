@@ -12,6 +12,7 @@ const UpdateConsult = ()=>{
   const videoNameRef = useRef(null);
   const submitingRef = useRef(null);
   const Navigate = useNavigate();
+	const loadingRef = useRef(null);
 
 	//제목이랑 본문 둘 중 하나 안 채워 졌을 때 어떻게 나타낼지 정하기
   const SubmitConsult = (event) => {
@@ -83,41 +84,94 @@ const UpdateConsult = ()=>{
         SetTitle(res.data.title);
         SetContent(res.data.content);
       })
+      .then((res) => {
+        loadingRef.current.style.display = "none";
+      })
       .catch((error) => console.log(error));
   },[location.state])
   return (
     <Wrap>
-      <SubmitingDiv ref={submitingRef}>
-        전송중입니다
-      </SubmitingDiv>
+      <SubmitingDiv ref={submitingRef}>전송중입니다</SubmitingDiv>
+      <Loading ref={loadingRef}>
+        로딩중입니다
+      </Loading>
+
       <NavBar />
-      <form id = "video-form" ref={formRef}>
+      <form id="video-form" ref={formRef}>
         <fieldset>
           <div>
-            <div><Label htmlFor="title">제목</Label></div>
-            <TitleInput value={title} onChange={ChangeTitle} id="title" name="title" type="Text" placeholder="제목을 입력해 주세요"></TitleInput>
+            <div>
+              <Label htmlFor="title">제목</Label>
+            </div>
+            <TitleInput
+              value={title}
+              onChange={ChangeTitle}
+              id="title"
+              name="title"
+              type="Text"
+              placeholder="제목을 입력해 주세요"
+            ></TitleInput>
           </div>
           <div>
-            <div><Label htmlFor="content">본문</Label></div>
-            <ContentInput value={content} onChange={ChangeContent}  id="content" name="content" type="Text" placeholder="피드백 받고싶은 내용을 입력해 주세요"></ContentInput>
+            <div>
+              <Label htmlFor="content">본문</Label>
+            </div>
+            <ContentInput
+              value={content}
+              onChange={ChangeContent}
+              id="content"
+              name="content"
+              type="Text"
+              placeholder="피드백 받고싶은 내용을 입력해 주세요"
+            ></ContentInput>
           </div>
           <div>
             <VideoNameContainer>
               <VideotitleDiv>영상 업로드</VideotitleDiv>
               <WarningVideo>※30MB 이하만 업로드 가능합니다</WarningVideo>
             </VideoNameContainer>
-            <input id="video" name="video" type="File" accept='video/*' style={{display:'none'}} onChange={ChangeVideo} ref={videoRef}></input>
+            <input
+              id="video"
+              name="video"
+              type="File"
+              accept="video/*"
+              style={{ display: "none" }}
+              onChange={ChangeVideo}
+              ref={videoRef}
+            ></input>
             <VideoConatainer>
               <UploadButton htmlFor="video">동영상선택</UploadButton>
               <VideoName ref={videoNameRef}>기존 동영상입니다</VideoName>
             </VideoConatainer>
           </div>
-          <SubmmitButton type='submit' onClick={SubmitConsult}>피드백 요청</SubmmitButton>
+          <SubmmitButton type="submit" onClick={SubmitConsult}>
+            피드백 요청
+          </SubmmitButton>
         </fieldset>
       </form>
     </Wrap>
   );
 }
+
+const Loading = styled.div`
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: bold;
+  color: #fff;
+  font-size: 3rem;
+  text-align: center;
+  line-height: 80vh;
+  background-color: rgba(0, 0, 0, 0.8);
+`;
 
 const VideoNameContainer = styled.div`
   display: flex;
