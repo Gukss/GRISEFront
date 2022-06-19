@@ -7,6 +7,7 @@ import { ReactComponent as Logo} from '../Image/GRISE_logo.svg';
 import {AiOutlineHome,AiOutlineLogout} from 'react-icons/ai';
 import {FiHelpCircle} from 'react-icons/fi'
 import GlobalStyle from '../styles/globalStyle/GlobalStyle';
+import 'antd/dist/antd.min.css';
 
 export const NavBar = () => {
   const [drawerVisible, SetDrawerVisible] = useState(false);
