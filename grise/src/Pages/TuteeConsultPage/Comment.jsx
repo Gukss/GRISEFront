@@ -50,7 +50,7 @@ const Footer = ({ consultId, tuteeName, consultType }) => {
       });
       commentCountRef.current = 3 - currentCommentRef.current;
       console.log('수정전',inputRef.current.placeholder);
-      inputRef.current.placeholder = `피드백을 입력해주세요. ${commentCountRef.current}회 입력 가능합니다.`;
+      inputRef.current.placeholder = `답변을 입력해주세요. ${commentCountRef.current}회 입력 가능합니다.`;
       console.log('수정후',inputRef.current.placeholder);
       if (commentCountRef.current === 0) {
         inputRef.current.placeholder = `입력횟수를 모두 사용하셨습니다.`;
@@ -157,7 +157,7 @@ const Footer = ({ consultId, tuteeName, consultType }) => {
            	GetComment(e);
           }}
           type="text"
-          placeholder="피드백을 입력해주세요. 3회 입력 가능합니다."
+          placeholder="답변을 입력해주세요. 3회 입력 가능합니다."
           value={content}
           ref={inputRef}
         ></InputComment>

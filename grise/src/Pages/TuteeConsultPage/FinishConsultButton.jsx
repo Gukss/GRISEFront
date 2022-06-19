@@ -62,7 +62,7 @@ const FinishConsultButton = ({ consultId, consultType }) => {
   return (
     <>
       <CompleteButton type="primary" onClick={ShowRateModal} ref={typeRef}>
-        피드백 완료
+        상담 완료
       </CompleteButton>
       <Modal
         title="별점"

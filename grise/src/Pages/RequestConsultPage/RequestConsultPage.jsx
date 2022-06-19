@@ -89,7 +89,7 @@ const RequestConsultPage = ()=>{
           </div>
           <div>
             <div><Label htmlFor="content">본문</Label></div>
-            <ContentInput ref={contentRef} id="content" name="content" type="Text" placeholder="피드백 받고싶은 내용을 입력해 주세요"></ContentInput>
+            <ContentInput ref={contentRef} id="content" name="content" type="Text" placeholder="상담 받고싶은 내용을 입력해 주세요"></ContentInput>
           </div>
           <div>
             <VideoNameContainer>
@@ -102,7 +102,7 @@ const RequestConsultPage = ()=>{
               <VideoName ref={videoNameRef}>선택된 파일없음</VideoName>
             </VideoConatainer>
           </div>
-          <SubmmitButton type='submit' onClick={SubmitConsult}>피드백 요청</SubmmitButton>
+          <SubmmitButton type='submit' onClick={SubmitConsult}>상담 요청</SubmmitButton>
         </fieldset>
       </form>
     </Wrap>
