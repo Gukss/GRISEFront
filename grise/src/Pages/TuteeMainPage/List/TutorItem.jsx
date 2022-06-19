@@ -1,49 +1,54 @@
 import React,{useRef} from 'react'
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as Star} from '../../../Image/star.svg';
 
 const TutorItem = (props) => {
     const detailDivRef = useRef();
     const isShowDetail = useRef(false);
     const showDetailBtnRef = useRef();
+    const Navigate = useNavigate();
     const ShowDetailInfo = (e) =>{//상세보기클릭
         detailDivRef.current.style.display = (isShowDetail.current)? 'none':'block';
         isShowDetail.current = !isShowDetail.current;
         if(props.isEnd){detailDivRef.current.scrollIntoView({ behavior: 'smooth' });}
         showDetailBtnRef.current.innerHTML = (isShowDetail.current)? '접기':'정보 보기';
     }
-
+    const RequestConsult = (e) =>{
+        Navigate("/RequestConsult",{
+            state:{
+                consult:'RequestConsult',
+                tutorId:props.data?.tutorId
+            }
+        });
+    }
     return (
-        <div style={{borderBottom:"#3A6C7B solid 0.2rem"}}>
-            <Container>
-                <div style={{float:'left'}}>
-                    <Title>{props.data?.username}</Title>
-                    <div>
-                        <StarImage><Star style={{width:'1.5rem',height:'1.5rem'}}></Star></StarImage>
-                        <Score>{props.data?.review.star}</Score>
-                        <ShowDetailBtn ref={showDetailBtnRef} onClick={ShowDetailInfo}>정보 보기</ShowDetailBtn>
-                    </div>
+        <Container>
+            <Content>
+                <Title>{props.data?.username}</Title>
+                <div>
+                    <StarImage><Star style={{width:'1.5rem',height:'1.5rem'}}></Star></StarImage>
+                    <Score>{props.data?.review.star}</Score>
+                    <ShowDetailBtn ref={showDetailBtnRef} onClick={ShowDetailInfo}>정보 보기</ShowDetailBtn>
                 </div>
-                <Link to='/RequestConsult' state={{consult:'RequestConsult',tutorId:props.data?.tutorId}}><TutorConsultBtn>피드백 요청</TutorConsultBtn></Link>
-            </Container>
-            <DetailInfo ref = {detailDivRef}>
-                {props.data?.resumeContent}
-            </DetailInfo>
-        </div>
+                <DetailInfo ref = {detailDivRef}>
+                    {props.data?.resumeContent}
+                </DetailInfo>
+            </Content>
+            <TutorConsultBtn onClick={RequestConsult}>상담 요청</TutorConsultBtn>
+        </Container>
     )
 };
 
-const TutorConsultBtn = styled.span`
-    float: right;
+const TutorConsultBtn = styled.div`
     width: 5rem;
     height: 1.5rem;
-    margin-top: 1.5rem;
+    margin-top: 1.3rem;
     border-radius: 1rem;
     text-align: center;
     font-family: "Noto Sans CJK KR";
     font-style: normal;
-    font-weight: bold;
+    font-weight: 900;
     color: #fff;
     background-color: #3a6c7b;
     font-size: 0.8rem;
@@ -68,14 +73,12 @@ const StarImage = styled.span`
 const Title = styled.div`
     margin-left: 1.5rem;
     margin-top: 0.5rem;
-    display: block;
     font-size: 1rem;
     text-align:left;
     font-family: 'Noto Sans CJK KR';
     font-style: normal;
-    font-weight: bold;
+    font-weight: 900;
     color: #3A6C7B;
-    height: 1rem;
 `
 
 const Score = styled.span`
@@ -88,16 +91,17 @@ const Score = styled.span`
 `
 
 const Container = styled.div`
-    width: 100%;
-    height: 4rem;
-    font-family: 'Noto Sans CJK KR';
-    font-style: normal;
-    font-weight: 100;
-    font-size: 2rem;
-    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    border-bottom: #3A6C7B solid 0.2rem;
 `
+const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+`
+
 const DetailInfo = styled.div`
-    margin-top: 0.7rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     display: none;
