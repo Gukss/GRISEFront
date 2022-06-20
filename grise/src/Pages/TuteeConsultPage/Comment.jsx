@@ -188,8 +188,9 @@ const InputContinaer = styled.div`
   width: 100%;
   bottom: 0;
   border-top: #3a6c7b solid 1px;
-	padding: 0.2rem 0;
-	align-items: center;
+  padding: 0.2rem 0;
+  align-items: center;
+  background-color: #fff;
 `;
 const InputComment = styled.input`
   width: 90%;
@@ -198,7 +199,7 @@ const InputComment = styled.input`
   :focus {
     outline: none;
   }
-  background: transparent;
+  background-color: #fff;
 `;
 
 
@@ -207,7 +208,7 @@ const SubmitCommentBtn = styled.div`
 	`
 
 const StyledComment = styled.div`
-  height: 17rem;
+  height: 14rem;
   overflow-y: auto;
   ::-webkit-scrollbar {
     display: none;
