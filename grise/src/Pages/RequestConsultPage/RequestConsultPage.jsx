@@ -15,7 +15,6 @@ const RequestConsultPage = ()=>{
 
   const ChangeVideo = (e) =>{
     if(e.target.files[0].size > 30*1024*1024){
-      videoRef.current = null;
       videoNameRef.current.innerHTML = '선택된 파일없음';
       alert("영상의 크기가 30MB를 넘습니다.");
     }else{
@@ -32,7 +31,7 @@ const RequestConsultPage = ()=>{
     }
     const isTitle = titleRef.current.value.length > 2 ? true:false;
     const isContent = contentRef.current.value.length > 4 ? true:false;
-    const isVideo = (videoRef.current === null||videoRef.current.files[0] === undefined) ? false:true;
+    const isVideo = (videoRef.current === null||videoRef.current.files[0] === undefined || videoRef.current.files[0].size > 30*1024*1024) ? false:true;
     submitingRef.current.style.display='block';
 		if (isTitle&&isContent&&isVideo) {
       let data = new FormData(formRef.current);
