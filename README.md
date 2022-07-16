@@ -282,7 +282,7 @@ JSON
 
 **튜터 목록**
 
-```json
+```
 [GET] /tutee/tutors
 ```
 
@@ -391,7 +391,7 @@ JSON
 
 **튜터의 상담을 확인하고 Comment를 보내기**
 
-```json
+```
 [POST] /tutee/consults/{consultId}/comment
 ```
 
@@ -405,7 +405,7 @@ JSON
 
 **상담지의 commentList 가져오기**
 
-```json
+```
 [GET] /tutee/consults/{consultId}/comments
 ```
 
