@@ -14,6 +14,7 @@ const Board = () => {
 
 	
 	useEffect(() => {
+		/*
 		axios({
       method: "GET",
       url: `https://grise.p-e.kr/tutee/consults/${location.state.consultId}`,
@@ -22,15 +23,18 @@ const Board = () => {
         "Content-Type": "application/json",
       },
     })
+		*/
+		axios
+      .get("/Json/consultPage/consult.json")
       .then((res) => {
         setConsult(res.data);
-        videoRef.current.src = `https://grise.p-e.kr/video/${res.data.video.videoId}`;
+        videoRef.current.src = /*`https://grise.p-e.kr/video/${res.data.video.videoId}`*/"/Videos/test.mp4" ;
       })
       .then((res) => {
         loadingRef.current.style.display = "none";
       })
       .catch((error) => console.log(error));
-	}, [location.state.consultId]);
+	}, /*[location.state.consultId]*/[]);
 
 	return (
     <Wrap>
@@ -47,16 +51,16 @@ const Board = () => {
       <StyledTitle>
         <StyledHeader>{consult?.title}</StyledHeader>
         <FinishConsultButton
-          consultId={location.state.consultId}
+          consultId={/*location.state.consultId*/ 1}
           style={{ float: "right" }}
-          consultType={location.state.consult}
+          consultType={/*location.state.consult*/ "Consulting"}
         ></FinishConsultButton>
       </StyledTitle>
       <StyledMainText>{consult?.content}</StyledMainText>
       <Comment
-        consultId={location.state.consultId}
+        consultId={/*location.state.consultId*/ 1}
         tuteeName={consult?.tutee?.name}
-        consultType={location.state.consult}
+        consultType={/*location.state.consult*/ "Consulting"}
       />
     </Wrap>
   );

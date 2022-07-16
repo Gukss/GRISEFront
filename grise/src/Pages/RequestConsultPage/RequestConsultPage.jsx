@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useLocation,useNavigate } from 'react-router-dom';
 import NavBar from '../NavBar';
 import axios from 'axios';
+
 const RequestConsultPage = ()=>{
   const location = useLocation();
   const formRef = useRef(null);
@@ -44,8 +45,9 @@ const RequestConsultPage = ()=>{
         data.append("tutorId",location.state.tutorId);
         URL+='/post';
       }
-      
-      axios({
+      Navigate("/tuteeMain");
+      /*
+			axios({
         method: "post",
         url: URL, //환경변수
         headers: { "Content-Type": "multipart/form-data", Authorization: localStorage.getItem("token") },
@@ -58,7 +60,7 @@ const RequestConsultPage = ()=>{
         alert("동영상 업로드 에러");
         submitingRef.current.style.display='none';
       });
-      
+      */
 		}   
     else if(!isTitle){
       submitingRef.current.style.display='none';

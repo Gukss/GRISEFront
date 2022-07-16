@@ -1,0 +1,14 @@
+[
+  {
+    "commentId": 2,
+    "content": "~~이렇게 하면 됩니다",
+    "userName": "김민영",
+    "userId": 1234123
+  },
+  {
+    "commentId": 3,
+    "content": null,
+    "userName": "김민영",
+    "userId": 1234123
+  }
+]

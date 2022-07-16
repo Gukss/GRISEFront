@@ -12,7 +12,8 @@ const Footer = ({ consultId, tuteeName, consultType }) => {
   const currentCommentRef = useRef(0);
 
   useEffect(() => {
-    axios({
+    /*
+		axios({
       method: "GET",
       url: `https://grise.p-e.kr/tutee/consults/${consultId}/comments`,
       headers: {
@@ -20,6 +21,8 @@ const Footer = ({ consultId, tuteeName, consultType }) => {
         "Content-Type": "application/json",
       },
     })
+		*/
+		axios.get("/Json/consultPage/comments.json")
       .then((res) => {
         setCommentList(res.data);
         console.log("리스트", commentList);

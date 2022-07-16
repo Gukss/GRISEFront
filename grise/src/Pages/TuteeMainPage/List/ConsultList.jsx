@@ -44,7 +44,7 @@ const ConsultList = (props) => {
       // }).catch((error) => console.log(error));
 
       
-      axios({
+			axios({
         method:'GET',
         url:`https://grise.p-e.kr/tutee/consults`,
         headers: {
@@ -104,11 +104,13 @@ const ConsultList = (props) => {
   const GetConsult = useCallback(() =>{
     pageNumber.current = 0;
     if(props.consult === 'Requesting'){
-      // axios.get('Json/mainPageTutee/requestconsultList.json')
+      axios.get('Json/mainPageTutee/requestconsultList.json')
       // .then((res) => {
       //   SetConsultList(res.data);
       // }).catch((error) => console.log(error));
-      axios({
+      
+			/*
+			axios({
         method: "GET",
         url: `https://grise.p-e.kr/tutee/consults`,
         headers: {
@@ -121,6 +123,7 @@ const ConsultList = (props) => {
           content : 'posting'
         }
       })
+			*/
         .then((res) => {
           SetConsultList(res.data);
         })
@@ -131,7 +134,8 @@ const ConsultList = (props) => {
 
     }
     else if(props.consult === 'Consulting'){
-      axios({
+      /*
+			axios({
         method:'GET',
         url:`https://grise.p-e.kr/tutee/consults`,
         headers: {
@@ -144,12 +148,20 @@ const ConsultList = (props) => {
           content : 'consulting'
         }
       })
-      .then((res) => {
-        SetConsultList(res.data);
-      }).catch((error) => {console.log(error);noRefreshRef.current.style.display = 'none';});
+			*/
+      axios
+        .get("Json/mainPageTutee/requestconsultList.json")
+        .then((res) => {
+          SetConsultList(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+          noRefreshRef.current.style.display = "none";
+        });
 
     }else if(props.consult === 'Tutor'){
-      axios({
+      /*
+			axios({
         method:'GET',
         url:`https://grise.p-e.kr/tutee/tutors`,
         headers: {
@@ -161,12 +173,20 @@ const ConsultList = (props) => {
           limit:10,
         }
       })
-      .then((res) => {
-        SetConsultList(res.data);
-      }).catch((error) => {console.log(error);noRefreshRef.current.style.display = 'none';});
+			*/
+      axios
+        .get("Json/mainPageTutee/requestconsultList.json")
+        .then((res) => {
+          SetConsultList(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+          noRefreshRef.current.style.display = "none";
+        });
       
     }else if(props.consult === 'SolvedConsult'){
-      axios({
+      /*
+			axios({
         method:'GET',
         url:`https://grise.p-e.kr/tutee/consults`,
         headers: {
@@ -179,9 +199,16 @@ const ConsultList = (props) => {
           content : 'done'
         }
       })
-      .then((res) => {
-        SetConsultList(res.data);
-      }).catch((error) => {console.log(error);noRefreshRef.current.style.display = 'none';}); 
+			*/
+      axios
+        .get("Json/mainPageTutee/requestconsultList.json")
+        .then((res) => {
+          SetConsultList(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+          noRefreshRef.current.style.display = "none";
+        }); 
     }
   },[props.consult,pageNumber,noRefreshRef,SetConsultList])
 

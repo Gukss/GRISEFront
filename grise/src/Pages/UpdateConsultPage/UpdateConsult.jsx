@@ -28,13 +28,14 @@ const UpdateConsult = ()=>{
 		if (istitle&&iscontent) {
       let URL = `https://grise.p-e.kr/tutee/consults/${location.state.consultId}`;
       let data = new FormData(formRef.current);
-
+			
       axios({  
         method: "PUT",
         url: URL, //환경변수
         headers: { "content-Type": "multipart/form-data", Authorization: localStorage.getItem("token") },
         data:data
-      }).then((res) => {
+      })
+			.then((res) => {
         submitingRef.current.style.display='none';
         Navigate('/tuteeMain');
       }).catch((error) => {
