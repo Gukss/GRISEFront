@@ -175,7 +175,7 @@ const ConsultList = (props) => {
       })
 			*/
       axios
-        .get("Json/mainPageTutee/requestconsultList.json")
+        .get("Json/mainPageTutee/tutorList.json")
         .then((res) => {
           SetConsultList(res.data);
         })

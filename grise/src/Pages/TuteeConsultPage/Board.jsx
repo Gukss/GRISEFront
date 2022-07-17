@@ -49,14 +49,14 @@ const Board = () => {
         />
       </StyledVideo>
       <StyledTitle>
-        <StyledHeader>{consult?.title}</StyledHeader>
+        <StyledHeader>{/*consult?.title*/"제목1"}</StyledHeader>
         <FinishConsultButton
           consultId={/*location.state.consultId*/ 1}
           style={{ float: "right" }}
           consultType={/*location.state.consult*/ "Consulting"}
         ></FinishConsultButton>
       </StyledTitle>
-      <StyledMainText>{consult?.content}</StyledMainText>
+      <StyledMainText>{/*consult?.content*/"본문입니다."}</StyledMainText>
       <Comment
         consultId={/*location.state.consultId*/ 1}
         tuteeName={consult?.tutee?.name}
